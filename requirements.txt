@@ -1,0 +1,3 @@
+Flask==1.1.2
+ultralytics==8.0.57
+Werkzeug==2.0.3
