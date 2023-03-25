@@ -53,9 +53,7 @@ if source_radio == settings.IMAGE:
         else:
             image = PIL.Image.open(source_img)
             st.image(source_img, caption='Uploaded Image',
-                     use_column_width=True)
-        st.caption("confidence: ") 
-        
+                     use_column_width=True)        
 
     with col2:
         if source_img is None:
@@ -72,7 +70,6 @@ if source_radio == settings.IMAGE:
                     res_plotted = res[0].plot()[:, :, ::-1]
                     st.image(res_plotted, caption='Detected Image',
                              use_column_width=True)
-                    st.write(conf)
                     
 
                     # added for data frame
