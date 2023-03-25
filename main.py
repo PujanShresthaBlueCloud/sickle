@@ -94,7 +94,7 @@ overlap_threshold = st.sidebar.slider('Overlap threshold: What is the maximum am
 ##########
 
 ## Title.
-st.write('# Blood Cell Count Object Detection')
+st.write('# Sickle Cell Detection')
 
 ## Pull in default image or user-selected image.
 if uploaded_file is None:
@@ -132,13 +132,13 @@ img_str = img_str.decode('ascii')
 upload_url='images/'
 
 ## POST to the API.
-r = requests.post(upload_url,
-                  data=img_str,
-                  headers={
-    'Content-Type': 'application/x-www-form-urlencoded'
-})
+# r = requests.post(upload_url,
+#                   data=img_str,
+#                   headers={
+#     'Content-Type': 'application/x-www-form-urlencoded'
+# })
 
-res = model.predict(source='images/001source.jpg', save=True)
+res = model.predict(source=image, save=True)
 boxes = res[0].boxes
 box = boxes[0]  # returns one box
 # box.xyxy
@@ -178,22 +178,22 @@ st.image(image,
 
 
 ## Save the JSON.
-output_dict = r.json()
+# output_dict = r.json()
 
 ## Generate list of confidences.
-confidences = [box['confidence'] for box in output_dict['predictions']]
+# confidences = [box['confidence'] for box in output_dict['predictions']]
 
 ## Summary statistics section in main app.
 st.write('### Summary Statistics')
-st.write(f'Number of Bounding Boxes (ignoring overlap thresholds): {len(confidences)}')
-st.write(f'Average Confidence Level of Bounding Boxes: {(np.round(np.mean(confidences),4))}')
+# st.write(f'Number of Bounding Boxes (ignoring overlap thresholds): {len(confidences)}')
+# st.write(f'Average Confidence Level of Bounding Boxes: {(np.round(np.mean(confidences),4))}')
 
 ## Histogram in main app.
 st.write('### Histogram of Confidence Levels')
-fig, ax = plt.subplots()
-ax.hist(confidences, bins=10, range=(0.0,1.0))
-st.pyplot(fig)
+# fig, ax = plt.subplots()
+# ax.hist(confidences, bins=10, range=(0.0,1.0))
+# st.pyplot(fig)
 
 ## Display the JSON in main app.
 st.write('### JSON Output')
-st.write(r.json())
+# st.write(r.json())
