@@ -7,7 +7,7 @@ import settings
 import helper
 from ultralytics import YOLO
 import pandas as pd
-
+import numpy as np
 
 # Sidebar
 st.title("Sickle Cell Detection Using YOLOV8")
@@ -73,7 +73,8 @@ if source_radio == settings.IMAGE:
 
                     # added for data frame
                     # st.dataframe(res, use_column_width=True)
-                    res.print()
+                    r = np.array(res)
+                    r.print()
                     for r in res:
                         # st.write(r)
                         for c in r.names:
