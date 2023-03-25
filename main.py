@@ -8,7 +8,7 @@ import cv2
 
 
 model = YOLO('model/best17_716.pt')
-print(model.summary())
+# print(model.summary())
 
 
 if st.button('Say hello'):
