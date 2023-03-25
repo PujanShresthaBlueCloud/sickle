@@ -14,7 +14,20 @@ model = YOLO('model/best17_716.pt')
 
 
 img = st.image('images/001source.jpg')
-res = model.predict(source='images/001source.jpg', save=True, save_dir='runs/detect')
+res = model.predict(source='images/001source.jpg', save=True)
+res = res.numpy()
+boxes = res[0].boxes
+box = boxes[0]  # returns one box
+box.xyxy
+boxes.xyxy  # box with xyxy format, (N, 4)
+boxes.xywh  # box with xywh format, (N, 4)
+boxes.xyxyn  # box with xyxy format but normalized, (N, 4)
+boxes.xywhn  # box with xywh format but normalized, (N, 4)
+boxes.conf  # confidence score, (N, 1)
+boxes.cls  # cls, (N, 1)
+boxes.data  # raw bboxes tensor, (N, 6) or boxes.boxes .
+st.dataframe(boxes.data)
+
 
 
 # uploaded_file = st.file_uploader("Choose a file")
