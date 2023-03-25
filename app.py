@@ -72,17 +72,7 @@ if source_radio == settings.IMAGE:
                     
 
                     # added for data frame
-                    # st.dataframe(res, use_column_width=True)
-                    r = np.array(res)
-                    r.print()
-                    for r in res:
-                        # st.write(r)
-                        for c in r.names:
-                            st.write(c)
-                            # print(model.names[int(c)])
-                    # names,tensor = res
-                    # st.dataframe(names,use_container_width=True)
-                    # st.dataframe(tensor,use_container_width=True)
+
                     
 
                     IMAGE_DOWNLOAD_PATH = f"runs/{dirpath_locator}/predict/image0.jpg"
@@ -95,6 +85,7 @@ if source_radio == settings.IMAGE:
                 try:
                     with st.expander("Detection Results"):
                         for box in boxes:
+                            print(box)
                             st.write(box.xywh)
                 except Exception as ex:
                     # st.write(ex)
