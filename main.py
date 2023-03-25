@@ -18,11 +18,11 @@ import matplotlib.pyplot as plt
 
 
 
-model = YOLO('model/best17_716.pt')
+# model = YOLO('model/best17_716.pt')
 # print(model.summary())
 
 
-img = st.image('images/001source.jpg')
+# img = st.image('images/001source.jpg')
 # res = model.predict(source='images/001source.jpg', save=True)
 # boxes = res[0].boxes
 # box = boxes[0]  # returns one box
@@ -59,20 +59,20 @@ Dermatofibroma (df)
 
 
 
-import numpy as np
-from PIL import Image
-from sklearn.preprocessing import LabelEncoder
-from tensorflow.keras.models import load_model
+# import numpy as np
+# from PIL import Image
+# from sklearn.preprocessing import LabelEncoder
+# from tensorflow.keras.models import load_model
 
 
 def getPrediction(filename):
     
-    classes = ['Actinic keratoses', 'Basal cell carcinoma', 
-               'Benign keratosis-like lesions', 'Dermatofibroma', 'Melanoma', 
-               'Melanocytic nevi', 'Vascular lesions']
-    le = LabelEncoder()
-    le.fit(classes)
-    le.inverse_transform([2])
+    # classes = ['Actinic keratoses', 'Basal cell carcinoma', 
+    #            'Benign keratosis-like lesions', 'Dermatofibroma', 'Melanoma', 
+    #            'Melanocytic nevi', 'Vascular lesions']
+    # le = LabelEncoder()
+    # le.fit(classes)
+    # le.inverse_transform([2])
     
     
     #Load model
