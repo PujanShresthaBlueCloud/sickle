@@ -10,12 +10,13 @@ import settings
 import helper
 
 from ultralytics import YOLO
-
+import joblib
 
 def load_model(model_path):
     model = YOLO(model_path)
     return model
-model = YOLO('best17_716.pt')
+# model = YOLO('best17_716.pt')
+model = joblib.load('best17_716.pt')
 
 # Sidebar
 st.title("Sickle Cell Detection Using YOLOV8")
