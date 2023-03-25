@@ -74,7 +74,7 @@ if source_radio == settings.IMAGE:
 
                     # added for data frame
                     names = res[0].names
-                    for name in names:
+                    for name in names[1]:
                         st.write(name)
                     
 
