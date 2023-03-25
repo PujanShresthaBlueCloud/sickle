@@ -26,8 +26,8 @@ SOURCES_LIST = [IMAGE]
 
 # images
 IMAGES_DIR = ROOT / 'images'
-DEFAULT_IMAGE = IMAGES_DIR / 'pos027_EDOF_DENISOVAN_RGB.tiff_02_02.png'
-DEFAULT_DETECT_IMAGE = IMAGES_DIR / 'pos027_EDOF_DENISOVAN_RGB.tiff_02_02.png'
+DEFAULT_IMAGE = IMAGES_DIR / 'images/image_to_predict.png'
+DEFAULT_DETECT_IMAGE = IMAGES_DIR / 'images/detected.png'
 
 # video
 # VIDEO_DIR = ROOT / 'videos'
