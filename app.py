@@ -9,6 +9,11 @@ from ultralytics import YOLO
 import pandas as pd
 import numpy as np
 
+
+import contextlib
+from functools import wraps
+from io import StringIO
+
 # Sidebar
 st.title("Sickle Cell Detection Using YOLOV8")
 
@@ -83,11 +88,20 @@ if source_radio == settings.IMAGE:
                     #                        mime='image/jpg'
                     #                        )
                 try:
-                    col1=st.columns(1)
-                    with col1:
-                        with st.expander("Detection Results"):
-                            for box in boxes:
-                                st.write(box.xywh)
+                    with st.expander("Detection Results"):
+                        for box in boxes:
+                            st.write(box.xywh)
                 except Exception as ex:
                     # st.write(ex)
                     st.write("No image is uploaded yet!")
+            stdout = io.StringIO()
+            stderr = io.StringIO()
+            try:
+                with contextlib.redirect_stdout(stdout):
+                    with contextlib.redirect_stderr(stderr):
+                        <code to be run>
+            except Exception as e:
+                st.write(f"Failure while executing: {e}")
+            finally:
+                st.write("Execution output:\n", stdout.getvalue())
+                st.write("Execution error output:\n", stderr.getvalue())  
