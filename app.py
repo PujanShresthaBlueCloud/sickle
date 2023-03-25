@@ -72,11 +72,11 @@ if source_radio == settings.IMAGE:
                     
 
                     # added for data frame
-                    st.dataframe(res, use_column_width=True)
+                    # st.dataframe(res, use_column_width=True)
                     for r in res:
                         # st.write(r)
                         for c in r.names:
-                            st.write(c)
+                            st.dataframe(c)
                             # print(model.names[int(c)])
                     # names,tensor = res
                     # st.dataframe(names,use_container_width=True)
