@@ -38,8 +38,8 @@ source_radio = st.sidebar.radio(
 if source_radio == settings.IMAGE:
     source_img = st.sidebar.file_uploader(
         "Choose an image...", type=("jpg", "jpeg", "png", 'bmp', 'webp'))
-    # save_radio = st.sidebar.radio("Save image to download", ["Yes", "No"])
-    # save = True if save_radio == 'Yes' else False
+    save_radio = st.sidebar.radio("Save image to download", ["Yes", "No"])
+    save = True if save_radio == 'Yes' else False
     col1, col2 = st.columns(2)
 
     with col1:
@@ -68,6 +68,7 @@ if source_radio == settings.IMAGE:
                     st.image(res_plotted, caption='Detected Image',
                              use_column_width=True)
                     IMAGE_DOWNLOAD_PATH = f"runs/{dirpath_locator}/predict/image0.jpg"
+                    st.write("download path:",dirpath_locator)
                     with open(IMAGE_DOWNLOAD_PATH, 'rb') as fl:
                         st.download_button("Download object-detected image",
                                            data=fl,
