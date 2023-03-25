@@ -83,11 +83,11 @@ if source_radio == settings.IMAGE:
                     #                        mime='image/jpg'
                     #                        )
                 try:
-                    with st.expander("Detection Results"):
-                        for box in boxes:
-                            # st.write(box.xywh)
-                            for tensor in box.xywh:
-                                st.write(np.argmax(tensor))
+                    col1=st.columns(1)
+                    with col1:
+                        with st.expander("Detection Results"):
+                            for box in boxes:
+                                st.write(box.xywh)
                 except Exception as ex:
                     # st.write(ex)
                     st.write("No image is uploaded yet!")
