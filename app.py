@@ -12,7 +12,7 @@ import numpy as np
 
 # Sidebar
 st.title("Sickle Cell Detection Using YOLOV8")
-st.subheader("Please upload image from side bar to detect")
+st.caption("Please upload image from side bar to detect")
 st.sidebar.header("Model Config")
 
 mlmodel_radio = st.sidebar.radio(
