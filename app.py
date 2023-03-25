@@ -42,7 +42,7 @@ if source_radio == settings.IMAGE:
     # save_radio = st.sidebar.radio("Save image to download", ["Yes", "No"])
     # save = True if save_radio == 'Yes' else False
     col1, col2 = st.columns(2)
-    col3 = st.columns(1)
+
     with col1:
         if source_img is None:
             default_image_path = str(settings.DEFAULT_IMAGE)
@@ -83,10 +83,9 @@ if source_radio == settings.IMAGE:
                     #                        mime='image/jpg'
                     #                        )
                 try:
-                    with col1:
-                        with st.expander("Detection Results"):
-                            for box in boxes:
-                                st.write(box.xywh['tensor'])
+                    with st.expander("Detection Results"):
+                        for box in boxes:
+                            st.write(box.xywh[0])
                 except Exception as ex:
                     # st.write(ex)
                     st.write("No image is uploaded yet!")
