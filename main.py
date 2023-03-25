@@ -12,5 +12,6 @@ model = YOLO('model/best17_716.pt')
 
 
 img = st.image('images/001source.jpg')
-model.predict(img)
+res = model.predict(source='model/best17_716.pt', save=True)
+
 
