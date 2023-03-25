@@ -70,7 +70,7 @@ if source_radio == settings.IMAGE:
         else:
             if st.sidebar.button('Detect Objects'):
                 with torch.no_grad():
-                    st.write("model inside torch", model.summary())
+                    st.write("model inside torch")
                     res = model.predict(image, save=save, save_txt=save, exist_ok=True, conf=conf)
                     st.write(res.summary())
                     boxes = res[0].boxes
