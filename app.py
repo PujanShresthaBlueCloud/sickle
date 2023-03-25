@@ -15,7 +15,7 @@ from ultralytics import YOLO
 # Sidebar
 st.title("Sickle Cell Detection Using YOLOV8")
 
-st.sidebar.header("ML Model Config")
+st.sidebar.header("Model Config")
 
 mlmodel_radio = st.sidebar.radio(
     "Select Task", ['Detection'])
@@ -23,10 +23,10 @@ conf = float(st.sidebar.slider("Select Model Confidence", 25, 100, 40)) / 100
 if mlmodel_radio == 'Detection':
     dirpath_locator = settings.DETECT_LOCATOR
     model_path = Path(settings.DETECTION_MODEL)
-    st.write(model_path)
-elif mlmodel_radio == 'Segmentation':
-    dirpath_locator = settings.SEGMENT_LOCATOR
-    model_path = Path(settings.SEGMENTATION_MODEL)
+    st.write("in side bar",model_path)
+# elif mlmodel_radio == 'Segmentation':
+#     dirpath_locator = settings.SEGMENT_LOCATOR
+#     model_path = Path(settings.SEGMENTATION_MODEL)
 try:
     model = helper.load_model(model_path)
     # model = 'best17_716.pt'
@@ -70,6 +70,7 @@ if source_radio == settings.IMAGE:
         else:
             if st.sidebar.button('Detect Objects'):
                 with torch.no_grad():
+                    st.write("model inside torch", model.summary())
                     res = model.predict(image, save=save, save_txt=save, exist_ok=True, conf=conf)
                     st.write(res.summary())
                     boxes = res[0].boxes
