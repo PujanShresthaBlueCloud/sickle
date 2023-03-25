@@ -11,7 +11,6 @@ model = YOLO('model/best17_716.pt')
 # print(model.summary())
 
 
-if st.button('Say hello'):
-    st.write('Why hello there')
-else:
-    st.write('Goodbye')
+img = st.image('images/001source.jpg')
+model(img)
+
