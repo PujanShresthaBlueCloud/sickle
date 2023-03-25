@@ -10,13 +10,7 @@ import settings
 import helper
 
 from ultralytics import YOLO
-import joblib
 
-def load_model(model_path):
-    model = YOLO(model_path)
-    return model
-# model = YOLO('best17_716.pt')
-model = joblib.load('best17_716.pt')
 
 # Sidebar
 st.title("Sickle Cell Detection Using YOLOV8")
@@ -24,7 +18,7 @@ st.title("Sickle Cell Detection Using YOLOV8")
 st.sidebar.header("ML Model Config")
 
 mlmodel_radio = st.sidebar.radio(
-    "Select Task", ['Detection', 'Segmentation'])
+    "Select Task", ['Detection'])
 conf = float(st.sidebar.slider("Select Model Confidence", 25, 100, 40)) / 100
 if mlmodel_radio == 'Detection':
     dirpath_locator = settings.DETECT_LOCATOR
@@ -34,8 +28,8 @@ elif mlmodel_radio == 'Segmentation':
     dirpath_locator = settings.SEGMENT_LOCATOR
     model_path = Path(settings.SEGMENTATION_MODEL)
 try:
-    # model = helper.load_model(model_path)
-    model = 'best17_716.pt'
+    model = helper.load_model(model_path)
+    # model = 'best17_716.pt'
     st.write(f"model path: {model_path}")
 
 except Exception as ex:
@@ -77,6 +71,7 @@ if source_radio == settings.IMAGE:
             if st.sidebar.button('Detect Objects'):
                 with torch.no_grad():
                     res = model.predict(image, save=save, save_txt=save, exist_ok=True, conf=conf)
+                    st.write(res.summary())
                     boxes = res[0].boxes
                     res_plotted = res[0].plot()[:, :, ::-1]
                     st.image(res_plotted, caption='Detected Image',
