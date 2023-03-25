@@ -74,16 +74,15 @@ if source_radio == settings.IMAGE:
                     # added for data frame
                     st.dataframe(res)
                     for r in res:
-                        for c in r.boxes.cls:
+                        st.write(r)
+                        for c in r.names:
                             print(model.names[int(c)])
-                            # st.write(r)
                     # names,tensor = res
                     # st.dataframe(names,use_container_width=True)
                     # st.dataframe(tensor,use_container_width=True)
                     
 
                     IMAGE_DOWNLOAD_PATH = f"runs/{dirpath_locator}/predict/image0.jpg"
-                    st.write("download path:",dirpath_locator)
                     # with open(IMAGE_DOWNLOAD_PATH, 'rb') as fl:
                     #     st.download_button("Download object-detected image",
                     #                        data=fl,
