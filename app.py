@@ -18,8 +18,9 @@ mlmodel_radio = st.sidebar.radio(
 conf = float(st.sidebar.slider("Select Model Confidence", 25, 100, 40)) / 100
 if mlmodel_radio == 'Detection':
     dirpath_locator = settings.DETECT_LOCATOR
+    st.write("dirpath",dirpath_locator)
+
     model_path = Path(settings.DETECTION_MODEL)
-    st.write("in side bar",model_path)
 
 try:
     model = helper.load_model(model_path)
@@ -70,12 +71,12 @@ if source_radio == settings.IMAGE:
                              use_column_width=True)
                     IMAGE_DOWNLOAD_PATH = f"runs/{dirpath_locator}/predict/image0.jpg"
                     st.write("download path:",dirpath_locator)
-                    with open(IMAGE_DOWNLOAD_PATH, 'rb') as fl:
-                        st.download_button("Download object-detected image",
-                                           data=fl,
-                                           file_name="image0.jpg",
-                                           mime='image/jpg'
-                                           )
+                    # with open(IMAGE_DOWNLOAD_PATH, 'rb') as fl:
+                    #     st.download_button("Download object-detected image",
+                    #                        data=fl,
+                    #                        file_name="image0.jpg",
+                    #                        mime='image/jpg'
+                    #                        )
                 try:
                     with st.expander("Detection Results"):
                         for box in boxes:
