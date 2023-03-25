@@ -99,7 +99,7 @@ if source_radio == settings.IMAGE:
             try:
                 with contextlib.redirect_stdout(stdout):
                     with contextlib.redirect_stderr(stderr):
-                        <code to be run>
+                        st.write("he")
             except Exception as e:
                 st.write(f"Failure while executing: {e}")
             finally:
