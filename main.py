@@ -74,7 +74,7 @@ uploaded_file = st.sidebar.file_uploader('',
                                          type=['png', 'jpg', 'jpeg'],
                                          accept_multiple_files=False)
 
-st.sidebar.write('[Find additional images on Roboflow.](https://public.roboflow.com/object-detection/bccd/)')
+# st.sidebar.write('[Find additional images on Roboflow.](https://public.roboflow.com/object-detection/bccd/)')
 
 ## Add in sliders.
 confidence_threshold = st.sidebar.slider('Confidence threshold: What is the minimum acceptable confidence level for displaying a bounding box?', 0.0, 1.0, 0.5, 0.01)
@@ -88,6 +88,12 @@ overlap_threshold = st.sidebar.slider('Overlap threshold: What is the maximum am
 # image = Image.open('./images/streamlit_logo.png')
 # st.sidebar.image(image,
 #                  use_column_width=True)
+
+
+
+
+
+
 
 ##########
 ##### Set up main app.
@@ -111,12 +117,12 @@ else:
 st.write('### Inferenced Image')
 
 # Convert to JPEG Buffer.
-buffered = io.BytesIO()
-image.save(buffered, quality=90, format='JPEG')
+# buffered = io.BytesIO()
+# image.save(buffered, quality=90, format='JPEG')
 
 # Base 64 encode.
-img_str = base64.b64encode(buffered.getvalue())
-img_str = img_str.decode('ascii')
+# img_str = base64.b64encode(buffered.getvalue())
+# img_str = img_str.decode('ascii')
 
 ## Construct the URL to retrieve image.
 # upload_url = ''.join([
@@ -129,7 +135,7 @@ img_str = img_str.decode('ascii')
 #     '&labels=True'
 # ])
 
-upload_url='images/'
+# upload_url='images/'
 
 ## POST to the API.
 # r = requests.post(upload_url,
@@ -138,7 +144,7 @@ upload_url='images/'
 #     'Content-Type': 'application/x-www-form-urlencoded'
 # })
 
-res = model.predict(source=image, save=True)
+res = model.predict(source=uploaded_file, save=True)
 boxes = res[0].boxes
 box = boxes[0]  # returns one box
 # box.xyxy
@@ -153,11 +159,11 @@ st.dataframe(boxes.data)
 
 
 # image = Image.open(BytesIO(r.content))
-image = Image.open(BytesIO(res.content))
+# image = Image.open(BytesIO(res.content))
 
 # Convert to JPEG Buffer.
-buffered = io.BytesIO()
-image.save(buffered, quality=90, format='JPEG')
+# buffered = io.BytesIO()
+# image.save(buffered, quality=90, format='JPEG')
 
 # Display image.
 st.image(image,
