@@ -15,7 +15,6 @@ model = YOLO('model/best17_716.pt')
 
 img = st.image('images/001source.jpg')
 res = model.predict(source='images/001source.jpg', save=True)
-res = res.numpy()
 boxes = res[0].boxes
 box = boxes[0]  # returns one box
 box.xyxy
