@@ -72,9 +72,8 @@ if source_radio == settings.IMAGE:
                     
 
                     # added for data frame
-                    r=model.predict(image)
-                    # df=pd.DataFrame(res, columns=['one','two','three'])
-                    st.dataframe(r)
+                    st.dataframe(res['names'],use_container_width=True)
+                    st.dataframe(res['tensor'],use_container_width=True)
 
                     IMAGE_DOWNLOAD_PATH = f"runs/{dirpath_locator}/predict/image0.jpg"
                     st.write("download path:",dirpath_locator)
