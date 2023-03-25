@@ -23,18 +23,18 @@ model = YOLO('model/best17_716.pt')
 
 
 img = st.image('images/001source.jpg')
-res = model.predict(source='images/001source.jpg', save=True)
-boxes = res[0].boxes
-box = boxes[0]  # returns one box
-box.xyxy
-boxes.xyxy  # box with xyxy format, (N, 4)
-boxes.xywh  # box with xywh format, (N, 4)
-boxes.xyxyn  # box with xyxy format but normalized, (N, 4)
-boxes.xywhn  # box with xywh format but normalized, (N, 4)
-boxes.conf  # confidence score, (N, 1)
-boxes.cls  # cls, (N, 1)
-boxes.data  # raw bboxes tensor, (N, 6) or boxes.boxes .
-st.dataframe(boxes.data)
+# res = model.predict(source='images/001source.jpg', save=True)
+# boxes = res[0].boxes
+# box = boxes[0]  # returns one box
+# # box.xyxy
+# # boxes.xyxy  # box with xyxy format, (N, 4)
+# # boxes.xywh  # box with xywh format, (N, 4)
+# # boxes.xyxyn  # box with xyxy format but normalized, (N, 4)
+# # boxes.xywhn  # box with xywh format but normalized, (N, 4)
+# # boxes.conf  # confidence score, (N, 1)
+# # boxes.cls  # cls, (N, 1)
+# boxes.data  # raw bboxes tensor, (N, 6) or boxes.boxes .
+# st.dataframe(boxes.data)
 
 
 
@@ -119,15 +119,17 @@ img_str = base64.b64encode(buffered.getvalue())
 img_str = img_str.decode('ascii')
 
 ## Construct the URL to retrieve image.
-upload_url = ''.join([
-    'https://infer.roboflow.com/rf-bccd-bkpj9--1',
-    f'?access_token={st.secrets["access_token"]}',
-    '&format=image',
-    f'&overlap={overlap_threshold * 100}',
-    f'&confidence={confidence_threshold * 100}',
-    '&stroke=2',
-    '&labels=True'
-])
+# upload_url = ''.join([
+#     'https://infer.roboflow.com/rf-bccd-bkpj9--1',
+#     f'?access_token={st.secrets["access_token"]}',
+#     '&format=image',
+#     f'&overlap={overlap_threshold * 100}',
+#     f'&confidence={confidence_threshold * 100}',
+#     '&stroke=2',
+#     '&labels=True'
+# ])
+
+upload_url='images/'
 
 ## POST to the API.
 r = requests.post(upload_url,
@@ -136,7 +138,22 @@ r = requests.post(upload_url,
     'Content-Type': 'application/x-www-form-urlencoded'
 })
 
-image = Image.open(BytesIO(r.content))
+res = model.predict(source='images/001source.jpg', save=True)
+boxes = res[0].boxes
+box = boxes[0]  # returns one box
+# box.xyxy
+# boxes.xyxy  # box with xyxy format, (N, 4)
+# boxes.xywh  # box with xywh format, (N, 4)
+# boxes.xyxyn  # box with xyxy format but normalized, (N, 4)
+# boxes.xywhn  # box with xywh format but normalized, (N, 4)
+# boxes.conf  # confidence score, (N, 1)
+# boxes.cls  # cls, (N, 1)
+boxes.data  # raw bboxes tensor, (N, 6) or boxes.boxes .
+st.dataframe(boxes.data)
+
+
+# image = Image.open(BytesIO(r.content))
+image = Image.open(BytesIO(res.content))
 
 # Convert to JPEG Buffer.
 buffered = io.BytesIO()
@@ -147,17 +164,18 @@ st.image(image,
          use_column_width=True)
 
 ## Construct the URL to retrieve JSON.
-upload_url = ''.join([
-    'https://infer.roboflow.com/rf-bccd-bkpj9--1',
-    f'?access_token={st.secrets["access_token"]}'
-])
+# upload_url = ''.join([
+#     'https://infer.roboflow.com/rf-bccd-bkpj9--1',
+#     f'?access_token={st.secrets["access_token"]}'
+# ])
 
 ## POST to the API.
-r = requests.post(upload_url,
-                  data=img_str,
-                  headers={
-    'Content-Type': 'application/x-www-form-urlencoded'
-})
+# r = requests.post(upload_url,
+#                   data=img_str,
+#                   headers={
+#     'Content-Type': 'application/x-www-form-urlencoded'
+# })
+
 
 ## Save the JSON.
 output_dict = r.json()
