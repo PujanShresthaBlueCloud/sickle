@@ -70,7 +70,8 @@ if source_radio == settings.IMAGE:
                     res_plotted = res[0].plot()[:, :, ::-1]
                     st.image(res_plotted, caption='Detected Image',
                              use_column_width=True)
-                    st.write(st.caption("confidence :", conf))
+                    st.caption("confidence: ") 
+                    st.write(conf)
                     
 
                     # added for data frame
