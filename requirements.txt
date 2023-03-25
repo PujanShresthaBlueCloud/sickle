@@ -1,5 +1,8 @@
-# pafy==0.5.5
+numpy==1.21.6
+pandas==1.4.4
 Pillow==9.4.0
+requests==2.28.1
 streamlit==1.20.0
-torch==2.0.0
 ultralytics==8.0.57
+matplotlib==3.3.2
+Flask==1.1.2
