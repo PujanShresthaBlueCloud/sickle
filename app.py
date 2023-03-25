@@ -68,7 +68,7 @@ if source_radio == settings.IMAGE:
                     res_plotted = res[0].plot()[:, :, ::-1]
                     st.image(res_plotted, caption='Detected Image',
                              use_column_width=True)
-                    st.dataframe(res)
+                    st.dataframe(res['probs'])
 
                     IMAGE_DOWNLOAD_PATH = f"runs/{dirpath_locator}/predict/image0.jpg"
                     st.write("download path:",dirpath_locator)
