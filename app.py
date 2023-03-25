@@ -11,7 +11,7 @@ import helper
 
 
 # Sidebar
-st.title("Object Detection using YOLOv8")
+st.title("Sickle Cell Detection Using YOLOV8")
 
 st.sidebar.header("ML Model Config")
 
@@ -25,13 +25,16 @@ elif mlmodel_radio == 'Segmentation':
     dirpath_locator = settings.SEGMENT_LOCATOR
     model_path = Path(settings.SEGMENTATION_MODEL)
 try:
-    model = helper.load_model(model_path)
+    # model = helper.load_model(model_path)
+    model = 'best17_716.pt'
+    st.write(f"model path: {model_path}")
+
 except Exception as ex:
     print(ex)
     st.write(f"Unable to load model. Check the specified path: {model_path}")
 
 source_img = None
-st.sidebar.header("Image/Video Config")
+st.sidebar.header("Image")
 source_radio = st.sidebar.radio(
     "Select Source", settings.SOURCES_LIST)
 
