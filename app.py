@@ -9,6 +9,13 @@ import cv2
 import settings
 import helper
 
+from ultralytics import YOLO
+
+
+def load_model(model_path):
+    model = YOLO(model_path)
+    return model
+
 
 # Sidebar
 st.title("Sickle Cell Detection Using YOLOV8")
