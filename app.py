@@ -72,8 +72,11 @@ if source_radio == settings.IMAGE:
                     
 
                     # added for data frame
-                    st.dataframe(res['names'],use_container_width=True)
-                    st.dataframe(res['tensor'],use_container_width=True)
+                    st.dataframe(res)
+                    names,tensor = res
+                    st.dataframe(names,use_container_width=True)
+                    st.dataframe(tensor,use_container_width=True)
+                    
 
                     IMAGE_DOWNLOAD_PATH = f"runs/{dirpath_locator}/predict/image0.jpg"
                     st.write("download path:",dirpath_locator)
