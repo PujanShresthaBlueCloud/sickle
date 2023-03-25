@@ -87,7 +87,7 @@ if source_radio == settings.IMAGE:
                         for box in boxes:
                             # st.write(box.xywh)
                             for tensor in box.xywh:
-                                st.write(tensor)
+                                st.write(tensor[0])
                 except Exception as ex:
                     # st.write(ex)
                     st.write("No image is uploaded yet!")
