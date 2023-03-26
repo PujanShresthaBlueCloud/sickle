@@ -127,13 +127,19 @@ if source_radio == settings.IMAGE:
                     # st.write(data[Normal,Sickle,Target,Crystal,others])
     with st.container():
         if detect_objects:
-            total_detection = len(Normal)+len(Sickle)+len(Target)+len(Crystal)+len(others)
-            st.write("Normal: ", len(Normal), "%.2f" % ((len(Normal)/total_detection)*100)," %")
-            st.write("Sickle: ", len(Sickle), "%.2f" % ((len(Sickle)/total_detection)*100)," %")
-            st.write("Target: ", len(Target), "%.2f" % ((len(Target)/total_detection)*100)," %")
-            st.write("Crystal: ", len(Crystal), "%.2f" % ((len(Crystal)/total_detection)*100)," %")
-            st.write("others: ", len(others), "%.2f" % ((len(others)/total_detection)*100)," %")
-            st.write("Total detected", total_detection)
+            normal_count = len(Normal)
+            sickle_count = len(Sickle)
+            target_count = len(Target)
+            crystal_count =  len(Crystal)
+            others_count = len(others)
+            total_detection = normal_count + sickle_count + target_count + crystal_count + others_count
+
+            st.write("Normal: ", normal_count, "%.2f" % ((normal_count/total_detection)*100)," %")
+            st.write("Sickle: ", sickle_count, "%.2f" % ((sickle_count/total_detection)*100)," %")
+            st.write("Target: ", target_count, "%.2f" % ((target_count/total_detection)*100)," %")
+            st.write("Crystal: ", crystal_count, "%.2f" % ((crystal_count/total_detection)*100)," %")
+            st.write("others: ", others_count, "%.2f" % ((others_count/total_detection)*100)," %")
+            st.write("Total detected: ", total_detection, "At confidence: ", conf)
 
         else:
             st.write('')
