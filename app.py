@@ -128,12 +128,12 @@ if source_radio == settings.IMAGE:
     with st.container():
         if detect_objects:
             total_detection = len(Normal)+len(Sickle)+len(Target)+len(Crystal)+len(others)
-            st.write(total_detection)
-            st.write("Normal: ",len(Normal), (len(Normal)/total_detection)*100)
-            st.write("Sickle: ",len(Sickle))
-            st.write("Target: ",len(Target))
-            st.write("Crystal: ",len(Crystal))
-            st.write("others: ",len(others))
+            st.write("Normal: ", len(Normal), (len(Normal)/total_detection)*100," %")
+            st.write("Sickle: ", len(Sickle), (len(Sickle)/total_detection)*100," %")
+            st.write("Target: ", len(Target), (len(Target)/total_detection)*100," %")
+            st.write("Crystal: ", len(Crystal), (len(Crystal)/total_detection)*100," %")
+            st.write("others: ", len(others), (len(others)/total_detection)*100," %")
+            st.write("Total detected", total_detection)
 
         else:
             st.write('')
