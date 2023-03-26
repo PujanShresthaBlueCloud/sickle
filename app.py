@@ -84,10 +84,10 @@ if source_radio == settings.IMAGE:
                     #                        file_name="image0.jpg",
                     #                        mime='image/jpg'
                     #                        )
-                try:
-                    # with st.expander("Detection Results"):
-                    #     for box in boxes:
-                    #         st.write(box.xywh)
-                except Exception as ex:
-                    # st.write(ex)
-                    st.write("No image is uploaded yet!")
+                # try:
+                #     with st.expander("Detection Results"):
+                #         for box in boxes:
+                #             st.write(box.xywh)
+                # except Exception as ex:
+                #     # st.write(ex)
+                #     st.write("No image is uploaded yet!")
