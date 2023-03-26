@@ -103,11 +103,11 @@ if source_radio == settings.IMAGE:
             print(cls)
             if(cls == 0):
                 cls=cls.numpy()
-                st.write(type(cls))
+                # st.write(type(cls))
                 Normal.append(cls)
                 # st.write(classes)
             elif(cls==1):
                 Sickle.append(cls)
 
-        st.write(Normal)
-        st.write(Sickle)
+        st.write(len(Normal))
+        st.write(len(Sickle))
