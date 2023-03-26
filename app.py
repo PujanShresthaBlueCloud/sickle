@@ -87,43 +87,44 @@ if source_radio == settings.IMAGE:
                 # except Exception as ex:
                 #     # st.write(ex)
                 #     st.write("No image is uploaded yet!")
-                with st.container():
-                    res = model.predict(image, exist_ok=True, conf=conf)
-                    boxes = res[0].boxes
-                    # added for data frame
-                    # st.write(model.names)
-                    # st.write(boxes.cls)
-                    # st.write(boxes.conf)
-                    # box_array = np.array([boxes.cls])
-                    # box_df = pd.DataFrame(boxes.cls, columns=boxes.index)
-                    Normal = []
-                    Sickle = []
-                    Target = []
-                    Crystal = []
-                    others = []
-                    data = []
-                    for cls in boxes.cls:
-                        print(cls)
-                        if(cls == 0):
-                            cls=cls.numpy()
-                            # st.write(type(cls))
-                            Normal.append(cls)
-                            # st.write(classes)
-                        elif(cls==1):
-                            Sickle.append(cls)
-                        elif(cls==2):
-                            Target.append(cls)
-                        elif(cls==3):
-                            Crystal.append(cls)
-                        elif(cls==4):
-                            others.append(cls)
+        if st.sidebar.button('Detect Objects'):
+            with st.container():
+                res = model.predict(image, exist_ok=True, conf=conf)
+                boxes = res[0].boxes
+                # added for data frame
+                # st.write(model.names)
+                # st.write(boxes.cls)
+                # st.write(boxes.conf)
+                # box_array = np.array([boxes.cls])
+                # box_df = pd.DataFrame(boxes.cls, columns=boxes.index)
+                Normal = []
+                Sickle = []
+                Target = []
+                Crystal = []
+                others = []
+                data = []
+                for cls in boxes.cls:
+                    print(cls)
+                    if(cls == 0):
+                        cls=cls.numpy()
+                        # st.write(type(cls))
+                        Normal.append(cls)
+                        # st.write(classes)
+                    elif(cls==1):
+                        Sickle.append(cls)
+                    elif(cls==2):
+                        Target.append(cls)
+                    elif(cls==3):
+                        Crystal.append(cls)
+                    elif(cls==4):
+                        others.append(cls)
 
-                    st.write("Normal: ",len(Normal))
-                    st.write("Sickle: ",len(Sickle))
-                    st.write("Target: ",len(Target))
-                    st.write("Crystal: ",len(Crystal))
-                    st.write("others: ",len(others))
+                st.write("Normal: ",len(Normal))
+                st.write("Sickle: ",len(Sickle))
+                st.write("Target: ",len(Target))
+                st.write("Crystal: ",len(Crystal))
+                st.write("others: ",len(others))
 
 
 
-                    # st.write(data[Normal,Sickle,Target,Crystal,others])
+                # st.write(data[Normal,Sickle,Target,Crystal,others])
