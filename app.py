@@ -92,8 +92,8 @@ if source_radio == settings.IMAGE:
         res = model.predict(image, exist_ok=True, conf=conf)
         boxes = res[0].boxes
         # added for data frame
-        st.write(model.names)
-        st.write(boxes.cls)
+        # st.write(model.names)
+        # st.write(boxes.cls)
         # st.write(boxes.conf)
         # box_array = np.array([boxes.cls])
         # box_df = pd.DataFrame(boxes.cls, columns=boxes.index)
@@ -112,11 +112,11 @@ if source_radio == settings.IMAGE:
                 # st.write(classes)
             elif(cls==1):
                 Sickle.append(cls)
-            elif(cls==3):
+            elif(cls==2):
                 Target.append(cls)
-            elif(cls==4):
+            elif(cls==3):
                 Crystal.append(cls)
-            elif(cls==5):
+            elif(cls==4):
                 others.append(cls)
 
         st.write("Normal: ",len(Normal))
