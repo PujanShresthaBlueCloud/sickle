@@ -100,7 +100,7 @@ if source_radio == settings.IMAGE:
         classes = np.array([])
         for cls in boxes.cls:
             if(cls == 0):
-                classes['Normal']=cls
+                classes['Normal']=cls.astype(np.int64)
                 st.write(cls)
 
         st.write(classes)
