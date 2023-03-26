@@ -99,6 +99,10 @@ if source_radio == settings.IMAGE:
         # box_df = pd.DataFrame(boxes.cls, columns=boxes.index)
         Normal = []
         Sickle = []
+        Target = []
+        Crystal = []
+        others = []
+        data = []
         for cls in boxes.cls:
             print(cls)
             if(cls == 0):
@@ -108,6 +112,17 @@ if source_radio == settings.IMAGE:
                 # st.write(classes)
             elif(cls==1):
                 Sickle.append(cls)
+            elif(cls==3):
+                Target.append(cls)
+            elif(cls==4):
+                Crystal.append(cls)
+            elif(cls==5):
+                others.append(cls)
 
-        st.write(len(Normal))
-        st.write(len(Sickle))
+        st.write("Normal: ",len(Normal))
+        st.write("Sickle: ",len(Sickle))
+        st.write("Target: ",len(Target))
+        st.write("Crystal: ",len(Crystal))
+        st.write("others: ",len(others))
+
+        # st.write(data[Normal,Sickle,Target,Crystal,others])
