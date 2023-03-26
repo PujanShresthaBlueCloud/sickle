@@ -92,6 +92,8 @@ if source_radio == settings.IMAGE:
         res = model.predict(image, exist_ok=True, conf=conf)
         boxes = res[0].boxes
         # added for data frame
-        st.write(model.names)
+        st.write(boxes.names)
         st.write(boxes.cls)
         st.write(boxes.conf)
+        box_array = np.array(st.boxes.cls)
+        box_df = pd.DataFrame(box_array, columns=st.write(boxes.names))
