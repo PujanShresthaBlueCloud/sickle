@@ -88,7 +88,7 @@ if source_radio == settings.IMAGE:
                 #     # st.write(ex)
                 #     st.write("No image is uploaded yet!")
 
-                    
+
                     # res = model.predict(image, exist_ok=True, conf=conf)
                     # boxes = res[0].boxes
                     # added for data frame
@@ -124,7 +124,7 @@ if source_radio == settings.IMAGE:
 
                     # st.write(data[Normal,Sickle,Target,Crystal,others])
     with st.container():
-        if st.sidebar.button('Detect Objects'):
+        if st.sidebar.button('Detect Objects')==True:
             st.write("Normal: ",len(Normal))
             st.write("Sickle: ",len(Sickle))
             st.write("Target: ",len(Target))
