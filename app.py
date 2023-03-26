@@ -139,7 +139,7 @@ if source_radio == settings.IMAGE:
             st.write("Target: ", target_count, "%.2f" % ((target_count/total_detection)*100)," %")
             st.write("Crystal: ", crystal_count, "%.2f" % ((crystal_count/total_detection)*100)," %")
             st.write("others: ", others_count, "%.2f" % ((others_count/total_detection)*100)," %")
-            st.write("Total detected: ", total_detection, "At confidence: ", conf)
+            st.write("Total detected: ", total_detection, "At confidence: ", "%.2f" %(conf * 100)," %")
 
         else:
             st.write('')
