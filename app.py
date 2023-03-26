@@ -97,12 +97,17 @@ if source_radio == settings.IMAGE:
         # st.write(boxes.conf)
         # box_array = np.array([boxes.cls])
         # box_df = pd.DataFrame(boxes.cls, columns=boxes.index)
-        classes = []
+        Normal = []
+        Sickle = []
         for cls in boxes.cls:
+            print(cls)
             if(cls == 0):
                 cls=cls.numpy()
                 st.write(type(cls))
-                classes['Normal']=cls[:]
-                st.write(classes)
+                Normal.append(cls)
+                # st.write(classes)
+            elif(cls==1):
+                Sickle.append(cls)
 
-        # st.write(classes)
+        st.write(Normal)
+        st.write(Sickle)
