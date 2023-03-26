@@ -75,7 +75,6 @@ if source_radio == settings.IMAGE:
                     # added for data frame
                     st.write(model.names)
                     st.write(boxes.cls)
-                    st.write(boxes.names)
                     st.write(boxes.conf)
                     
 
