@@ -43,6 +43,7 @@ if source_radio == settings.IMAGE:
     # save_radio = st.sidebar.radio("Save image to download", ["Yes", "No"])
     # save = True if save_radio == 'Yes' else False
     col1, col2 = st.columns(2)
+    col3 = st.columns(3)
 
     with col1:
         if source_img is None:
@@ -88,7 +89,6 @@ if source_radio == settings.IMAGE:
                 #     # st.write(ex)
                 #     st.write("No image is uploaded yet!")
 
-    col3 = st.columns(3)
     with col3:
         # added for data frame
         st.write(model.names)
