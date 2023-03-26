@@ -124,7 +124,7 @@ if source_radio == settings.IMAGE:
 
                     # st.write(data[Normal,Sickle,Target,Crystal,others])
     with st.container():
-        if st.sidebar.button('Detect Objects')==True:
+        if st.button('Detect Objects'):
             st.write("Normal: ",len(Normal))
             st.write("Sickle: ",len(Sickle))
             st.write("Target: ",len(Target))
