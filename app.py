@@ -130,23 +130,24 @@ if source_radio == settings.IMAGE:
             if(len(Normal)):
                 normal_count = len(Normal)
             else:
-                normal_count=0
+                normal_count = 0
             if(len(Sickle)):
                 sickle_count = len(Sickle)
             else:
-                sickle_count=0
+                sickle_count = 0
             if(len(Target)):
                 target_count = len(Target)
             else:
-                target_count=0
-            if(len(Crystal))
+                target_count = 0
+            if(len(Crystal)):
                 crystal_count =  len(Crystal)
             else:
-                crystal_count=0
+                crystal_count = 0
             if(len(others)):
                 others_count = len(others)
             else:
-                others_count=0
+                others_count = 0
+            
             total_detection = normal_count + sickle_count + target_count + crystal_count + others_count
 
             st.write("Normal: ", normal_count, "%.2f" % ((normal_count/total_detection)*100)," %")
