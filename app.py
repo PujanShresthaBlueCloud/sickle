@@ -87,7 +87,7 @@ if source_radio == settings.IMAGE:
                 # except Exception as ex:
                 #     # st.write(ex)
                 #     st.write("No image is uploaded yet!")
-                    with st.container():
+                with st.container():
                 res = model.predict(image, exist_ok=True, conf=conf)
                 boxes = res[0].boxes
                 # added for data frame
