@@ -74,6 +74,7 @@ if source_radio == settings.IMAGE:
 
                     # added for data frame
                     st.write(model.names)
+                    st.write(boxes.cls)
                     
 
                     IMAGE_DOWNLOAD_PATH = f"runs/{dirpath_locator}/predict/image0.jpg"
@@ -84,9 +85,9 @@ if source_radio == settings.IMAGE:
                     #                        mime='image/jpg'
                     #                        )
                 try:
-                    with st.expander("Detection Results"):
-                        for box in boxes:
-                            st.write(box.xywh)
+                    # with st.expander("Detection Results"):
+                    #     for box in boxes:
+                    #         st.write(box.xywh)
                 except Exception as ex:
                     # st.write(ex)
                     st.write("No image is uploaded yet!")
