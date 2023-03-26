@@ -132,3 +132,5 @@ if source_radio == settings.IMAGE:
             st.write("Target: ",len(Target))
             st.write("Crystal: ",len(Crystal))
             st.write("others: ",len(others))
+        else:
+            st.write('')
