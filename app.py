@@ -103,6 +103,6 @@ if source_radio == settings.IMAGE:
                 cls=cls.numpy()
                 st.write(type(cls))
                 # classes['Normal']=cls[:]
-                # st.write(cls)
+                st.write(cls)
 
         st.write(classes)
