@@ -88,7 +88,7 @@ if source_radio == settings.IMAGE:
                 #     # st.write(ex)
                 #     st.write("No image is uploaded yet!")
 
-    col3 = st.columns()
+    col3 = st.columns(3)
     with col3:
         # added for data frame
         st.write(model.names)
