@@ -62,7 +62,9 @@ if source_radio == settings.IMAGE:
             st.image(default_detected_image_path, caption='Detected Image',
                      use_column_width=True)
         else:
-            if st.sidebar.button('Detect Objects'):
+            detect_objects=st.sidebar.button('Detect Objects')
+            # if st.sidebar.button('Detect Objects'):
+            if detect_objects:
                 with torch.no_grad():
                     # res = model.predict(image, save=save, save_txt=save, exist_ok=True, conf=conf)
                     res = model.predict(image, exist_ok=True, conf=conf)
@@ -124,7 +126,7 @@ if source_radio == settings.IMAGE:
 
                     # st.write(data[Normal,Sickle,Target,Crystal,others])
     with st.container():
-        if st.button('Detect Objects'):
+        if detect_objects:
             st.write("Normal: ",len(Normal))
             st.write("Sickle: ",len(Sickle))
             st.write("Target: ",len(Target))
