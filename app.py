@@ -71,11 +71,6 @@ if source_radio == settings.IMAGE:
                     st.image(res_plotted, caption='Detected Image',
                              use_column_width=True)
                     
-
-                    # added for data frame
-                    st.write(model.names)
-                    st.write(boxes.cls)
-                    st.write(boxes.conf)
                     
 
                     IMAGE_DOWNLOAD_PATH = f"runs/{dirpath_locator}/predict/image0.jpg"
@@ -92,3 +87,10 @@ if source_radio == settings.IMAGE:
                 # except Exception as ex:
                 #     # st.write(ex)
                 #     st.write("No image is uploaded yet!")
+
+    col3 = st.columns()
+    with col3:
+        # added for data frame
+        st.write(model.names)
+        st.write(boxes.cls)
+        st.write(boxes.conf)
