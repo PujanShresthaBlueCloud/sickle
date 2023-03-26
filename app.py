@@ -127,7 +127,7 @@ if source_radio == settings.IMAGE:
                     # st.write(data[Normal,Sickle,Target,Crystal,others])
     with st.container():
         if detect_objects:
-            normal_count = len(Normal)
+            normal_count = st.text(len(Normal))
             sickle_count = len(Sickle)
             target_count = len(Target)
             crystal_count =  len(Crystal)
@@ -139,7 +139,7 @@ if source_radio == settings.IMAGE:
             st.write("Target: ", target_count, "%.2f" % ((target_count/total_detection)*100)," %")
             st.write("Crystal: ", crystal_count, "%.2f" % ((crystal_count/total_detection)*100)," %")
             st.write("others: ", others_count, "%.2f" % ((others_count/total_detection)*100)," %")
-            st.write("Total detected: ", total_detection, "At confidence: ", "%.2f" %(conf * 100)," %")
+            st.write("Total detected ", total_detection, ", at confidence ", "%.2f" %(conf * 100)," %")
 
         else:
             st.write('')
