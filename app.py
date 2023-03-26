@@ -99,4 +99,4 @@ if source_radio == settings.IMAGE:
         # box_df = pd.DataFrame(boxes.cls, columns=boxes.index)
         classes = ['Normal','Sickle','Target','Crystal','others']
         for cls in boxes.cls:
-            print(cls)
+            st.write(cls)
