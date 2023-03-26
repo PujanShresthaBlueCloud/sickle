@@ -53,14 +53,14 @@ if source_radio == settings.IMAGE:
                      use_column_width=True)
         else:
             image = PIL.Image.open(source_img)
-            st.image(source_img, caption='Sample uploaded Image',
+            st.image(source_img, caption='Uploaded Image',
                      use_column_width=True)        
 
     with col2:
         if source_img is None:
             default_detected_image_path = str(settings.DEFAULT_DETECT_IMAGE)
             image = PIL.Image.open(default_detected_image_path)
-            st.image(default_detected_image_path, caption='Detected Image',
+            st.image(default_detected_image_path, caption='Sample detected Image',
                      use_column_width=True)
         else:
             # if st.sidebar.button('Detect Objects'):
@@ -127,10 +127,13 @@ if source_radio == settings.IMAGE:
                     # st.write(data[Normal,Sickle,Target,Crystal,others])
     with st.container():
         if detect_objects:
-            st.write("Normal: ",len(Normal))
+            total_detection = len(Normal)+len(Sickle)+len(Target)+len(Crystal)+len(others)
+            st.write(total_detection)
+            st.write("Normal: ",len(Normal), (len(Normal)/total_detection)*100)
             st.write("Sickle: ",len(Sickle))
             st.write("Target: ",len(Target))
             st.write("Crystal: ",len(Crystal))
             st.write("others: ",len(others))
+
         else:
             st.write('')
