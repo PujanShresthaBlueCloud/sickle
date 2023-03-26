@@ -101,7 +101,8 @@ if source_radio == settings.IMAGE:
         for cls in boxes.cls:
             if(cls == 0):
                 cls=cls.numpy()
-                classes['Normal']=cls[:]
-                st.write(cls)
+                st.write(type(cls))
+                # classes['Normal']=cls[:]
+                # st.write(cls)
 
         st.write(classes)
