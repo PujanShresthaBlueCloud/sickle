@@ -100,7 +100,7 @@ if source_radio == settings.IMAGE:
         classes = []
         for cls in boxes.cls:
             if(cls == 0):
-                classes['Normal']='sdf'
+                classes[0]=cls
                 st.write(cls)
 
         st.write(classes)
