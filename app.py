@@ -73,7 +73,7 @@ if source_radio == settings.IMAGE:
                     
 
                     # added for data frame
-                    # st.write(res[0].names)
+                    st.write(model.names)
                     
 
                     IMAGE_DOWNLOAD_PATH = f"runs/{dirpath_locator}/predict/image0.jpg"
