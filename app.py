@@ -95,5 +95,5 @@ if source_radio == settings.IMAGE:
         st.write(model.names)
         st.write(boxes.cls)
         st.write(boxes.conf)
-        box_array = np.array([st.boxes.cls])
-        box_df = pd.DataFrame(box_array, columns=st.write(model.names))
+        # box_array = np.array([boxes.cls])
+        box_df = pd.DataFrame(boxes.cls columns=model.names)
