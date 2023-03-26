@@ -43,16 +43,17 @@ if source_radio == settings.IMAGE:
     # save_radio = st.sidebar.radio("Save image to download", ["Yes", "No"])
     # save = True if save_radio == 'Yes' else False
     col1, col2 = st.columns(2)
+    detect_objects=st.sidebar.button('Detect Objects')
 
     with col1:
         if source_img is None:
             default_image_path = str(settings.DEFAULT_IMAGE)
             image = PIL.Image.open(default_image_path)
-            st.image(default_image_path, caption='Default Image',
+            st.image(default_image_path, caption='Sample default Image',
                      use_column_width=True)
         else:
             image = PIL.Image.open(source_img)
-            st.image(source_img, caption='Uploaded Image',
+            st.image(source_img, caption='Sample uploaded Image',
                      use_column_width=True)        
 
     with col2:
@@ -62,7 +63,6 @@ if source_radio == settings.IMAGE:
             st.image(default_detected_image_path, caption='Detected Image',
                      use_column_width=True)
         else:
-            detect_objects=st.sidebar.button('Detect Objects')
             # if st.sidebar.button('Detect Objects'):
             if detect_objects:
                 with torch.no_grad():
