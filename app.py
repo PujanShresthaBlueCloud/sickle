@@ -89,6 +89,8 @@ if source_radio == settings.IMAGE:
                 #     st.write("No image is uploaded yet!")
 
     with st.container():
+        res = model.predict(image, exist_ok=True, conf=conf)
+        boxes = res[0].boxes
         # added for data frame
         st.write(model.names)
         st.write(boxes.cls)
