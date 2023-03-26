@@ -100,6 +100,6 @@ if source_radio == settings.IMAGE:
         classes = ['Normal','Sickle','Target','Crystal','others']
         for cls in boxes.cls:
             if(cls == 0):
-                classes['Normal']=cls
+                classes['Normal'].append(cls)
 
         st.write(classes)
