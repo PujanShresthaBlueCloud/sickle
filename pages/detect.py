@@ -155,6 +155,6 @@ if source_radio == settings.IMAGE:
                  ]
 
             dataFrame=pd.DataFrame(d, columns=['class','count','percent'])
-            st.dataframe(dataFrame)
+            st.dataframe(dataFrame, index=None)
         else:
             st.write('')
