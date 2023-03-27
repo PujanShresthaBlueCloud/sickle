@@ -14,8 +14,11 @@ with header:
 
 with dataset:
     csv = settings.CSV
-    label_data_frame = pd.read_csv(csv)
-    label_data_frame.head()
-    st.dataframe(label_data_frame)
-    # class_df = label_data_frame['class'].astype("category")
-    # st.write(class_df)
+    label_df = pd.read_csv(csv)
+    label_df.loc[label_df['label_name'] == 'Normal', 'label_name'] = 0
+    label_df.loc[label_df['label_name'] == 'Sickle', 'label_name'] = 1
+    label_df.loc[label_df['label_name'] == 'Target', 'label_name'] = 2
+    label_df.loc[label_df['label_name'] == 'Crystal', 'label_name'] = 3
+    label_df.loc[label_df['label_name'] == 'Others', 'label_name'] = 4
+    print(label_df)
+    st.dataframe(label_df)
