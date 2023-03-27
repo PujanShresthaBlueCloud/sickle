@@ -23,4 +23,4 @@ with dataset:
     label_df.loc[label_df['label_name'] == 'Others', 'label_name'] = 4
     st.dataframe(label_df)
     label_name_dist=label_df['label_name'].value_counts()
-    st.bar_chart(label_name_dist)
+    st.bar_chart(np.log(label_name_dist))
