@@ -151,12 +151,15 @@ if source_radio == settings.IMAGE:
             st.write("others: ", others_count, others_percent, " %")
             st.write("Total detected ", total_detection, ", at confidence ", "%.2f" %(conf * 100)," %")
 
-            df = [[]]
-            df['class']='Normal'
-            df['count']=23
-            df['percent']=4
+            d = [
+                    {'class':'Normal', 'count': normal_count, 'percent' : normal_percent}, 
+                    {'class':'Sickle', 'count': sickle_count, 'percent' : sickle_percent}, 
+                    {'class':'Target', 'count': target_count, 'percent' : target_percent}, 
+                    {'class':'Crystal', 'count': crystal_count, 'percent' : crystal_percent}, 
+                    {'class':'others', 'count': others_count, 'percent' : others_percent}, 
+                 ]
 
-            dataFrame=pd.DataFrame(df, columns=['class','count','percent'])
-            st.dataframe(df)
+            dataFrame=pd.DataFrame(d, columns=['class','count','percent'])
+            st.dataframe(dataFrame)
         else:
             st.write('')
