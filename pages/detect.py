@@ -144,11 +144,6 @@ if source_radio == settings.IMAGE:
             others_count = len(others) if(len(others)) else 0
             others_percent = "%.2f" % ((others_count/total_detection)*100) if(len(others)) else 0
             
-            st.write("Normal: ", normal_count, normal_percent, " %")
-            st.write("Sickle: ", sickle_count, sickle_percent, " %")
-            st.write("Target: ", target_count, target_percent, " %")
-            st.write("Crystal: ", crystal_count, crystal_percent, " %")
-            st.write("others: ", others_count, others_percent, " %")
             st.write("Total detected ", total_detection, ", at confidence ", "%.2f" %(conf * 100)," %")
 
             d = [
