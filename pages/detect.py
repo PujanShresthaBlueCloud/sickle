@@ -150,18 +150,5 @@ if source_radio == settings.IMAGE:
             st.write("Crystal: ", crystal_count, crystal_percent, " %")
             st.write("others: ", others_count, others_percent, " %")
             st.write("Total detected ", total_detection, ", at confidence ", "%.2f" %(conf * 100)," %")
-
-            st.write(""" 
-                Colons can be used to align columns.
-
-                | *Class*        | *Count*          | *Percent*  |
-                | ------------- |:-------------:| -----:|
-                | Normal    | """st.write(normal_count)""" | """st.write(normal_percent) """% |
-                | Sickle      | {sickle_count}      |   {sickle_percent} % |
-                | Target | {target_count}     |    {target_percent} % |
-                | Crystal | {crystal_count}      |    {crystal_percent} % |
-                | Others | {others_count}      |    {others_percent} % |
-            """)
-
         else:
             st.write('')
