@@ -151,7 +151,7 @@ if source_radio == settings.IMAGE:
             st.write("others: ", others_count, others_percent, " %")
             st.write("Total detected ", total_detection, ", at confidence ", "%.2f" %(conf * 100)," %")
 
-            df = []
+            df = [[]]
             df['class']='Normal'
             df['count']=23
             df['percent']=4
