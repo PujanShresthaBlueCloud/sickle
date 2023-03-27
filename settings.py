@@ -44,7 +44,7 @@ DEFAULT_DETECT_IMAGE = IMAGES_DIR / 'detected.png'
 
 # model
 MODEL_DIR = ROOT
-DETECTION_MODEL = MODEL_DIR / 'model/myModel1.pt'
+DETECTION_MODEL = MODEL_DIR / 'model/last22_415.pt'
 # SEGMENTATION_MODEL = MODEL_DIR / 'yolov8n-seg.pt'
 
 
