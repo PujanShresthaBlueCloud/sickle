@@ -74,7 +74,7 @@ if source_radio == settings.IMAGE:
                     
                     
 
-                    IMAGE_DOWNLOAD_PATH = f"runs/{dirpath_locator}/predict/image0.jpg"
+                    # IMAGE_DOWNLOAD_PATH = f"runs/{dirpath_locator}/predict/image0.jpg"
                     # with open(IMAGE_DOWNLOAD_PATH, 'rb') as fl:
                     #     st.download_button("Download object-detected image",
                     #                        data=fl,
@@ -89,15 +89,6 @@ if source_radio == settings.IMAGE:
                 #     # st.write(ex)
                 #     st.write("No image is uploaded yet!")
 
-
-                    # res = model.predict(image, exist_ok=True, conf=conf)
-                    # boxes = res[0].boxes
-                    # added for data frame
-                    # st.write(model.names)
-                    # st.write(boxes.cls)
-                    # st.write(boxes.conf)
-                    # box_array = np.array([boxes.cls])
-                    # box_df = pd.DataFrame(boxes.cls, columns=boxes.index)
                     Normal = []
                     Sickle = []
                     Target = []
@@ -105,12 +96,8 @@ if source_radio == settings.IMAGE:
                     others = []
                     data = []
                     for cls in boxes.cls:
-                        print(cls)
                         if(cls == 0):
-                            cls=cls.numpy()
-                            # st.write(type(cls))
                             Normal.append(cls)
-                            # st.write(classes)
                         elif(cls==1):
                             Sickle.append(cls)
                         elif(cls==2):
@@ -119,42 +106,28 @@ if source_radio == settings.IMAGE:
                             Crystal.append(cls)
                         elif(cls==4):
                             others.append(cls)
-
-
-
-
-                    # st.write(data[Normal,Sickle,Target,Crystal,others])
     with st.container():
         if detect_objects:
             total_detection = len(Normal) + len(Sickle) + len(Target) + len(Crystal) + len(others)
- 
-
             normal_count = len(Normal) if(len(Normal)) else 0
             normal_percent = "%.2f" % ((normal_count/total_detection)*100) if(len(Normal)) else 0
-
             sickle_count = len(Sickle) if(len(Sickle)) else 0
             sickle_percent = "%.2f" % ((sickle_count/total_detection)*100) if(len(Sickle)) else 0
-
             target_count = len(Target) if(len(Target)) else 0
             target_percent = "%.2f" % ((target_count/total_detection)*100) if(len(Target)) else 0
-
             crystal_count = len(Crystal) if(len(Crystal)) else 0
             crystal_percent = "%.2f" % ((crystal_count/total_detection)*100) if(len(Crystal)) else 0
-
             others_count = len(others) if(len(others)) else 0
             others_percent = "%.2f" % ((others_count/total_detection)*100) if(len(others)) else 0
-            
             st.write("Total detected ", total_detection, ", at confidence ", "%.2f" %(conf * 100)," %")
-
-            d = [
+            detected_cal = [
                     {'class':'Normal', 'count': normal_count, 'percent' : normal_percent}, 
                     {'class':'Sickle', 'count': sickle_count, 'percent' : sickle_percent}, 
                     {'class':'Target', 'count': target_count, 'percent' : target_percent}, 
                     {'class':'Crystal', 'count': crystal_count, 'percent' : crystal_percent}, 
                     {'class':'others', 'count': others_count, 'percent' : others_percent}, 
                  ]
-
-            dataFrame=pd.DataFrame(d, columns=['class','count','percent'], index=None)
-            st.dataframe(dataFrame)
+            detected_data_frame=pd.DataFrame(detected_cal, columns=['class','count','percent'], index=None)
+            st.dataframe(detected_data_frame)
         else:
             st.write('')
