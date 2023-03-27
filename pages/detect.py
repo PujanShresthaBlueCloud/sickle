@@ -153,7 +153,7 @@ if source_radio == settings.IMAGE:
                      }
                  ]
 
-            dataFrame=pd.DataFrame(d, columns=['class','count','percent'], index=False)
+            dataFrame=pd.DataFrame(d, columns=['class','count','percent'], index=None)
             st.dataframe(dataFrame)
         else:
             st.write('')
