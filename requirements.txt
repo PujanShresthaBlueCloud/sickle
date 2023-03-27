@@ -3,4 +3,4 @@ Pillow==9.4.0
 streamlit==1.20.0
 torch==2.0.0
 ultralytics==8.0.57
-plotly=5.13.1
+# plotly=5.13.1

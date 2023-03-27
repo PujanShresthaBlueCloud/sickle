@@ -17,5 +17,5 @@ with dataset:
     label_data_frame = pd.read_csv(csv)
     label_data_frame.head()
     st.dataframe(label_data_frame)
-    class_df = label_data_frame['class'].astype("category")
-    st.write(class_df)
+    # class_df = label_data_frame['class'].astype("category")
+    # st.write(class_df)
