@@ -1,2 +1,2 @@
 import streamlit as st
-st.write("from eda page")
+st.write("Exploratory Data Analysis")
