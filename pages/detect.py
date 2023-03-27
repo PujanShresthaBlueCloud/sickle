@@ -156,7 +156,7 @@ if source_radio == settings.IMAGE:
 
                 | *Class*        | *Count*          | *Percent*  |
                 | ------------- |:-------------:| -----:|
-                | Normal    | {normal_count} | {normal_percent} % |
+                | Normal    | """st.write(normal_count)""" | """st.write(normal_percent) """% |
                 | Sickle      | {sickle_count}      |   {sickle_percent} % |
                 | Target | {target_count}     |    {target_percent} % |
                 | Crystal | {crystal_count}      |    {crystal_percent} % |
