@@ -128,43 +128,6 @@ if source_radio == settings.IMAGE:
         if detect_objects:
             total_detection = len(Normal) + len(Sickle) + len(Target) + len(Crystal) + len(others)
 
-            """
-            # if(len(Normal)):
-            #     normal_count = len(Normal)
-            #     normal_percent = "%.2f" % ((normal_count/total_detection)*100)
-            # else:
-            #     normal_count = 0
-            #     normal_percent = 0
-            
-            if(len(Sickle)):
-                sickle_count = len(Sickle)
-                sickle_percent = "%.2f" % ((sickle_count/total_detection)*100)
-            else:
-                sickle_count = 0
-                sickle_percent = 0
-
-            if(len(Target)):
-                target_count = len(Target)
-                target_percent = "%.2f" % ((target_count/total_detection)*100)
-            else:
-                target_count = 0
-                target_percent = 0
-
-            if(len(Crystal)):
-                crystal_count =  len(Crystal)
-                crystal_percent = "%.2f" % ((crystal_count/total_detection)*100)
-            else:
-                crystal_count = 0
-                crystal_percent = 0
-
-            if(len(others)):
-                others_count = len(others)
-                others_percent = "%.2f" % ((others_count/total_detection)*100)
-            else:
-                others_count = 0
-                others_percent = 0
-            """
-
             normal_count = len(Normal) if(len(Normal)) else 0
             normal_percent = "%.2f" % ((normal_count/total_detection)*100) if(len(Normal)) else 0
 
