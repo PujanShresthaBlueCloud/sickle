@@ -128,6 +128,6 @@ if source_radio == settings.IMAGE:
                     {'class':'others', 'count': others_count, 'percent' : others_percent}, 
                  ]
             detected_data_frame=pd.DataFrame(detected_cal, columns=['class','count','percent'], index=None)
-            st.dataframe(detected_data_frame)
+            st.dataframe(detected_data_frame, use_container_width=True)
         else:
             st.write('')
