@@ -128,6 +128,8 @@ if source_radio == settings.IMAGE:
     with st.container():
         if detect_objects:
             total_detection = len(Normal) + len(Sickle) + len(Target) + len(Crystal) + len(others)
+
+            """
             # if(len(Normal)):
             #     normal_count = len(Normal)
             #     normal_percent = "%.2f" % ((normal_count/total_detection)*100)
@@ -135,9 +137,6 @@ if source_radio == settings.IMAGE:
             #     normal_count = 0
             #     normal_percent = 0
             
-            normal_count = len(Normal) if(len(Normal)) else 0
-            normal_percent = "%.2f" % ((normal_count/total_detection)*100) if(len(Normal)) else 0
-
             if(len(Sickle)):
                 sickle_count = len(Sickle)
                 sickle_percent = "%.2f" % ((sickle_count/total_detection)*100)
@@ -165,6 +164,22 @@ if source_radio == settings.IMAGE:
             else:
                 others_count = 0
                 others_percent = 0
+            """
+
+            normal_count = len(Normal) if(len(Normal)) else 0
+            normal_percent = "%.2f" % ((normal_count/total_detection)*100) if(len(Normal)) else 0
+
+            sickle_count = len(Normal) if(len(Normal)) else 0
+            sickle_percent = "%.2f" % ((normal_count/total_detection)*100) if(len(Normal)) else 0
+
+            target_count = len(Normal) if(len(Normal)) else 0
+            target_percent = "%.2f" % ((normal_count/total_detection)*100) if(len(Normal)) else 0
+
+            crystal_count = len(Normal) if(len(Normal)) else 0
+            crystal_percent = "%.2f" % ((normal_count/total_detection)*100) if(len(Normal)) else 0
+
+            others_count = len(Normal) if(len(Normal)) else 0
+            others_percent = "%.2f" % ((normal_count/total_detection)*100) if(len(Normal)) else 0
             
             st.write("Normal: ", normal_count, normal_percent, " %")
             st.write("Sickle: ", sickle_count, sickle_percent, " %")
