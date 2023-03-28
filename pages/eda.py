@@ -16,17 +16,15 @@ with dataset:
     st.header("Slice2 dataset label")
     csv = settings.CSV
     label_df = pd.read_csv(csv)
-    label_df.loc[label_df['label_name'] == 'Normal', 'label_name'] = 0
-    label_df.loc[label_df['label_name'] == 'Sickle', 'label_name'] = 1
-    label_df.loc[label_df['label_name'] == 'Target', 'label_name'] = 2
-    label_df.loc[label_df['label_name'] == 'Crystal', 'label_name'] = 3
-    label_df.loc[label_df['label_name'] == 'Others', 'label_name'] = 4
+    label_df.loc[label_df['label_name'] == 'Normal', 'label_name'] = 1
+    label_df.loc[label_df['label_name'] == 'Sickle', 'label_name'] = 2
+    label_df.loc[label_df['label_name'] == 'Target', 'label_name'] = 3
+    label_df.loc[label_df['label_name'] == 'Crystal', 'label_name'] = 4
+    label_df.loc[label_df['label_name'] == 'Others', 'label_name'] = 5
     st.dataframe(label_df)
     label_name_dist=label_df['label_name'].value_counts()
     st.text('Log transformation of label name')
     st.bar_chart(np.log(label_name_dist))
 
-    st.text('Bounding box width and height chart')
-    # bbox_width = label_df['bbox_width']
-    # bbox_height = label_df['bbox_height']
-    st.line_chart(data=label_df,x=label_df['bbox_width'], y=label_df['bbox_height'], use_container_width=True)
+    st.text('Line chart')
+    st.line_chart(label_df, use_container_width=True)
