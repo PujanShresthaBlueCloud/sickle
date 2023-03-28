@@ -25,6 +25,6 @@ with dataset:
     label_name_dist=label_df['label_name'].value_counts()
     st.text('Log transformation of label name')
     st.bar_chart(np.log(label_name_dist))
-    label_df=label_df.drop(['image_name'], axis=1)
+    label_df_drop=label_df.drop(['image_name', 'image_width', 'image_height','label_name'], axis=1)
     st.text('Line chart')
-    st.line_chart(label_df, use_container_width=True)
+    st.line_chart(label_df_drop, use_container_width=True)
