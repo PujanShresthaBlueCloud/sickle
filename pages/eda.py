@@ -27,6 +27,6 @@ with dataset:
     st.bar_chart(np.log(label_name_dist))
 
     st.text('Bounding box width and height chart')
-    bbox_width = label_df['bbox_width']
-    bbox_height = label_df['bbox_height']
-    st.line_chart(data=label_df,x=bbox_width, y=bbox_height, use_container_width=True)
+    # bbox_width = label_df['bbox_width']
+    # bbox_height = label_df['bbox_height']
+    st.line_chart(data=label_df,x=label_df['bbox_width'], y=label_df['bbox_height'], use_container_width=True)
