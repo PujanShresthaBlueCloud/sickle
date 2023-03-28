@@ -36,7 +36,7 @@ with dataset:
     st.dataframe(label_df)
     st.text("Information ")
     # st.write(label_df.info())
-    st.write(label_df.describe)
+    st.write(label_df.describe())
 
     label_name_dist=label_df['label_name'].value_counts()
     
