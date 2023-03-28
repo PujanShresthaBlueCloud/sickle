@@ -8,11 +8,11 @@ header = st.container()
 dataset = st.container()
 features = st.container()
 
-""" SIDE BAR """
-st.write("Select the range for char")
+# Side bar content
+st.sidebar.write("Select the range for chart")
 values = st.sidebar.slider('Select a range of values',0, 100,7168)
 
-
+# Body content
 st.markdown("""
     <style>
     .main {
