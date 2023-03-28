@@ -9,7 +9,7 @@ dataset = st.container()
 features = st.container()
 
 # Side bar content
-st.sidebar.write("Select the range for chart")
+st.sidebar.header("Chart controller")
 values = st.sidebar.slider('Select a range of values',0, 100,7168)
 
 # Body content
