@@ -23,7 +23,7 @@ with dataset:
     # label_df.loc[label_df['label_name'] == 'Others', 'label_name'] = 5
     st.dataframe(label_df)
     st.text("Information ")
-    st.write(label_df.info())
+    # st.write(label_df.info())
     st.write(label_df.describe)
 
     label_name_dist=label_df['label_name'].value_counts()
