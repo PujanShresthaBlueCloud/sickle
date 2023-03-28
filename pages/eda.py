@@ -45,7 +45,8 @@ with dataset:
     # st.bar_chart(np.log(label_name_dist))
     st.bar_chart(label_df['label_name'])
     st.write(values)
-    st.line_chart(x=values, y=label_df['bbox_width'])
+    label_df = label_df.loc[:values]
+    st.line_chart(label_df['bbox_width'])
     st.line_chart(label_df['bbox_height'])
 
  
