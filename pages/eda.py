@@ -39,10 +39,15 @@ with dataset:
     st.write(label_df.describe())
 
     label_name_dist=label_df['label_name'].value_counts()
+    values = st.slider(
+    'Select a range of values',
+    0.0, 100.0, (25.0, 75.0))
+    st.write('Values:', values)
     
     st.text('Label name')
     # st.bar_chart(np.log(label_name_dist))
     st.bar_chart(label_df['label_name'])
-    st.line_chart(label_df['bbox_width'])
+    st.line_chart(x=values, y=label_df['bbox_width'])
     st.line_chart(label_df['bbox_height'])
 
+ 
