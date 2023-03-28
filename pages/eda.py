@@ -23,4 +23,10 @@ with dataset:
     label_df.loc[label_df['label_name'] == 'Others', 'label_name'] = 4
     st.dataframe(label_df)
     label_name_dist=label_df['label_name'].value_counts()
+    st.text('Log transformation of label name')
     st.bar_chart(np.log(label_name_dist))
+
+    st.text('Bounding box width and height chart')
+    bbox_width = label_df['bbox_width']
+    bbox_height = label_df['bbox_height']
+    st.line_chart(x=bbox_width, y=bbox_height, use_container_width=True)
