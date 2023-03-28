@@ -8,14 +8,26 @@ header = st.container()
 dataset = st.container()
 features = st.container()
 
+st.markdown("""
+    <style>
+    .main {
+    background-color:#F5F5F5
+    }
+    </style>
+    """, unsafe_allow_html=True
+)
+path_to_csv_file = settings.CSV
+@st.cache
+def get_data(filename):
+    label_data = pd.read_csv(filename)
+    return label_data
 
 with header:
     st.title("Exploratory Data Analysis")
 
 with dataset:
     st.header("Slice2 dataset label")
-    csv = settings.CSV
-    label_df = pd.read_csv(csv)
+    label_df = get_data(path_to_csv_file)
     # label_df.loc[label_df['label_name'] == 'Normal', 'label_name'] = 1
     # label_df.loc[label_df['label_name'] == 'Sickle', 'label_name'] = 2
     # label_df.loc[label_df['label_name'] == 'Target', 'label_name'] = 3

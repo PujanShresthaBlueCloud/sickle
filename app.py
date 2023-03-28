@@ -12,7 +12,7 @@ import numpy as np
 container = st.container()
 
 with container:
-    st.title("Diagnose Sickle Cell Disease Using YOLOV8")
+    st.title("Diagnose Sickle Cell Disease")
     st.header("The problem")
     st.text("✓ Sickle Cell Disease (SCD) a genetic disease;")
     st.text("✓ Affects red blood cells (RBC), resulting in RBC disorder illness;")
