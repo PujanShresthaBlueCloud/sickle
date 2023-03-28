@@ -21,4 +21,5 @@ with container:
     st.text("✓ Remote medical centers and costly electrophoresis tests in rural areas.")
 
     st.header("The solution")
-    st.text("Applying Computer Vision For Red Blood Cell Classification To Diagnose Sickle Cell Disease")
+    st.text("Applying Computer Vision For Red Blood Cell Classification")
+    st.text("To Diagnose Sickle Cell Disease")
