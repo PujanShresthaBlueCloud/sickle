@@ -38,17 +38,16 @@ with dataset:
     # label_df.loc[label_df['label_name'] == 'Target', 'label_name'] = 3
     # label_df.loc[label_df['label_name'] == 'Crystal', 'label_name'] = 4
     # label_df.loc[label_df['label_name'] == 'Others', 'label_name'] = 5
+
+
     st.dataframe(label_df)
     st.text("Information ")
-    # st.write(label_df.info())
     st.write(label_df.describe())
 
-
+    label_df = label_df.loc[:values]
     st.text('Label name')
     # st.bar_chart(np.log(label_name_dist))
     st.bar_chart(label_df['label_name'])
-    st.write(values)
-    label_df = label_df.loc[:values]
     label_name_dist=label_df['label_name'].value_counts()
     st.line_chart(label_df['bbox_width'])
     st.line_chart(label_df['bbox_height'])
