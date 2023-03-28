@@ -4,9 +4,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import settings
 
-header = st.beta_container()
-dataset = st.beta_container()
-features = st.beta_container()
+header = st.container()
+dataset = st.container()
+features = st.container()
 
 
 with header:
@@ -29,4 +29,4 @@ with dataset:
     st.text('Bounding box width and height chart')
     bbox_width = label_df['bbox_width']
     bbox_height = label_df['bbox_height']
-    st.line_chart(x=bbox_width, y=bbox_height, use_container_width=True)
+    st.line_chart(data=label_df,x=bbox_width, y=bbox_height, use_container_width=True)
