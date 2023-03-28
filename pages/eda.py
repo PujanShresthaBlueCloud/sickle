@@ -8,6 +8,11 @@ header = st.container()
 dataset = st.container()
 features = st.container()
 
+""" SIDE BAR """
+st.write("Select the range for char")
+values = st.sidebar.slider('Select a range of values',0, 100,7168)
+
+
 st.markdown("""
     <style>
     .main {
@@ -38,14 +43,13 @@ with dataset:
     # st.write(label_df.info())
     st.write(label_df.describe())
 
-    label_name_dist=label_df['label_name'].value_counts()
-    values = st.slider('Select a range of values',0, 100,7168)
 
     st.text('Label name')
     # st.bar_chart(np.log(label_name_dist))
     st.bar_chart(label_df['label_name'])
     st.write(values)
     label_df = label_df.loc[:values]
+    label_name_dist=label_df['label_name'].value_counts()
     st.line_chart(label_df['bbox_width'])
     st.line_chart(label_df['bbox_height'])
 
