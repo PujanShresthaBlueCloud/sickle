@@ -37,6 +37,7 @@ with container:
 # Initialize Tableau visualization
 def init_viz():
     viz_url = "https://public.tableau.com/views/MyWorkbook/MyVisualization"
+    viz_url = "https://prod-apsoutheast-a.online.tableau.com/t/kaalakoota/newWorkbook/1gsmbqrg4$l1w9-i5-h2-fe-397c38#1"
     viz_options = {
         'hideTabs': True,
         'width': '800px',
