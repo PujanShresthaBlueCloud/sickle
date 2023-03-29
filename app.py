@@ -42,15 +42,15 @@ with container:
 
 # Set up connection.
 tableau_auth = TSC.PersonalAccessTokenAuth(
-    st.secrets["tableau"]["token_name"],
-    # st.secrets["tableau"]["streamlit-app"],
-    st.secrets["tableau"]["personal_access_token"],
-    # st.secrets["tableau"]["1kJyEb4eQPG3rfmvFlRGXA==:V2fT6ZiNfG4bWUd4z7PD45aG6ecg9fYr"],
-    st.secrets["tableau"]["site_id"],
-    # st.secrets["tableau"]["#/site/kaalakoota"],
+    # st.secrets["tableau"]["token_name"],
+    st.secrets.tableau.token_name,
+    # st.secrets["tableau"]["personal_access_token"],
+    st.secrets.tableau.personal_access_token,
+    # st.secrets["tableau"]["site_id"],
+    st.secrets.tableau.site_id,
 )
-# server = TSC.Server(st.secrets["tableau"]["https://prod-apsoutheast-a.online.tableau.com/"], use_server_version=True)
-server = TSC.Server(st.secrets["tableau"]["server_url"], use_server_version=True)
+server = TSC.Server(st.secrets.tableau.server_url, use_server_version=True)
+# server = TSC.Server(st.secrets["tableau"]["server_url"], use_server_version=True)
 
 
 # Get various data.
