@@ -11,17 +11,7 @@ import numpy as np
 from io import StringIO
 import tableauserverclient as TSC
 
-# Load Tableau JavaScript and CSS
-import streamlit.components.v1 as components
-components.html(
-    """
-    <script type='text/javascript' src='https://tableau.com/javascripts/api/tableau-2.min.js'></script>
-    <link rel='stylesheet' type='text/css' href='https://tableau.com/javascripts/api/tableau-2.min.css' />
-    """
-)
-
 container = st.container()
-
 with container:
     st.title("Diagnose Sickle Cell Disease")
     st.header("The problem")
@@ -36,9 +26,7 @@ with container:
     st.text("To Diagnose Sickle Cell Disease")
 
 
-# streamlit_app.py
-
-
+# Integration with Tableau
 
 # Set up connection.
 tableau_auth = TSC.PersonalAccessTokenAuth(
@@ -54,24 +42,13 @@ st.write(st.secrets.tableau.server_url)
 @st.cache_data(ttl=600)
 def run_query():
     with server.auth.sign_in(tableau_auth):
-        st.write("inside run query function")
-        # st.write(tableau_auth)
         # Get all workbooks.
         workbooks, pagination_item = server.workbooks.get()
         workbooks_names = [w.name for w in workbooks]
-        st.write(workbooks_names)
+
         # Get views for first workbook.
         server.workbooks.populate_views(workbooks[2])
         views_names = [v.name for v in workbooks[2].views]
-        # st.write(views_names)
-
-        # Get views for first workbook.
-        # server.workbooks.populate_views(our_workbook)
-        # for v in our_workbook.views:
-        #     if view_name == v.name:
-        #         our_view = v
-        #         break
-
         views_names = [v.name for v in workbooks[2].views]
         # st.write(views_names)
 
@@ -88,15 +65,9 @@ def run_query():
         view_csv = b"".join(view_item.csv).decode("utf-8")
         st.write("above return ---")
 
-        # server.views.populate_image(our_view)
-        # view_image = our_view.image
-
         return workbooks_names, views_names, view_name, view_image, view_csv
-        # return view_image
 
 workbooks_names, views_names, view_name, view_image, view_csv = run_query()
-# view_image = run_query('Sheet1')
-# st.image(view_image, width=800)
 
 
 # Print results.
@@ -116,11 +87,3 @@ st.image(view_image, width=300)
 st.subheader("📊 Data")
 st.write(f"And here's the data for view *{view_name}*:")
 st.write(pd.read_csv(StringIO(view_csv)))
-
-# joblib==1.1.0
-# Pillow==9.4.0
-# streamlit==1.20.0
-# torch==2.0.0
-# ultralytics==8.0.57
-# plotly==5.13.1
-# tableauserverclient==0.17.0
