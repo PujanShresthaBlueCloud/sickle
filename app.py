@@ -107,24 +107,24 @@ def run_query(view_name):
         return view_image
 
 # workbooks_names, views_names, view_name, view_image, view_csv = run_query()
-view_image = run_query('check')
+view_image = run_query('Sheet1')
 st.image(view_image, width=800)
 
 
 # Print results.
-st.subheader("📓 Workbooks")
-st.write("Found the following workbooks:", ", ".join(workbooks_names))
+# st.subheader("📓 Workbooks")
+# st.write("Found the following workbooks:", ", ".join(workbooks_names))
 
-st.subheader("👁️ Views")
-st.write(
-    f"Workbook *{workbooks_names[0]}* has the following views:",
-    ", ".join(views_names),
-)
+# st.subheader("👁️ Views")
+# st.write(
+#     f"Workbook *{workbooks_names[0]}* has the following views:",
+#     ", ".join(views_names),
+# )
 
-st.subheader("🖼️ Image")
-st.write(f"Here's what view *{view_name}* looks like:")
-st.image(view_image, width=300)
+# st.subheader("🖼️ Image")
+# st.write(f"Here's what view *{view_name}* looks like:")
+# st.image(view_image, width=300)
 
-st.subheader("📊 Data")
-st.write(f"And here's the data for view *{view_name}*:")
+# st.subheader("📊 Data")
+# st.write(f"And here's the data for view *{view_name}*:")
 # st.write(pd.read_csv(StringIO(view_csv)))
