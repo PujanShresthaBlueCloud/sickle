@@ -132,12 +132,12 @@ if source_radio == settings.IMAGE:
             detected_data_frame=pd.DataFrame(detected_cal, columns=['class','count','percent'], index=None)
             st.dataframe(detected_data_frame, use_container_width=True)
 
-            st.header("Class detected at confidence ") 
-            st.header(conf)
+            st.subheader("Class detected at confidence ") 
+            st.subheader(conf*100, "%")
             st.line_chart(data=detected_data_frame, x='class', y='count')
 
-            st.header("Class percent at confifence ")
-            st.header(conf)
+            st.subheader("Class percent at confifence ")
+            st.subheader(conf*100,"%")
 
             # labels = 'Normal', 'Sickle', 'Target', 'Crystal', 'Other'
             sizes = detected_data_frame['percent'].squeeze()
