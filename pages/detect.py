@@ -9,6 +9,7 @@ from ultralytics import YOLO
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from tableauserverclient import Server
 
 
 # Sidebar
@@ -132,11 +133,11 @@ if source_radio == settings.IMAGE:
             detected_data_frame=pd.DataFrame(detected_cal, columns=['class','count','percent'], index=None)
             st.dataframe(detected_data_frame, use_container_width=True)
 
-            with st.expander("Total number of class detected")
-            st.bar_chart(data=detected_data_frame, x='class', y='count')
-            sizes = detected_data_frame['percent'].squeeze()
+            with st.expander("Total number of class detected"):
+                st.bar_chart(data=detected_data_frame, x='class', y='count')
+                sizes = detected_data_frame['percent'].squeeze()
 
-            with st.expander("Class detected in percentage")
+            with st.expander("Class detected in percentage"):
                 labels = detected_data_frame['class'].squeeze()
                 explode = (0.1, 0.1, 0.1, 0.1,0.1 )  # only "explode" the 2nd slice (i.e. 'Hogs')
                 fig1, ax1 = plt.subplots()
@@ -151,8 +152,6 @@ if source_radio == settings.IMAGE:
             # 1kJyEb4eQPG3rfmvFlRGXA==:V2fT6ZiNfG4bWUd4z7PD45aG6ecg9fYr
 
 
-import streamlit as st
-from tableauserverclient import Server
 
 # Connect to the Tableau Server
 server = Server('https://prod-apsoutheast-a.online.tableau.com/t/kaalakoota/newWorkbook/1gsjqmbcf$m8qv-mt-oz-mu-znzg3a?#1', use_server_version=True)
