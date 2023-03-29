@@ -136,8 +136,9 @@ if source_radio == settings.IMAGE:
             st.line_chart(data=detected_data_frame, x='class', y='count')
 
             st.header("Class percent")
-            labels = detected_data_frame['class']
-            sizes = detected_data_frame['percent']
+            labels = np.array(detected_data_frame['class'])
+            sizes = np.array(detected_data_frame['percent'])
+            
 
             st.write(labels)
             st.write(sizes)
