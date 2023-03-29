@@ -138,7 +138,7 @@ if source_radio == settings.IMAGE:
 
             st.text("Class detected percentage")
             labels = detected_data_frame['class'].squeeze()
-            explode = (0.2, 0.1, 0.1, 0.2,0.2 )  # only "explode" the 2nd slice (i.e. 'Hogs')
+            explode = (0.1, 0.1, 0.1, 0.1,0.1 )  # only "explode" the 2nd slice (i.e. 'Hogs')
             fig1, ax1 = plt.subplots()
             ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
                     shadow=True, startangle=90)
