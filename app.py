@@ -68,8 +68,8 @@ def run_query():
         workbooks_names = [w.name for w in workbooks]
         st.write(workbooks_names)
         # Get views for first workbook.
-        server.workbooks.populate_views(workbooks[0])
-        views_names = [v.name for v in workbooks[0].views]
+        server.workbooks.populate_views(workbooks[2])
+        views_names = [v.name for v in workbooks[2].views]
         # st.write(views_names)
 
         # Get views for first workbook.
@@ -79,13 +79,13 @@ def run_query():
         #         our_view = v
         #         break
 
-        views_names = [v.name for v in workbooks[0].views]
+        views_names = [v.name for v in workbooks[2].views]
         # st.write(views_names)
 
 
 
         # Get image & CSV for first view of first workbook.
-        view_item = workbooks[0].views[0]
+        view_item = workbooks[2].views[0]
         server.views.populate_image(view_item)
         server.views.populate_csv(view_item)
         view_name = view_item.name
@@ -112,7 +112,7 @@ st.write("Found the following workbooks:", ", ".join(workbooks_names))
 
 st.subheader("👁️ Views")
 st.write(
-    f"Workbook *{workbooks_names[0]}* has the following views:",
+    f"Workbook *{workbooks_names[2]}* has the following views:",
     ", ".join(views_names),
 )
 
