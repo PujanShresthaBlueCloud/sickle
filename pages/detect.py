@@ -9,24 +9,24 @@ from ultralytics import YOLO
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from tableauserverclient import Server
-# Connect to the Tableau Server
-server = Server('https://prod-apsoutheast-a.online.tableau.com/', use_server_version=True)
-server.auth.sign_in('pujan_sth@yahoo.com', 'C0smicVibe\m/')
+# from tableauserverclient import Server
+# # Connect to the Tableau Server
+# server = Server('https://prod-apsoutheast-a.online.tableau.com/', use_server_version=True)
+# server.auth.sign_in('pujan_sth@yahoo.com', 'C0smicVibe\m/')
 
-# Select the Tableau workbook and view to embed in Streamlit
-workbook_name = 'check'
-view_name = 'check'
+# # Select the Tableau workbook and view to embed in Streamlit
+# workbook_name = 'check'
+# view_name = 'check'
 
-# Get the URL for the Tableau view
-view = server.views.get_by_name(workbook_name, view_name)
-view_url = server.views.populate_url(view)
+# # Get the URL for the Tableau view
+# view = server.views.get_by_name(workbook_name, view_name)
+# view_url = server.views.populate_url(view)
 
-# Embed the Tableau view in Streamlit using an iframe
-st.markdown(f'<iframe src="{view_url}" width="1000" height="600"></iframe>', unsafe_allow_html=True)
+# # Embed the Tableau view in Streamlit using an iframe
+# st.markdown(f'<iframe src="{view_url}" width="1000" height="600"></iframe>', unsafe_allow_html=True)
 
-# Sign out of the Tableau Server
-# server.auth.sign_out()
+# # Sign out of the Tableau Server
+# # server.auth.sign_out()
 
 
 
