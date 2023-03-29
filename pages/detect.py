@@ -136,7 +136,7 @@ if source_radio == settings.IMAGE:
             st.bar_chart(data=detected_data_frame, x='class', y='count')
             sizes = detected_data_frame['percent'].squeeze()
 
-            st.text("Class detected percentage")
+            st.text("Class detected in percentage")
             labels = detected_data_frame['class'].squeeze()
             explode = (0.1, 0.1, 0.1, 0.1,0.1 )  # only "explode" the 2nd slice (i.e. 'Hogs')
             fig1, ax1 = plt.subplots()
