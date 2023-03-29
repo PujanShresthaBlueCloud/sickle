@@ -26,7 +26,7 @@ view_url = server.views.populate_url(view)
 st.markdown(f'<iframe src="{view_url}" width="1000" height="600"></iframe>', unsafe_allow_html=True)
 
 # Sign out of the Tableau Server
-server.auth.sign_out()
+# server.auth.sign_out()
 
 
 
