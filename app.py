@@ -65,6 +65,7 @@ def run_query():
 
 
         workbooks_names = [w.name for w in workbooks]
+        st.write(workbooks_names)
         # Get views for first workbook.
         server.workbooks.populate_views(workbooks[0])
         views_names = [v.name for v in workbooks[0].views]
@@ -78,7 +79,7 @@ def run_query():
         #         break
 
         views_names = [v.name for v in workbooks[0].views]
-        st.write(views_names)
+        # st.write(views_names)
 
 
 
