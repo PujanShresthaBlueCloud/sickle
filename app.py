@@ -63,6 +63,10 @@ def run_query():
         st.write("inside run query function")
         # Get all workbooks.
         workbooks, pagination_item = server.workbooks.get()
+        for w in workbooks:
+            st.write(w)
+            break
+            
         workbooks_names = [w.name for w in workbooks]
         st.write(workbooks_names)
 
@@ -70,7 +74,7 @@ def run_query():
         server.workbooks.populate_views(workbooks[0])
         views_names = [v.name for v in workbooks[0].views]
         st.write(views_names)
-        
+
         # Get image & CSV for first view of first workbook.
         view_item = workbooks[0].views[0]
         server.views.populate_image(view_item)
