@@ -58,35 +58,57 @@ st.write(server)
 # Explore the tableauserverclient library for more options.
 # Uses st.cache_data to only rerun when the query changes or after 10 min.
 @st.cache_data(ttl=600)
-def run_query():
+def run_query(view_name):
     with server.auth.sign_in(tableau_auth):
         st.write("inside run query function")
         # Get all workbooks.
         workbooks, pagination_item = server.workbooks.get()
         for w in workbooks:
-            st.write(w)
-            break
-            
-        workbooks_names = [w.name for w in workbooks]
-        st.write(workbooks_names)
+            if w.name == 'check':
+                our_workbook = w
+                break
+
+
+        # workbooks_names = [w.name for w in workbooks]
+        # st.write(workbooks_names)
 
         # Get views for first workbook.
-        server.workbooks.populate_views(workbooks[0])
-        views_names = [v.name for v in workbooks[0].views]
-        st.write(views_names)
+        # server.workbooks.populate_views(workbooks[0])
+        # views_names = [v.name for v in workbooks[0].views]
+        # st.write(views_names)
+
+        # Get views for first workbook.
+        server.workbooks.populate_views(our_workbook)
+        for v in our_workbook.views:
+            if view_name == v.name:
+                our_view = v
+                break
+
+        # views_names = [v.name for v in workbooks[0].views]
+        # st.write(views_names)
+
+
 
         # Get image & CSV for first view of first workbook.
-        view_item = workbooks[0].views[0]
-        server.views.populate_image(view_item)
-        server.views.populate_csv(view_item)
-        view_name = view_item.name
-        view_image = view_item.image
-        # `view_item.csv` is a list of binary objects, convert to str.
-        view_csv = b"".join(view_item.csv).decode("utf-8")
-        st.write("above return ---")
-        return workbooks_names, views_names, view_name, view_image, view_csv
+        # view_item = workbooks[0].views[0]
+        # server.views.populate_image(view_item)
+        # server.views.populate_csv(view_item)
+        # view_name = view_item.name
+        # view_image = view_item.image
 
-workbooks_names, views_names, view_name, view_image, view_csv = run_query()
+        # # `view_item.csv` is a list of binary objects, convert to str.
+        # view_csv = b"".join(view_item.csv).decode("utf-8")
+        # st.write("above return ---")
+
+        server.views.populate_image(our_view)
+        view_image = our_view.image
+
+        # return workbooks_names, views_names, view_name, view_image, view_csv
+        return view_image
+
+# workbooks_names, views_names, view_name, view_image, view_csv = run_query()
+view_image = run_query('check')
+st.image(view_image, width=800)
 
 
 # Print results.
@@ -105,4 +127,4 @@ st.image(view_image, width=300)
 
 st.subheader("📊 Data")
 st.write(f"And here's the data for view *{view_name}*:")
-st.write(pd.read_csv(StringIO(view_csv)))
+# st.write(pd.read_csv(StringIO(view_csv)))
