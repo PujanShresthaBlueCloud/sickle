@@ -8,6 +8,8 @@ import helper
 from ultralytics import YOLO
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+
 
 # Sidebar
 st.title("Sickle Cell Detection Using YOLOV8")
@@ -130,7 +132,20 @@ if source_radio == settings.IMAGE:
             detected_data_frame=pd.DataFrame(detected_cal, columns=['class','count','percent'], index=None)
             st.dataframe(detected_data_frame, use_container_width=True)
 
-            # detected_count_df = detected_data_frame['count']
+            st.header("Number of classes")
             st.line_chart(data=detected_data_frame, x='class', y='count')
+
+            st.header("Class percent")
+            labels = detected_data_frame['class']
+            sizes = detected_data_frame['percent']
+            explode = (0, 0.1, 0, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
+
+            fig1, ax1 = plt.subplots()
+            ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
+                    shadow=True, startangle=90)
+            ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+
+            st.pyplot(fig1)
+
         else:
             st.write('')
