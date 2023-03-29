@@ -151,11 +151,11 @@ if source_radio == settings.IMAGE:
             detected_data_frame=pd.DataFrame(detected_cal, columns=['class','count','percent'], index=None)
             st.dataframe(detected_data_frame, use_container_width=True)
 
-            with st.expander(:chart:,"Total number of class detected"):
+            with st.expander("Total number of class detected"):
                 st.bar_chart(data=detected_data_frame, x='class', y='count')
                 sizes = detected_data_frame['percent'].squeeze()
 
-            with st.expander(:chart:,"Class detected in percentage"):
+            with st.expander("Class detected in percentage"):
                 labels = detected_data_frame['class'].squeeze()
                 explode = (0.1, 0.1, 0.1, 0.1,0.1 )  # only "explode" the 2nd slice (i.e. 'Hogs')
                 fig1, ax1 = plt.subplots()
