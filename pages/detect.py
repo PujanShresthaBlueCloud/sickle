@@ -131,6 +131,6 @@ if source_radio == settings.IMAGE:
             st.dataframe(detected_data_frame, use_container_width=True)
 
             # detected_count_df = detected_data_frame['count']
-            st.line_chart(data=detected_data_frame, x=detected_data_frame['class'], y=detected_data_frame['count'])
+            st.line_chart(data=detected_data_frame, x='class', y='count')
         else:
             st.write('')
