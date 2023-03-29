@@ -129,6 +129,8 @@ if source_radio == settings.IMAGE:
                  ]
             detected_data_frame=pd.DataFrame(detected_cal, columns=['class','count','percent'], index=None)
             st.dataframe(detected_data_frame, use_container_width=True)
-            st.line_chart(detected_data_frame)
+
+            # detected_count_df = detected_data_frame['count']
+            st.line_chart(x=detected_data_frame['class'],y=detected_data_frame['count'])
         else:
             st.write('')
