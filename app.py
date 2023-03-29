@@ -50,9 +50,6 @@ def run_query():
         server.workbooks.populate_views(workbooks[2])
         views_names = [v.name for v in workbooks[2].views]
         views_names = [v.name for v in workbooks[2].views]
-        # st.write(views_names)
-
-
 
         # Get image & CSV for first view of first workbook.
         view_item = workbooks[2].views[0]
@@ -72,7 +69,7 @@ workbooks_names, views_names, view_name, view_image, view_csv = run_query()
 
 # Print results.
 st.subheader("📓 Workbooks")
-st.write("Found the following workbooks:", ", ".join(workbooks_names))
+st.write("Found the following workbooks:", ", ".join(workbooks_names[2]))
 
 st.subheader("👁️ Views")
 st.write(
