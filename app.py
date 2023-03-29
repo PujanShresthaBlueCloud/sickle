@@ -52,6 +52,7 @@ tableau_auth = TSC.PersonalAccessTokenAuth(
 server = TSC.Server(st.secrets.tableau.server_url, use_server_version=True)
 # server = TSC.Server(st.secrets["tableau"]["server_url"], use_server_version=True)
 
+st.write(server)
 
 # Get various data.
 # Explore the tableauserverclient library for more options.
