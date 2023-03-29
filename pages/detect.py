@@ -136,8 +136,9 @@ if source_radio == settings.IMAGE:
             st.line_chart(data=detected_data_frame, x='class', y='count')
 
             st.header("Class percent")
-            labels = 'Normal', 'Sickle', 'Target', 'Crystal', 'Other'
+            # labels = 'Normal', 'Sickle', 'Target', 'Crystal', 'Other'
             sizes = detected_data_frame['percent'].squeeze()
+            labels = detected_data_frame['class'].squeeze()
 
 
             st.write(labels)
