@@ -133,7 +133,7 @@ if source_radio == settings.IMAGE:
             st.dataframe(detected_data_frame, use_container_width=True)
 
             st.text("Total number of class detected")
-            st.line_chart(data=detected_data_frame, x='class', y='count')
+            st.bar_chart(data=detected_data_frame, x='class', y='count')
             sizes = detected_data_frame['percent'].squeeze()
 
             st.text("Class detected percentage")
