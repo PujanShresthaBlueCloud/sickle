@@ -8,7 +8,7 @@ import helper
 from ultralytics import YOLO
 import pandas as pd
 import numpy as np
-
+from io import StringIO
 import tableauserverclient as TSC
 
 # Load Tableau JavaScript and CSS
@@ -58,13 +58,6 @@ def run_query():
         # st.write(tableau_auth)
         # Get all workbooks.
         workbooks, pagination_item = server.workbooks.get()
-
-        # for w in workbooks:
-        #     if w.name == 'check':
-        #         our_workbook = w
-        #         break
-
-
         workbooks_names = [w.name for w in workbooks]
         st.write(workbooks_names)
         # Get views for first workbook.
@@ -122,4 +115,12 @@ st.image(view_image, width=300)
 
 st.subheader("📊 Data")
 st.write(f"And here's the data for view *{view_name}*:")
-# st.write(pd.read_csv(StringIO(view_csv)))
+st.write(pd.read_csv(StringIO(view_csv)))
+
+# joblib==1.1.0
+# Pillow==9.4.0
+# streamlit==1.20.0
+# torch==2.0.0
+# ultralytics==8.0.57
+# plotly==5.13.1
+# tableauserverclient==0.17.0
