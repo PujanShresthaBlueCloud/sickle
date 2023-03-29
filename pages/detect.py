@@ -138,6 +138,9 @@ if source_radio == settings.IMAGE:
             st.header("Class percent")
             labels = detected_data_frame['class']
             sizes = detected_data_frame['percent']
+
+            st.write(labels)
+            st.write(sizes)
             # explode = (0, 0.1, 0, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
 
             fig1, ax1 = plt.subplots()
