@@ -55,6 +55,7 @@ server = TSC.Server(st.secrets.tableau.server_url, use_server_version=True)
 def run_query():
     with server.auth.sign_in(tableau_auth):
         st.write("inside run query function")
+        st.write(tableau_auth)
         # Get all workbooks.
         workbooks, pagination_item = server.workbooks.get()
 
