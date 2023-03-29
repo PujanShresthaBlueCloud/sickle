@@ -138,11 +138,11 @@ if source_radio == settings.IMAGE:
             st.header("Class percent")
             labels = np.array(detected_data_frame['class'])
             sizes = np.array(detected_data_frame['percent'])
-            
+
 
             st.write(labels)
             st.write(sizes)
-            # explode = (0, 0.1, 0, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
+            explode = (0, 0.1, 0, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
 
             fig1, ax1 = plt.subplots()
             ax1.pie(sizes, explode=1, labels=labels, autopct='%1.1f%%',
