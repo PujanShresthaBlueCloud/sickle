@@ -121,7 +121,7 @@ if source_radio == settings.IMAGE:
             crystal_percent = "%.2f" % ((crystal_count/total_detection)*100) if(len(Crystal)) else 0
             others_count = len(others) if(len(others)) else 0
             others_percent = "%.2f" % ((others_count/total_detection)*100) if(len(others)) else 0
-            st.subheader("Total detected ", total_detection, ", at confidence ", "%.2f" %(conf * 100)," %")
+            st.write("Total detected ", total_detection, ", at confidence ", "%.2f" %(conf * 100)," %")
             detected_cal = [
                     {'class':'Normal', 'count': normal_count, 'percent' : normal_percent}, 
                     {'class':'Sickle', 'count': sickle_count, 'percent' : sickle_percent}, 
@@ -131,8 +131,12 @@ if source_radio == settings.IMAGE:
                  ]
             detected_data_frame=pd.DataFrame(detected_cal, columns=['class','count','percent'], index=None)
             st.dataframe(detected_data_frame, use_container_width=True)
+
+            st.text("Total number of class detected")
             st.line_chart(data=detected_data_frame, x='class', y='count')
             sizes = detected_data_frame['percent'].squeeze()
+
+            st.text("Class detected percentage")
             labels = detected_data_frame['class'].squeeze()
             explode = (0, 0.1, 0, 0,0 )  # only "explode" the 2nd slice (i.e. 'Hogs')
             fig1, ax1 = plt.subplots()
@@ -140,5 +144,6 @@ if source_radio == settings.IMAGE:
                     shadow=True, startangle=90)
             ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
             st.pyplot(fig1)
+
         else:
             st.write('')
