@@ -45,8 +45,8 @@ def init_viz():
         'height': '600px',
         'onFirstInteractive': on_first_interactive
     }
-    viz_container = components.declare_component("viz", url=viz_url, options=viz_options)
-    # viz_container = components.declare_component("viz", url=viz_url)
+    # viz_container = components.declare_component("viz", url=viz_url, options=viz_options)
+    viz_container = components.declare_component("viz", url=viz_url)
     return viz_container
 
 # Define callback function
