@@ -59,7 +59,7 @@ server = TSC.Server(st.secrets.tableau.server_url, use_server_version=True)
 @st.cache_data(ttl=600)
 def run_query():
     with server.auth.sign_in(tableau_auth):
-
+        st.write("inside run query function")
         # Get all workbooks.
         workbooks, pagination_item = server.workbooks.get()
         workbooks_names = [w.name for w in workbooks]
@@ -76,7 +76,7 @@ def run_query():
         view_image = view_item.image
         # `view_item.csv` is a list of binary objects, convert to str.
         view_csv = b"".join(view_item.csv).decode("utf-8")
-
+        st.write("above return ---")
         return workbooks_names, views_names, view_name, view_image, view_csv
 
 workbooks_names, views_names, view_name, view_image, view_csv = run_query()
