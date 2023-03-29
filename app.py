@@ -45,7 +45,7 @@ tableau_auth = TSC.PersonalAccessTokenAuth(
     # st.secrets["tableau"]["token_name"],
     st.secrets.tableau.token_name,
     # st.secrets["tableau"]["personal_access_token"],
-    st.secrets.tableau.personal_access_token,
+    st.secrets.tableau.token_secret,
     # st.secrets["tableau"]["site_id"],
     st.secrets.tableau.site_id,
 )
