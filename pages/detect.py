@@ -154,7 +154,7 @@ if source_radio == settings.IMAGE:
 
 
 # Connect to the Tableau Server
-server = Server('https://prod-apsoutheast-a.online.tableau.com/#/site/kaalakoota/home', use_server_version=True)
+server = Server('https://prod-apsoutheast-a.online.tableau.com/', use_server_version=True)
 server.auth.sign_in('pujan_sth@yahoo.com', 'C0smicVibe\m/')
 
 # Select the Tableau workbook and view to embed in Streamlit
