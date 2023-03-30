@@ -35,7 +35,7 @@ tableau_auth = TSC.PersonalAccessTokenAuth(
     st.secrets.tableau.site_id,
 )
 server = TSC.Server(st.secrets.tableau.server_url, use_server_version=True)
-st.write(st.secrets.tableau.server_url)
+
 # Get various data.
 # Explore the tableauserverclient library for more options.
 # Uses st.cache_data to only rerun when the query changes or after 10 min.
@@ -60,7 +60,6 @@ def run_query():
 
         # `view_item.csv` is a list of binary objects, convert to str.
         view_csv = b"".join(view_item.csv).decode("utf-8")
-        st.write("above return ---")
 
         return workbooks_names, views_names, view_name, view_image, view_csv
 
