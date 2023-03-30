@@ -28,9 +28,11 @@ with tableau_container:
             # Get views for first workbook.
             server.workbooks.populate_views(workbooks[2])
             views_names = [v.name for v in workbooks[2].views]
-            views_names = [v.name for v in workbooks[2].views]
+            # views_names = [v.name for v in workbooks[2].views]
 
             # Get image & CSV for first view of first workbook.
+            view_len = len(workbooks[2].views)
+            st.write(view_len)
             view_item = workbooks[2].views[0]
             server.views.populate_image(view_item)
             server.views.populate_csv(view_item)
