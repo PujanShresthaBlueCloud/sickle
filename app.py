@@ -68,19 +68,19 @@ workbooks_names, views_names, view_name, view_image, view_csv = run_query()
 
 
 # Print results.
-st.subheader("📓 Workbooks")
-st.write("Found the following workbooks:", ", ".join(workbooks_names[2]))
+# st.subheader("📓 Workbooks")
+# st.write("Found the following workbooks:", ", ".join(workbooks_names))
 
-st.subheader("👁️ Views")
+# st.subheader("👁️ Views")
 st.write(
     f"Workbook *{workbooks_names[2]}* has the following views:",
     ", ".join(views_names),
 )
 
-st.subheader("🖼️ Image")
+# st.subheader("🖼️ Image")
 st.write(f"Here's what view *{view_name}* looks like:")
-st.image(view_image, width=300)
+st.image(view_image, width=600)
 
-st.subheader("📊 Data")
-st.write(f"And here's the data for view *{view_name}*:")
+# st.subheader("📊 Data")
+st.write(f"The data for view *{view_name}*:")
 st.write(pd.read_csv(StringIO(view_csv)))
