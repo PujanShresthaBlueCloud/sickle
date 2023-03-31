@@ -61,11 +61,6 @@ if source_radio == settings.IMAGE:
     # save_radio = st.sidebar.radio("Save image to download", ["Yes", "No"])
     # save = True if save_radio == 'Yes' else False
     col1, col2 = st.columns(2)
-    if(source_img):
-        detect_objects=st.sidebar.button('Detect Objects')
-    else:
-        detect_objects=st.sidebar.button('Detect Objects', disabled=True)
-
 
     with col1:
         if source_img is None:
@@ -73,10 +68,14 @@ if source_radio == settings.IMAGE:
             image = PIL.Image.open(default_image_path)
             st.image(default_image_path, caption='Sample default Image',
                      use_column_width=True)
+            detect_objects=st.sidebar.button('Detect Objects', disabled=True)
+            
         else:
             image = PIL.Image.open(source_img)
             st.image(source_img, caption='Uploaded Image',
                      use_column_width=True)        
+            detect_objects=st.sidebar.button('Detect Objects')
+
 
     with col2:
         if source_img is None:
