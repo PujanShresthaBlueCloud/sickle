@@ -15,21 +15,34 @@ st.title("Sickle Cell Detection Using YOLOV8")
 st.caption("Please upload image from side bar to detect")
 # st.sidebar.header("Model Config")
 
-mlmodel_radio = st.sidebar.radio(
-    "Detection",['Detection'])
-conf = float(st.sidebar.slider("Detection tunning", 25, 100, 40)) / 100
-if mlmodel_radio == 'Detection':
-    dirpath_locator = settings.DETECT_LOCATOR
 
-    model_path = Path(settings.DETECTION_MODEL)
+# DISABLING RADIO -------------------------------------------
+# mlmodel_radio = st.sidebar.radio(
+#     "Detection",['Detection'])
+# if mlmodel_radio == 'Detection':
+#     dirpath_locator = settings.DETECT_LOCATOR
+
+#     model_path = Path(settings.DETECTION_MODEL)
+
+# try:
+#     model = helper.load_model(model_path)
+
+# except Exception as ex:
+#     print(ex)
+#     st.write(f"Unable to load model. Check the specified path: {model_path}")
+    
+# -------------------------------------------- END DISABLING ---
 
 try:
+    dirpath_locator = settings.DETECT_LOCATOR
+    model_path = Path(settings.DETECTION_MODEL)
     model = helper.load_model(model_path)
 
 except Exception as ex:
     print(ex)
     st.write(f"Unable to load model. Check the specified path: {model_path}")
 
+conf = float(st.sidebar.slider("Detection tunning", 25, 100, 40)) / 100
 source_img = None
 st.sidebar.header("Upload image to detect")
 source_radio = st.sidebar.radio("Image",settings.SOURCES_LIST)
