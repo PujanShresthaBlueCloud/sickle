@@ -22,11 +22,12 @@ local_css(settings.CSS)
 def local_js(file_name):
     with open(file_name) as f:
         components.html(f"<script>{f.read()}</script>", height=0, width=0)
+local_js(settings.JS)
+
 
 # Sidebar
 st.title("Sickle Cell Detection Using YOLOV8")
 st.caption("Please upload image from side bar to detect")
-# st.sidebar.header("Model Config")
 
 
 # DISABLING RADIO -------------------------------------------
@@ -179,8 +180,3 @@ if source_radio == settings.IMAGE:
 
         else:
             st.write('')
-
-
-
-
-local_js(settings.JS)
