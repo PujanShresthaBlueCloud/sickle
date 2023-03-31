@@ -9,7 +9,7 @@ from ultralytics import YOLO
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import '../css/css.py'
+import 'css/css.py'
 
 
 # Sidebar
