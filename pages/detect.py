@@ -17,7 +17,7 @@ st.sidebar.header("Model Config")
 
 mlmodel_radio = st.sidebar.radio(
     "Select Task", ['Detection'])
-conf = float(st.sidebar.slider("Select Model Confidence", 25, 100, 40)) / 100
+conf = float(st.sidebar.slider("Detection tunning", 25, 100, 40)) / 100
 if mlmodel_radio == 'Detection':
     dirpath_locator = settings.DETECT_LOCATOR
 
