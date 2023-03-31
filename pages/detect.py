@@ -16,7 +16,7 @@ st.caption("Please upload image from side bar to detect")
 st.sidebar.header("Model Config")
 
 mlmodel_radio = st.sidebar.radio(
-    "Select Task", ['Detection'])
+    ['Detection'])
 conf = float(st.sidebar.slider("Detection tunning", 25, 100, 40)) / 100
 if mlmodel_radio == 'Detection':
     dirpath_locator = settings.DETECT_LOCATOR
@@ -31,9 +31,8 @@ except Exception as ex:
     st.write(f"Unable to load model. Check the specified path: {model_path}")
 
 source_img = None
-st.sidebar.header("Image")
-source_radio = st.sidebar.radio(
-    "Select Source", settings.SOURCES_LIST)
+st.sidebar.header("Upload image to detect")
+source_radio = st.sidebar.radio(settings.SOURCES_LIST)
 
 # body
 # If image is selected
