@@ -32,7 +32,7 @@ except Exception as ex:
 
 source_img = None
 st.sidebar.header("Upload image to detect")
-source_radio = st.sidebar.radio(settings.SOURCES_LIST)
+source_radio = st.sidebar.radio("Image",settings.SOURCES_LIST)
 
 # body
 # If image is selected
