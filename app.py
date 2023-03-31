@@ -29,15 +29,15 @@ st.markdown("""
 
     """, unsafe_allow_html=True
 )
-# components.html("""
-#     <script>
-#         const elements = window.parent.document.querySelectorAll()
-#         elements[0]
-#     </script>
-# """,
-#     height=0,
-#     width=0
-# )
+components.html("""
+    <script>
+        const elements = window.parent.document.getElementsByTagName('footer')
+        elements[0].innerHTML = "Omdena project"
+    </script>
+""",
+    height=0,
+    width=0
+)
 container = st.container()
 with container:
     st.title("Diagnose Sickle Cell Disease")
