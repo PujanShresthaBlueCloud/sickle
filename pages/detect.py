@@ -61,7 +61,11 @@ if source_radio == settings.IMAGE:
     # save_radio = st.sidebar.radio("Save image to download", ["Yes", "No"])
     # save = True if save_radio == 'Yes' else False
     col1, col2 = st.columns(2)
-    detect_objects=st.sidebar.button('Detect Objects')
+    if(source_img):
+        detect_objects=st.sidebar.button('Detect Objects')
+    else:
+        detect_objects=st.sidebar.button('Detect Objects', disabled=True)
+
 
     with col1:
         if source_img is None:
