@@ -13,10 +13,10 @@ import matplotlib.pyplot as plt
 # Sidebar
 st.title("Sickle Cell Detection Using YOLOV8")
 st.caption("Please upload image from side bar to detect")
-st.sidebar.header("Model Config")
+# st.sidebar.header("Model Config")
 
 mlmodel_radio = st.sidebar.radio(
-    ['Detection'])
+    "Detection",['Detection'])
 conf = float(st.sidebar.slider("Detection tunning", 25, 100, 40)) / 100
 if mlmodel_radio == 'Detection':
     dirpath_locator = settings.DETECT_LOCATOR
