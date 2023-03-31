@@ -13,9 +13,15 @@
 .styles_terminalButton__3xUnY {
     display: none;
 }
+#manage-app-button {
+    display: none;
+}
 
 /* Navigation bar */
 .css-18ni7a {
+    display: none;
+}
+#stHeader {
     display: none;
 }
 
