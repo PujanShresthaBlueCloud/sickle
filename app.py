@@ -9,6 +9,16 @@ from ultralytics import YOLO
 import pandas as pd
 import numpy as np
 
+st.markdown("""
+    <style>
+    .main {
+    background-color:#F5F5F5
+    margin:0px
+    }
+    </style>
+    """, unsafe_allow_html=True
+)
+
 container = st.container()
 with container:
     st.title("Diagnose Sickle Cell Disease")

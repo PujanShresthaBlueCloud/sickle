@@ -116,7 +116,6 @@ if source_radio == settings.IMAGE:
                     Target = []
                     Crystal = []
                     others = []
-                    data = []
                     for cls in boxes.cls:
                         if(cls == 0):
                             Normal.append(cls)
