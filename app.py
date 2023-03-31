@@ -9,7 +9,8 @@ from ultralytics import YOLO
 import pandas as pd
 import numpy as np
 import streamlit.components.v1 as components
-import 'css/css.py'
+import settings
+
 
 container = st.container()
 with container:

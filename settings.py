@@ -54,5 +54,8 @@ SEGMENT_LOCATOR = 'segment'
 
 #csv
 CSV = MODEL_DIR / 'csv/labels_my-project-name_2023-03-16-04-56-04.csv'
+
+#css
+CSS = MODEL_DIR/ 'css/css.py'
 # Webcam
 # WEBCAM_PATH = 0
