@@ -22,7 +22,7 @@ st.markdown("""
     """, unsafe_allow_html=True
 )
 path_to_csv_file = settings.CSV
-@st.cache
+@st.cache_data
 def get_data(filename):
     label_data = pd.read_csv(filename)
     return label_data
@@ -51,5 +51,4 @@ with dataset:
     label_name_dist=label_df['label_name'].value_counts()
     st.line_chart(label_df['bbox_width'])
     st.line_chart(label_df['bbox_height'])
-
  

@@ -10,17 +10,7 @@ import pandas as pd
 import numpy as np
 from io import StringIO
 
-# Load Tableau JavaScript and CSS
-import streamlit.components.v1 as components
-components.html(
-    """
-    <script type='text/javascript' src='https://tableau.com/javascripts/api/tableau-2.min.js'></script>
-    <link rel='stylesheet' type='text/css' href='https://tableau.com/javascripts/api/tableau-2.min.css' />
-    """
-)
-
 container = st.container()
-
 with container:
     st.title("Diagnose Sickle Cell Disease")
     st.header("The problem")
@@ -33,30 +23,3 @@ with container:
     st.header("The solution")
     st.text("Applying Computer Vision For Red Blood Cell Classification")
     st.text("To Diagnose Sickle Cell Disease")
-
-
-# Initialize Tableau visualization
-def init_viz():
-    # viz_url = "https://public.tableau.com/views/MyWorkbook/MyVisualization"
-    # viz_url = "https://prod-apsoutheast-a.online.tableau.com/t/kaalakoota/newWorkbook/1gsmbqrg4$l1w9-i5-h2-fe-397c38#1"
-    viz_url = "https://prod-apsoutheast-a.online.tableau.com/#/site/kaalakoota/workbooks/225039/views"
-    viz_options = {
-        'hideTabs': True,
-        'width': '800px',
-        'height': '600px',
-        'onFirstInteractive': on_first_interactive
-    }
-    # viz_container = components.declare_component("viz", url=viz_url, options=viz_options)
-    viz_container = components.declare_component("viz", url=viz_url)
-    return viz_container
-
-# Define callback function
-def on_first_interactive():
-    workbook = viz.getWorkbook()
-    active_sheet = workbook.getActiveSheet()
-    active_sheet.applyFilterAsync("Region", "West", tableau.FilterUpdateType.REPLACE)
-
-
-# Call the init_viz function to display the visualization
-viz = init_viz()
-viz
