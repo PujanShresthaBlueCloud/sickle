@@ -19,8 +19,13 @@ st.markdown("""
     }
     .css-1y4p8pa {
         width: 100%;
-        padding: 6rem 1rem 10rem 1rem;
-        max-width: 90rem;
+        padding: 5rem 1rem 10rem 5rem;
+        max-width: 80rem;
+    }
+    .css-h5rgaw {
+        background-color:#000000;
+        color:#FFFFFF;
+        padding: 1rem 1rem 10rem 5rem;
     }
     .styles_terminalButton__3xUnY {
         display: none;
