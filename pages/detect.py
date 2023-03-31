@@ -42,11 +42,17 @@ except Exception as ex:
     print(ex)
     st.write(f"Unable to load model. Check the specified path: {model_path}")
 
-conf = float(st.sidebar.slider("Detection tunning", 25, 100, 40)) / 100
+
+st.sidebar.header("Detection tunning")
+conf = float(st.sidebar.slider( 25, 100, 40)) / 100
 source_img = None
 st.sidebar.header("Upload image to detect")
-source_radio = st.sidebar.radio("Image",settings.SOURCES_LIST)
 
+# DISABLING RAIO----------------
+# source_radio = st.sidebar.radio("Image",settings.SOURCES_LIST)
+
+
+source_radio = settings.IMAGE
 # body
 # If image is selected
 if source_radio == settings.IMAGE:
