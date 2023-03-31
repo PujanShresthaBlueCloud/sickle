@@ -18,7 +18,7 @@
 }
 
 /* Navigation bar */
-.css-18ni7a {
+.css-18ni7ap {
     display: none;
 }
 #stHeader {
@@ -26,7 +26,7 @@
 }
 
 /* footer */
-.css-h5rgaw {
+/* .css-h5rgaw {
     color: rgba(49, 51, 63, 0.4);
     font-size: 14px;
     height: 2.5rem;
@@ -34,7 +34,7 @@
     padding: 0.5rem 1rem 2rem 1rem;
     width: 100%;
 }
-/* @media (min-width: 576px){
+/* @media (min-width: 576px){ */
     .css-h5rgaw {
         padding-left: 1rem;
         padding-right: 1rem;
