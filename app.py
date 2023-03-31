@@ -10,39 +10,27 @@ import pandas as pd
 import numpy as np
 import streamlit.components.v1 as components
 
-st.markdown("""
-    <style>
-    .main {
-        background-color:#F5F5F5;
-        margin:0px;
-        padding:0px;
-    }
-    .css-1y4p8pa {
-        width: 100%;
-        padding: 5rem 1rem 10rem 5rem;
-        max-width: 80rem;
-    }
-    .css-h5rgaw {
-        background-color:#000000;
-        color:#FFFFFF;
-        padding: 1rem 1rem 10rem 5rem;
-    }
-    .styles_terminalButton__3xUnY {
-        display: none;
-    }
-    </style>
 
-    """, unsafe_allow_html=True
-)
-components.html("""
-    <script>
-        const elements = window.parent.document.getElementsByTagName('footer')
-        elements[0].innerHTML = "&nbps; Omdena project"
-    </script>
-""",
-    height=0,
-    width=0
-)
+# Use Local CSS File
+def local_css(file_name):
+    with open(file_name) as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+local_css(settings.CSS)
+
+# Use Local js file
+def local_js(file_name):
+    with open(file_name) as f:
+        components.html("""
+            f"<script>
+                {f.read()}
+            </script>
+            "
+        """,
+            height=0,
+            width=0
+        )
+local_js(settings.JS)
 
 container = st.container()
 with container:

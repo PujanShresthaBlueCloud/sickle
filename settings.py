@@ -52,8 +52,13 @@ DETECTION_MODEL = MODEL_DIR / 'model/last22_415.pt'
 DETECT_LOCATOR = 'detect'
 SEGMENT_LOCATOR = 'segment'
 
-#csv
+# csv file
 CSV = MODEL_DIR / 'csv/labels_my-project-name_2023-03-16-04-56-04.csv'
 
+# css stylesheet
+CSS = MODEL_DIR/ 'css/style.css'
+
+# javascipt file
+JS = MODEL_DIR/ 'js/main.js'
 # Webcam
 # WEBCAM_PATH = 0
