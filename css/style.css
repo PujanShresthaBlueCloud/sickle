@@ -12,9 +12,7 @@
 }
 .styles_terminalButton__3xUnY {
     display: none;
-}
-#manage-app-button {
-    display: none;
+    height: 0px;
 }
 
 /* Navigation bar */
