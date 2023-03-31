@@ -14,6 +14,7 @@ st.markdown("""
     .main {
     background-color:#F5F5F5
     margin:0px
+    padding:0px
     }
     </style>
     """, unsafe_allow_html=True
