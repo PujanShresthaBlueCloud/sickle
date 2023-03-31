@@ -7,8 +7,8 @@
 /* main body */
 .css-1y4p8pa {
     width: 100%;
-    padding: 6rem 1rem 10rem 1rem;
-    max-width: 90rem;
+    padding: 2rem 1rem 5rem 1rem;
+    max-width: 80rem;
 }
 .styles_terminalButton__3xUnY {
     display: none;
@@ -24,14 +24,14 @@
     color: rgba(49, 51, 63, 0.4);
     font-size: 14px;
     height: 2.5rem;
-    max-width: 90rem;
-    padding: 0.5rem 1rem;
+    max-width: 80rem;
+    padding: 0.5rem 1rem 2rem 1rem;
     width: 100%;
 }
-@media (min-width: 576px){
+/* @media (min-width: 576px){
     .css-h5rgaw {
         padding-left: 1rem;
         padding-right: 1rem;
     }
-}
+} */
 
