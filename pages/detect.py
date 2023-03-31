@@ -44,7 +44,7 @@ except Exception as ex:
 
 
 st.sidebar.header("Detection tunning")
-conf = float(st.sidebar.slider( 25, 100, 40)) / 100
+conf = float(st.sidebar.slider("",25, 100, 40)) / 100
 source_img = None
 st.sidebar.header("Upload image to detect")
 
