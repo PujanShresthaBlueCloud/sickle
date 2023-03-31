@@ -12,12 +12,12 @@
     display: none;
 }
 
-/* components.html("""
-    <script>
-        const elements = window.parent.document.getElementsByTagName('footer')
-        elements[0].innerHTML = "&nbps; Omdena project"
-    </script>
-""",
-    height=0,
-    width=0
-) */
+/*top right menu*/
+/* .css-14xtw13 {
+    display: none;
+} */
+
+/* Navigation bar */
+.css-18ni7a {
+    display: none;
+}
