@@ -1,6 +1,10 @@
 import streamlit as st
+st.title("Generate report")
 
-detected_data_frame = st.session_state['detected_data_frame']
+if 'detected_data_frame' not in st.session_state:
+    st.write("please detect first")
+else:
+    detected_data_frame = st.session_state['detected_data_frame']
 st.dataframe(detected_data_frame, use_container_width=True)
 
 # with st.expander("Generate report"):
