@@ -86,7 +86,7 @@ def app():
     if st.button("Generate Report"):
         # Generate report HTML using input data
         html = template.format(name, age, sex, date_of_test)
-
+        st.write(html)
         # Convert HTML to PDF
         pdfkit.from_string(html, 'report.pdf')
 
