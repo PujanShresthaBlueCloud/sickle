@@ -179,14 +179,7 @@ if source_radio == settings.IMAGE:
                 st.pyplot(fig1)
             
             with st.expander("Generate report"):
-                report ="""
-                    <form action="">
-                        <input type="text" placeholder="Enter patitent name" name="name"/>
-                        <input type="text" placeholder="Enter patitient address" name="address"/>
-                        <input type="submit" value="submit"/>
-                    </form>
-                """
-                st.markdown(report, unsafe_allow_html=True)
+                st.write("Form to generate report")
 
 
         else:
