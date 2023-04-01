@@ -6,11 +6,11 @@
 //     var element = window.parent.document.getElementsByTagName("footer");
 //     element.appendChild(newElement);
 // }
-// function todayDate(){
-//     var d = new Date();
-//     var n = d.getFullYear() + "  ";
-//     return window.parent.document.getElementsByTagName('p').innerHTML=n;
-//   }
+function todayDate(){
+    var d = new Date();
+    var n = d.getFullYear() + "  ";
+    return n;
+  }
   
 
 // var newElement = window.parent.document.createElement('p');
@@ -19,4 +19,5 @@ elements[0].innerHTML = "&copy; Omdena project";
 
 const element = window.parent.document.getElementsByTagName('footer');
 element[0].appendChild(window.parent.document.createElement('p'));
+element[0].innerHTML = todayDate()
 
