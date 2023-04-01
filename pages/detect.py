@@ -164,7 +164,7 @@ if source_radio == settings.IMAGE:
                  ]
             detected_data_frame=pd.DataFrame(detected_cal, columns=['class','count','percent'], index=None)
             st.dataframe(detected_data_frame, use_container_width=True)
-            st.session_state['detected_data_frame'] = detected_data_frame
+            # st.session_state['detected_data_frame'] = detected_data_frame
 
 
             with st.expander("Total number of class detected"):
