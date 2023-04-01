@@ -11,41 +11,23 @@ import numpy as np
 import matplotlib.pyplot as plt
 import streamlit.components.v1 as components
 
-# Use Local CSS File
-def local_css(file_name):
-    with open(file_name) as f:
-        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+# # Use Local CSS File
+# def local_css(file_name):
+#     with open(file_name) as f:
+#         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
-local_css(settings.CSS)
+helper.local_css(settings.CSS)
 
-# Use Local js file
-def local_js(file_name):
-    with open(file_name) as f:
-        components.html(f"<script>{f.read()}</script>", height=0, width=0)
-local_js(settings.JS)
+# # Use Local js file
+# def local_js(file_name):
+#     with open(file_name) as f:
+#         components.html(f"<script>{f.read()}</script>", height=0, width=0)
+helper.local_js(settings.JS)
 
 
 # Sidebar
 st.title("Sickle Cell Detection Using YOLOV8")
 st.caption("Please upload image from side bar to detect")
-
-
-# DISABLING RADIO -------------------------------------------
-# mlmodel_radio = st.sidebar.radio(
-#     "Detection",['Detection'])
-# if mlmodel_radio == 'Detection':
-#     dirpath_locator = settings.DETECT_LOCATOR
-
-#     model_path = Path(settings.DETECTION_MODEL)
-
-# try:
-#     model = helper.load_model(model_path)
-
-# except Exception as ex:
-#     print(ex)
-#     st.write(f"Unable to load model. Check the specified path: {model_path}")
-    
-# -------------------------------------------- END DISABLING ---
 
 try:
     dirpath_locator = settings.DETECT_LOCATOR
@@ -58,13 +40,9 @@ except Exception as ex:
 
 
 st.sidebar.header("Detection tunning")
-conf = float(st.sidebar.slider("Select model confidence level",25, 100, 40)) / 100
+conf = float(st.sidebar.slider("Select detection accuracy level",25, 100, 40)) / 100
 source_img = None
 st.sidebar.header("Upload image to detect")
-
-# DISABLING RAIO----------------
-# source_radio = st.sidebar.radio("Image",settings.SOURCES_LIST)
-
 
 source_radio = settings.IMAGE
 # body
@@ -72,8 +50,6 @@ source_radio = settings.IMAGE
 if source_radio == settings.IMAGE:
     source_img = st.sidebar.file_uploader(
         "Choose an image...", type=("jpg", "jpeg", "png", 'bmp', 'webp'))
-    # save_radio = st.sidebar.radio("Save image to download", ["Yes", "No"])
-    # save = True if save_radio == 'Yes' else False
     col1, col2 = st.columns(2)
 
     with col1:
@@ -90,7 +66,6 @@ if source_radio == settings.IMAGE:
                      use_column_width=True)        
             detect_objects=st.sidebar.button('Detect Objects')
 
-
     with col2:
         if source_img is None:
             default_detected_image_path = str(settings.DEFAULT_DETECT_IMAGE)
@@ -98,7 +73,6 @@ if source_radio == settings.IMAGE:
             st.image(default_detected_image_path, caption='Sample detected Image',
                      use_column_width=True)
         else:
-            # if st.sidebar.button('Detect Objects'):
             if detect_objects:
                 with torch.no_grad():
                     # res = model.predict(image, save=save, save_txt=save, exist_ok=True, conf=conf)
@@ -107,24 +81,6 @@ if source_radio == settings.IMAGE:
                     res_plotted = res[0].plot()[:, :, ::-1]
                     st.image(res_plotted, caption='Detected Image',
                              use_column_width=True)
-                    
-                    
-
-                    # IMAGE_DOWNLOAD_PATH = f"runs/{dirpath_locator}/predict/image0.jpg"
-                    # with open(IMAGE_DOWNLOAD_PATH, 'rb') as fl:
-                    #     st.download_button("Download object-detected image",
-                    #                        data=fl,
-                    #                        file_name="image0.jpg",
-                    #                        mime='image/jpg'
-                    #                        )
-                # try:
-                #     with st.expander("Detection Results"):
-                #         for box in boxes:
-                #             st.write(box.xywh)
-                # except Exception as ex:
-                #     # st.write(ex)
-                #     st.write("No image is uploaded yet!")
-
                     Normal = []
                     Sickle = []
                     Target = []
