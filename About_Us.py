@@ -11,10 +11,10 @@ import numpy as np
 import streamlit.components.v1 as components
 
 
-# USING CUSTOM CSS
+# Using custom css
 helper.local_css(settings.CSS)
 
-# USING CUSTOM JS
+# Using custom js
 helper.local_js(settings.JS)
 
 st.sidebar.header("Disclaimer")

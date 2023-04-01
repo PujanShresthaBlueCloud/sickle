@@ -29,13 +29,6 @@ except Exception as ex:
     print(ex)
     st.write(f"Unable to load model. Check the specified path: {model_path}")
 
-
-# Sidebar
-# st.sidebar.header("Detection tunning")
-# conf = float(st.sidebar.slider("Select detection accuracy level",25, 100, 40)) / 100
-# source_img = None
-# st.sidebar.header("Upload image to detect")
-
 st.subheader("Detection tunning")
 conf = float(st.slider("Select detection tuning level",25, 100, 40)) / 100
 source_img = None
@@ -59,15 +52,13 @@ if source_radio == settings.IMAGE:
             st.image(default_image_path, caption='Sample default Image',
                      use_column_width=True)
             
-            # detect_objects=st.sidebar.button('Detect Objects', disabled=True)
             detect_objects=st.button('Detect Objects', disabled=True)
             
         else:
-            image = PIL.Image.open(source_img, width=150, height=150)
+            image = PIL.Image.open(source_img)
             st.image(source_img, caption='Uploaded Image',
                      use_column_width=True)        
             
-            # detect_objects=st.sidebar.button('Detect Objects')
             detect_objects=st.button('Detect Objects')
 
     with col2:
@@ -79,12 +70,11 @@ if source_radio == settings.IMAGE:
         else:
             if detect_objects:
                 with torch.no_grad():
-                    # res = model.predict(image, save=save, save_txt=save, exist_ok=True, conf=conf)
                     res = model.predict(image, exist_ok=True, conf=conf)
                     boxes = res[0].boxes
                     res_plotted = res[0].plot()[:, :, ::-1]
                     st.image(res_plotted, caption='Detected Image',
-                             use_column_width=True, width=150, height=150)
+                             use_column_width=True)
                     Normal = []
                     Sickle = []
                     Target = []
@@ -124,8 +114,6 @@ if source_radio == settings.IMAGE:
                  ]
             detected_data_frame=pd.DataFrame(detected_cal, columns=['class','count','percent'], index=None)
             st.dataframe(detected_data_frame, use_container_width=True)
-            # st.session_state['detected_data_frame'] = detected_data_frame
-
 
             with st.expander("Total number of class detected"):
                 st.bar_chart(data=detected_data_frame, x='class', y='count')
