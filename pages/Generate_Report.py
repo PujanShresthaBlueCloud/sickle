@@ -3,13 +3,14 @@ import pdfkit
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+import helper
 
 # Define Streamlit app title
 st.set_page_config(page_title="Sickle Cell Detection Report", page_icon=":microscope:")
 
 # Define email credentials
-gmail_user = '[Insert Email Address]'
-gmail_password = '[Insert Password]'
+gmail_user = 'pujan_sth@yahoo.com'
+# gmail_password = '[Insert Password]'
 
 # Define HTML template for report
 template = """
@@ -76,6 +77,11 @@ def app():
     sex = st.selectbox("Sex", ["Male", "Female", "Other"])
     date_of_test = st.date_input("Date of Test")
 
+    st.write(name)
+    st.write(age)
+    st.write(sex)
+    st.write(date_of_test)
+    
     # Define submit button
     if st.button("Generate Report"):
         # Generate report HTML using input data
