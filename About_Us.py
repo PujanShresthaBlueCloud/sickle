@@ -11,18 +11,16 @@ import numpy as np
 import streamlit.components.v1 as components
 
 
-# Use Local CSS File
-def local_css(file_name):
-    with open(file_name) as f:
-        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+# USING CUSTOM CSS
+helper.local_css(settings.CSS)
 
-local_css(settings.CSS)
+# USING CUSTOM JS
+helper.local_js(settings.JS)
 
-# Use Local js file
-def local_js(file_name):
-    with open(file_name) as f:
-        components.html(f"<script>{f.read()}</script>", height=0, width=0)
-local_js(settings.JS)
+st.sidebar.header("Disclaimer")
+st.sidebar.markdown("""
+<p>This app is not intended to be a substitute for professional medical advice, diagnosis, or treatment. The predictions and information provided by the app are for educational and informational purposes only. The predictions are based on a model and may not always be accurate. Users should consult with a qualified healthcare provider before making any decisions based on the app's predictions or information.</p>
+""")
 
 container = st.container()
 with container:

@@ -11,21 +11,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import streamlit.components.v1 as components
 
-# # Use Local CSS File
-# def local_css(file_name):
-#     with open(file_name) as f:
-#         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-
+# Using custom css
 helper.local_css(settings.CSS)
 
-# # Use Local js file
-# def local_js(file_name):
-#     with open(file_name) as f:
-#         components.html(f"<script>{f.read()}</script>", height=0, width=0)
+# Using custom js
 helper.local_js(settings.JS)
 
 
-# Sidebar
 st.title("Sickle Cell Detection Using YOLOV8")
 st.caption("Please upload image from side bar to detect")
 
@@ -39,6 +31,7 @@ except Exception as ex:
     st.write(f"Unable to load model. Check the specified path: {model_path}")
 
 
+# Sidebar
 st.sidebar.header("Detection tunning")
 conf = float(st.sidebar.slider("Select detection accuracy level",25, 100, 40)) / 100
 source_img = None
