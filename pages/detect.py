@@ -37,7 +37,7 @@ source_img = None
 st.sidebar.header("Upload image to detect")
 
 st.header("Detection tunning")
-conf = float(st.sidebar.slider("Select detection accuracy level",25, 100, 40)) / 100
+conf = float(st.slider("Select detection accuracy level",25, 100, 40)) / 100
 source_img = None
 st.header("Upload image to detect")
 
