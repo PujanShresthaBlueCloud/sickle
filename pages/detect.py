@@ -18,7 +18,7 @@ helper.local_css(settings.CSS)
 helper.local_js(settings.JS)
 
 st.title("Sickle Cell Detection Using YOLOV8")
-st.caption("Please upload image from side bar to detect")
+# st.caption("Please upload image from side bar to detect")
 
 try:
     dirpath_locator = settings.DETECT_LOCATOR
@@ -36,10 +36,10 @@ except Exception as ex:
 # source_img = None
 # st.sidebar.header("Upload image to detect")
 
-st.header("Detection tunning")
-conf = float(st.slider("Select detection accuracy level",25, 100, 40)) / 100
+st.subheader("Detection tunning")
+conf = float(st.slider("Select detection tuning level",25, 100, 40)) / 100
 source_img = None
-st.header("Upload image to detect")
+st.subheader("Upload image to detect")
 
 source_radio = settings.IMAGE
 # body
