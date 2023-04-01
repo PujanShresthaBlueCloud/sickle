@@ -29,20 +29,13 @@ except Exception as ex:
     print(ex)
     st.write(f"Unable to load model. Check the specified path: {model_path}")
 
-st.subheader("Detection tunning")
-conf = float(st.slider("Select detection tuning level",25, 100, 40)) / 100
 source_img = None
-st.subheader("Upload image to detect")
-
 source_radio = settings.IMAGE
 # body
 # If image is selected
 if source_radio == settings.IMAGE:
     # source_img = st.sidebar.file_uploader(
     #     "Choose an image...", type=("jpg", "jpeg", "png", 'bmp', 'webp'))
-    
-    source_img = st.file_uploader(
-    "Choose an image...", type=("jpg", "jpeg", "png", 'bmp', 'webp'))
 
     col1, col2 = st.columns(2)
     with col1:
@@ -52,15 +45,11 @@ if source_radio == settings.IMAGE:
             st.image(default_image_path, caption='Sample default Image',
                      use_column_width=True)
             
-            detect_objects=st.button('Detect Objects', disabled=True)
-            
         else:
             image = PIL.Image.open(source_img)
             st.image(source_img, caption='Uploaded Image',
                      use_column_width=True)        
             
-            detect_objects=st.button('Detect Objects')
-
     with col2:
         if source_img is None:
             default_detected_image_path = str(settings.DEFAULT_DETECT_IMAGE)
@@ -91,6 +80,16 @@ if source_radio == settings.IMAGE:
                             Crystal.append(cls)
                         elif(cls==4):
                             others.append(cls)
+    with st.container():
+        st.subheader("Detection tunning")
+        conf = float(st.slider("Select detection tuning level",25, 100, 40)) / 100
+        st.subheader("Upload image to detect")
+        source_img = st.file_uploader("Choose an image...", type=("jpg", "jpeg", "png", 'bmp', 'webp'))
+        if source_img is None:
+            detect_objects=st.button('Detect Objects', disabled=True)
+        else:
+            detect_objects=st.button('Detect Objects')
+
     with st.container():
         if detect_objects:
             total_detection = len(Normal) + len(Sickle) + len(Target) + len(Crystal) + len(others)
