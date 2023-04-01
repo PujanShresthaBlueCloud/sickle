@@ -177,6 +177,16 @@ if source_radio == settings.IMAGE:
                         shadow=True, startangle=90)
                 ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
                 st.pyplot(fig1)
+            
+            with st.expander("Generate report"):
+                st.markdown("""
+                    <form action="">
+                        <input type="text" placeholder="Enter patitent name" name="name"/>
+                        <input type="text" placeholder="Enter patitient address" name="address"/>
+                        <input type="submit" value="submit"/>
+                    </form>
+                """)
+
 
         else:
             st.write('')
