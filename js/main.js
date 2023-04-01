@@ -11,6 +11,7 @@ function todayDate(){
     var n = d.getFullYear() + "  ";
     return window.parent.document.getElementsByTagName('p').innerHTML=n;
   }
-const elements = window.parent.document.getElementsByTagName('footer')
-elements[0].innerHTML = "&copy; Omdena project"
+  
 insertParagraph()
+// const elements = window.parent.document.getElementsByTagName('footer')
+// elements[0].innerHTML = "&copy; Omdena project"
