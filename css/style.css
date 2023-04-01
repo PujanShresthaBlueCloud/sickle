@@ -23,6 +23,10 @@
     display: none;
 }
 
+#manage-app-button {
+    display: none;
+}
+
 /* footer */
 .css-h5rgaw {
     color: rgba(49, 51, 63, 0.4);
