@@ -31,10 +31,10 @@ except Exception as ex:
 
 
 # Sidebar
-st.sidebar.header("Detection tunning")
-conf = float(st.sidebar.slider("Select detection accuracy level",25, 100, 40)) / 100
-source_img = None
-st.sidebar.header("Upload image to detect")
+# st.sidebar.header("Detection tunning")
+# conf = float(st.sidebar.slider("Select detection accuracy level",25, 100, 40)) / 100
+# source_img = None
+# st.sidebar.header("Upload image to detect")
 
 st.header("Detection tunning")
 conf = float(st.slider("Select detection accuracy level",25, 100, 40)) / 100
@@ -45,27 +45,29 @@ source_radio = settings.IMAGE
 # body
 # If image is selected
 if source_radio == settings.IMAGE:
-    source_img = st.sidebar.file_uploader(
-        "Choose an image...", type=("jpg", "jpeg", "png", 'bmp', 'webp'))
+    # source_img = st.sidebar.file_uploader(
+    #     "Choose an image...", type=("jpg", "jpeg", "png", 'bmp', 'webp'))
     
     source_img = st.file_uploader(
     "Choose an image...", type=("jpg", "jpeg", "png", 'bmp', 'webp'))
-    col1, col2 = st.columns(2)
 
+    col1, col2 = st.columns(2)
     with col1:
         if source_img is None:
             default_image_path = str(settings.DEFAULT_IMAGE)
             image = PIL.Image.open(default_image_path)
             st.image(default_image_path, caption='Sample default Image',
                      use_column_width=True)
-            detect_objects=st.sidebar.button('Detect Objects', disabled=True)
+            
+            # detect_objects=st.sidebar.button('Detect Objects', disabled=True)
             detect_objects=st.button('Detect Objects', disabled=True)
             
         else:
             image = PIL.Image.open(source_img)
             st.image(source_img, caption='Uploaded Image',
                      use_column_width=True)        
-            detect_objects=st.sidebar.button('Detect Objects')
+            
+            # detect_objects=st.sidebar.button('Detect Objects')
             detect_objects=st.button('Detect Objects')
 
     with col2:
