@@ -1,0 +1,36 @@
+.main {
+    background-color:#F5F5F5;
+    margin:0px;
+    padding:0px;
+}
+
+/* main body */
+.css-1y4p8pa {
+    width: 100%;
+    padding: 0rem 5rem 5rem 5rem;
+    max-width: 80rem;
+}
+.styles_terminalButton__3xUnY {
+    display: none;
+    height: 1px;
+}
+
+/* Navigation bar */
+.css-18ni7ap {
+    display: none;
+}
+#stHeader {
+    display: none;
+}
+
+
+/* footer */
+.css-h5rgaw {
+    color: rgba(49, 51, 63, 0.4);
+    font-size: 14px;
+    height: 2.5rem;
+    max-width: 80rem;
+    padding: 0.5rem 5rem 2rem 5rem;
+    width: 100%;
+}
+

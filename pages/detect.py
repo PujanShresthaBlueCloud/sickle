@@ -9,32 +9,64 @@ from ultralytics import YOLO
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import streamlit.components.v1 as components
+
+# Use Local CSS File
+def local_css(file_name):
+    with open(file_name) as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+local_css(settings.CSS)
+
+# Use Local js file
+def local_js(file_name):
+    with open(file_name) as f:
+        components.html(f"<script>{f.read()}</script>", height=0, width=0)
+local_js(settings.JS)
+
 
 # Sidebar
 st.title("Sickle Cell Detection Using YOLOV8")
 st.caption("Please upload image from side bar to detect")
-st.sidebar.header("Model Config")
 
-mlmodel_radio = st.sidebar.radio(
-    "Select Task", ['Detection'])
-conf = float(st.sidebar.slider("Select Model Confidence", 25, 100, 40)) / 100
-if mlmodel_radio == 'Detection':
-    dirpath_locator = settings.DETECT_LOCATOR
 
-    model_path = Path(settings.DETECTION_MODEL)
+# DISABLING RADIO -------------------------------------------
+# mlmodel_radio = st.sidebar.radio(
+#     "Detection",['Detection'])
+# if mlmodel_radio == 'Detection':
+#     dirpath_locator = settings.DETECT_LOCATOR
+
+#     model_path = Path(settings.DETECTION_MODEL)
+
+# try:
+#     model = helper.load_model(model_path)
+
+# except Exception as ex:
+#     print(ex)
+#     st.write(f"Unable to load model. Check the specified path: {model_path}")
+    
+# -------------------------------------------- END DISABLING ---
 
 try:
+    dirpath_locator = settings.DETECT_LOCATOR
+    model_path = Path(settings.DETECTION_MODEL)
     model = helper.load_model(model_path)
 
 except Exception as ex:
     print(ex)
     st.write(f"Unable to load model. Check the specified path: {model_path}")
 
-source_img = None
-st.sidebar.header("Image")
-source_radio = st.sidebar.radio(
-    "Select Source", settings.SOURCES_LIST)
 
+st.sidebar.header("Detection tunning")
+conf = float(st.sidebar.slider("Select model confidence level",25, 100, 40)) / 100
+source_img = None
+st.sidebar.header("Upload image to detect")
+
+# DISABLING RAIO----------------
+# source_radio = st.sidebar.radio("Image",settings.SOURCES_LIST)
+
+
+source_radio = settings.IMAGE
 # body
 # If image is selected
 if source_radio == settings.IMAGE:
@@ -43,7 +75,6 @@ if source_radio == settings.IMAGE:
     # save_radio = st.sidebar.radio("Save image to download", ["Yes", "No"])
     # save = True if save_radio == 'Yes' else False
     col1, col2 = st.columns(2)
-    detect_objects=st.sidebar.button('Detect Objects')
 
     with col1:
         if source_img is None:
@@ -51,10 +82,14 @@ if source_radio == settings.IMAGE:
             image = PIL.Image.open(default_image_path)
             st.image(default_image_path, caption='Sample default Image',
                      use_column_width=True)
+            detect_objects=st.sidebar.button('Detect Objects', disabled=True)
+            
         else:
             image = PIL.Image.open(source_img)
             st.image(source_img, caption='Uploaded Image',
                      use_column_width=True)        
+            detect_objects=st.sidebar.button('Detect Objects')
+
 
     with col2:
         if source_img is None:
@@ -95,7 +130,6 @@ if source_radio == settings.IMAGE:
                     Target = []
                     Crystal = []
                     others = []
-                    data = []
                     for cls in boxes.cls:
                         if(cls == 0):
                             Normal.append(cls)
@@ -130,6 +164,8 @@ if source_radio == settings.IMAGE:
                  ]
             detected_data_frame=pd.DataFrame(detected_cal, columns=['class','count','percent'], index=None)
             st.dataframe(detected_data_frame, use_container_width=True)
+            # st.session_state['detected_data_frame'] = detected_data_frame
+
 
             with st.expander("Total number of class detected"):
                 st.bar_chart(data=detected_data_frame, x='class', y='count')
@@ -144,9 +180,6 @@ if source_radio == settings.IMAGE:
                 ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
                 st.pyplot(fig1)
 
+
         else:
             st.write('')
-
-
-
-
