@@ -63,7 +63,7 @@ if source_radio == settings.IMAGE:
             detect_objects=st.button('Detect Objects', disabled=True)
             
         else:
-            image = PIL.Image.open(source_img)
+            image = PIL.Image.open(source_img, width=150, height=150)
             st.image(source_img, caption='Uploaded Image',
                      use_column_width=True)        
             
@@ -84,7 +84,7 @@ if source_radio == settings.IMAGE:
                     boxes = res[0].boxes
                     res_plotted = res[0].plot()[:, :, ::-1]
                     st.image(res_plotted, caption='Detected Image',
-                             use_column_width=True)
+                             use_column_width=True, width=150, height=150)
                     Normal = []
                     Sickle = []
                     Target = []
