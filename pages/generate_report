@@ -1,11 +1,11 @@
 import streamlit as st
 st.title("Generate report")
 
-if 'detected_data_frame' not in st.session_state:
-    st.write("please detect first")
-else:
-    detected_data_frame = st.session_state['detected_data_frame']
-st.dataframe(detected_data_frame, use_container_width=True)
+# if 'detected_data_frame' not in st.session_state:
+#     st.write("please detect first")
+# else:
+#     detected_data_frame = st.session_state['detected_data_frame']
+# st.dataframe(detected_data_frame, use_container_width=True)
 
 # with st.expander("Generate report"):
 #     st.subheader("Forms Tutorial")
@@ -15,5 +15,26 @@ with st.form(key='generate_report'):
     dob = st.date_input("Date of Birth")
     submit_report = st.form_submit_button(label='generate')
 
-# if submit_report:
-#     st.dataframe(detected_data_frame, use_container_width=True)
+    if submit_report:
+        #     st.dataframe(detected_data_frame, use_container_width=True)
+        st.markdown("""
+            <h1>Report: Sickle Cell Detected</h1>
+
+        Patient Information:
+        Name: [Insert Patient Name]
+        Age: [Insert Age]
+        Sex: [Insert Sex]
+        Date of Test: [Insert Date]
+
+        Test Results:
+        The results of your recent laboratory tests indicate that you have sickle cell disease. Sickle cell disease is a genetic blood disorder that affects the shape of red blood cells. In people with sickle cell disease, the red blood cells are shaped like crescents or sickles instead of round discs.
+
+        Symptoms of sickle cell disease can include episodes of pain, fatigue, shortness of breath, delayed growth and development, and increased susceptibility to infections. Sickle cell disease can also cause complications such as stroke, acute chest syndrome, and organ damage.
+
+        Management and Treatment:
+        There is currently no cure for sickle cell disease, but there are treatments that can help manage symptoms and prevent complications. Treatment options include pain management, antibiotics to prevent infections, blood transfusions, and bone marrow transplants in severe cases.
+
+        It is important to maintain regular follow-up with your healthcare provider to monitor your condition and ensure that you receive appropriate care. You may also benefit from genetic counseling to learn more about your condition and the risk of passing it on to your children.
+
+        Please do not hesitate to contact us if you have any questions or concerns regarding your diagnosis. We are here to support you through your treatment and management of sickle cell disease.
+        """)
