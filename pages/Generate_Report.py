@@ -100,3 +100,4 @@ def app():
             message['From'] = gmail_user
             message['To'] = st.text_input("Patient Email Address")
             message['Subject'] = st.text_input("Subject")
+app()
