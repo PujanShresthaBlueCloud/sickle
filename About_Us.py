@@ -25,7 +25,7 @@ disclaimer="""
         </p>
     </html>
 """
-st.markdown(disclaimer, unsafe_allow_html=True)
+st.sidebar.markdown(disclaimer, unsafe_allow_html=True)
 
 container = st.container()
 with container:
