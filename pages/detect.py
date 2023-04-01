@@ -178,8 +178,16 @@ if source_radio == settings.IMAGE:
                 ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
                 st.pyplot(fig1)
             
-            with st.expander("Generate report"):
-                st.write("Form to generate report")
+            # with st.expander("Generate report"):
+            #     st.subheader("Forms Tutorial")
+            with st.form(key='generate_report'):
+                firstname = st.text_input("Firstname")
+                lastname = st.text_input("lastname")
+                dob = st.date_input("Date of Birth")
+                submit_report = st.form_submit_button(label='generate')
+
+            if submit_report:
+                st.dataframe(detected_data_frame, use_container_width=True)
 
 
         else:
