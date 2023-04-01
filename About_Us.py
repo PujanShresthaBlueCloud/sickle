@@ -18,9 +18,7 @@ helper.local_css(settings.CSS)
 helper.local_js(settings.JS)
 
 st.sidebar.header("Disclaimer")
-st.sidebar.markdown("""
-<p>This app is not intended to be a substitute for professional medical advice, diagnosis, or treatment. The predictions and information provided by the app are for educational and informational purposes only. The predictions are based on a model and may not always be accurate. Users should consult with a qualified healthcare provider before making any decisions based on the app's predictions or information.</p>
-""")
+st.sidebar.text("This app is not intended to be a substitute for professional medical advice, diagnosis, or treatment. The predictions and information provided by the app are for educational and informational purposes only. The predictions are based on a model and may not always be accurate. Users should consult with a qualified healthcare provider before making any decisions based on the app's predictions or information.")
 
 container = st.container()
 with container:
