@@ -12,15 +12,17 @@
 }
 .styles_terminalButton__3xUnY {
     display: none;
-    height: 0px;
+    height: 1px;
 }
 
 /* Navigation bar */
 .css-18ni7ap {
     display: none;
+    padding: 0px;
 }
 #stHeader {
     display: none;
+    padding: 0px;
 }
 
 /* footer */
