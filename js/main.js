@@ -15,5 +15,6 @@
 
 var newElement = window.parent.document.createElement('p');
 const elements = window.parent.document.getElementsByTagName('footer');
-elements.appendChild(newElement)
 elements[0].innerHTML = "&copy; Omdena project";
+elements[1].appendChild(newElement)
+
