@@ -13,8 +13,10 @@
 //   }
   
 
-var newElement = window.parent.document.createElement('p');
+// var newElement = window.parent.document.createElement('p');
 const elements = window.parent.document.getElementsByTagName('footer');
 elements[0].innerHTML = "&copy; Omdena project";
-elements[1].appendChild(newElement)
+
+const element = window.parent.document.getElementsByTagName('footer');
+element[0].appendChild(window.parent.document.createElement('p'));
 
