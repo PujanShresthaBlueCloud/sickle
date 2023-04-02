@@ -3,6 +3,8 @@ import pdfkit
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from email.mime.application import MIMEApplication
+
 import helper
 import settings
 
@@ -14,7 +16,7 @@ helper.local_js(settings.JS)
 
 # Define Streamlit app title
 # st.set_page_config(page_title="Sickle Cell Detection Report", page_icon=":microscope:")
-
+st.header("Sickle Cell Detection Report")
 # Define email credentials
 gmail_user = 'pujan_sth@yahoo.com'
 # gmail_password = '[Insert Password]'
@@ -124,4 +126,33 @@ def app():
             message['To'] = email
             message['Subject'] = subject
             message['body'] = html
+
+
+            # Add some text to the message body
+            body = "This is an example email."
+            message.attach(MIMEText(body, "plain"))
+
+            # Attach a PDF file to the message
+            with open("example.pdf", "rb") as file:
+                attachment = MIMEApplication(file.read(), _subtype="pdf")
+                attachment.add_header(
+                    "Content-Disposition",
+                    "attachment",
+                    filename="example.pdf"
+                )
+                message.attach(attachment)
+
+            # Send the message
+            try:
+                smtp_server = "smtp.gmail.com"
+                smtp_port = 587
+                smtp_username = st.secrets["pujan_sth@yahoo.com"]
+                smtp_password = st.secrets["C0smicVibe\m/"]
+                with smtplib.SMTP(smtp_server, smtp_port) as server:
+                    server.starttls()
+                    server.login(smtp_username, smtp_password)
+                    server.sendmail(gmail_user, email, message.as_string())
+                st.success("Email sent successfully!")
+            except Exception as e:
+                st.error(f"Error sending email: {e}")
 app()

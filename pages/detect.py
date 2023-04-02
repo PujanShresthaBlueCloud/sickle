@@ -16,7 +16,7 @@ helper.local_css(settings.CSS)
 # Using custom js
 helper.local_js(settings.JS)
 
-st.title("Sickle Cell Detection Using YOLOV8")
+st.title("Sickle Cell Detection")
 
 try:
     dirpath_locator = settings.DETECT_LOCATOR
