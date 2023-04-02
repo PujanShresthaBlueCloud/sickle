@@ -45,11 +45,6 @@ template = """
         <td>Date of Test:</td>
         <td style="text-align: left;">{}</td>
       </tr>
-      <tr>
-        <td>Email:</td>
-        <td style="text-align: left;">{}</td>
-        <td colspan="2"></td>
-      </tr>
       <tr style="text-align: left;">
         <th colspan="4"></th>
       </tr>
@@ -78,10 +73,6 @@ with col1:
   first_name = st.text_input("First name")
   age = st.number_input("Age", min_value=0, max_value=120)
   address = st.text_input("Address")
-  email_regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
-  email = st.text_input("Email")
-  if not re.match(email_regex, email):
-      st.error("Please enter a valid email address")
 
 with col2:
   last_name = st.text_input("Last name")
@@ -89,9 +80,7 @@ with col2:
   date_of_test = st.date_input("Date of Test")
 
 report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
-html = template.format(first_name, last_name, age, sex, address, email, date_of_test)
-
-generate_report = st.button("Generate Report")
+html = template.format(first_name, last_name, age, sex, address, date_of_test)
 
 # Define Streamlit app
 def app():
@@ -103,6 +92,7 @@ def app():
     # date_of_test = st.date_input("Date of Test")
     
     # Define submit button
+    generate_report = st.button("Generate Report")
     if(generate_report):
         # Generate report HTML using input data
         # Convert HTML to PDF
@@ -118,12 +108,19 @@ def app():
                 mime="application/pdf"
             )
 
+
+email_regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+
+with st.form(key='my_form'):
+  email = st.text_input("Email")
+  submit_button = st.form_submit_button(label='Submit')
+
 def send_email():
   # Define email button
     if st.button("Send Report by Email"):
         # Define email message
         message = MIMEMultipart()
-        # message['To'] = email
+        message['To'] = email
         message['Subject'] = 'Sickle cell detection report'
 
         # Add some text to the message body
@@ -154,9 +151,10 @@ def send_email():
         except Exception as e:
             st.error(f"Error sending email: {e}")
 
-if(email and generate_report):
-  send_email()
-else:
-  st.write("Please enter patient email address to send report via email")
 app()
+if submit_button:
+  if not re.match(email_regex, email):
+      st.error("Please enter a valid email address")
+  else:
+    send_email()
 
