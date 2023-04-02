@@ -151,7 +151,7 @@ def send_email():
         except Exception as e:
             st.error(f"Error sending email: {e}")
 
-if(email):
+if(email and st.button("Generate Report")):
   send_email()
 else:
   st.write("Please enter patient email address to send report via email")
