@@ -123,8 +123,10 @@ def app():
       if submit_button:
         if not re.match(email_regex, email):
           st.error("Please enter a valid email address")
+          st.write("not match")
         else:
           # Define email message
+          st.write("inside else")
           message = MIMEMultipart()
           message['To'] = email
           message['Subject'] = 'Sickle cell detection report'
