@@ -87,7 +87,7 @@ if(first_name != '' and last_name != ''):
   html = template.format(first_name, last_name, age, sex, address, date_of_test)
 else:
    html=''
-email_flag = False
+
 # Define Streamlit app
 def app():
     # Define form inputs
@@ -97,23 +97,20 @@ def app():
     # sex = st.selectbox("Sex", ["Male", "Female", "Other"])
     # date_of_test = st.date_input("Date of Test")
     # Define submit button
-    if st.button("Generate Report"):
-        # Generate report HTML using input data
-        # Convert HTML to PDF
-        # report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
-        pdfkit.from_string(html, report)
-        st.markdown(html, unsafe_allow_html=True)
-        email_flag=True 
-        time.sleep(0.1)
-        # Define download button
-        with open(report, 'rb') as f:
-            st.download_button(
-                label="Download Report",
-                data=f.read(),
-                file_name=report,
-                mime="application/pdf"
-            )
-        return email_flag
+    # Generate report HTML using input data
+    # Convert HTML to PDF
+    # report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
+    pdfkit.from_string(html, report)
+    st.markdown(html, unsafe_allow_html=True)
+    time.sleep(5)
+    # Define download button
+    with open(report, 'rb') as f:
+        st.download_button(
+            label="Download Report",
+            data=f.read(),
+            file_name=report,
+            mime="application/pdf"
+        )
 
 def send_email():
 # Define email button
@@ -158,9 +155,15 @@ def send_email():
 
         except Exception as e:
             st.error(f"Error sending email: {e}")
-if(html != ''):
-   app()
-else:
-   st.write("html false")
-if(email_flag == True):
-   st.write("email flag true")
+
+
+def main():
+  if st.button("Generate Report"):
+    # Run first function and display results in placeholder
+    with st.empty():
+        app()
+        # Once first function is complete, run second function
+        send_email()
+
+main()
+   
