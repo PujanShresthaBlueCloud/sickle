@@ -104,7 +104,7 @@ def app():
     # Define submit button
     if st.button("Generate Report"):
         # Generate report HTML using input data
-        html = template.format(first_name, last_name, email, age, sex, date_of_test)
+        html = template.format(first_name, last_name, age, sex, date_of_test)
         # Convert HTML to PDF
         pdfkit.from_string(html, 'report.pdf')
 
