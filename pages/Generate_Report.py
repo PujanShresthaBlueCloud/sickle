@@ -72,11 +72,6 @@ def app():
     age = st.number_input("Age", min_value=0, max_value=120)
     sex = st.selectbox("Sex", ["Male", "Female", "Other"])
     date_of_test = st.date_input("Date of Test")
-
-    st.write(name)
-    st.write(age)
-    st.write(sex)
-    st.write(date_of_test)
     
     # Define submit button
     if st.button("Generate Report"):
