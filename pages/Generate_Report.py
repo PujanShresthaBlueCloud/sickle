@@ -117,7 +117,7 @@ def app():
         # Convert HTML to PDF
         # report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
         pdfkit.from_string(html, report)
-
+        st.markdown(html, unsafe_allow_html=True)
         # Define download button
         with open(report, 'rb') as f:
             st.download_button(
@@ -126,8 +126,7 @@ def app():
                 file_name=report,
                 mime="application/pdf"
             )
-        st.markdown(html, unsafe_allow_html=True)
-        
+        send_email()        
 
 def send_email():
   # Define email button
@@ -180,4 +179,3 @@ def send_email():
         except Exception as e:
             st.error(f"Error sending email: {e}")
 app()
-send_email()
