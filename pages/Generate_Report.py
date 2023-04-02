@@ -89,7 +89,7 @@ else:
    html=''
 
 # Define Streamlit app
-def app():
+def app(report):
     # Define form inputs
     # first_name = st.text_input("First name")
     # last_name = st.text_input("Last name")
@@ -97,11 +97,7 @@ def app():
     # sex = st.selectbox("Sex", ["Male", "Female", "Other"])
     # date_of_test = st.date_input("Date of Test")
     # Define submit button
-    if st.button("Generate Report"):
-      # Generate report HTML using input data
-      # Convert HTML to PDF
-      # report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
-      pdfkit.from_string(html, report)
+
       # Define download button
       with open(report, 'rb') as f:
           st.download_button(
@@ -158,4 +154,6 @@ def send_email():
 
 if(html != ''):
   st.markdown(html, unsafe_allow_html=True) 
-  app()
+  if st.button("Generate Report"):
+    pdfkit.from_string(html, report)
+  app(report)
