@@ -5,6 +5,12 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import helper
 
+# Using custom css
+helper.local_css(settings.CSS)
+
+# Using custom js
+helper.local_js(settings.JS)
+
 # Define Streamlit app title
 st.set_page_config(page_title="Sickle Cell Detection Report", page_icon=":microscope:")
 
@@ -16,17 +22,6 @@ gmail_user = 'pujan_sth@yahoo.com'
 template = """
 <html>
   <head>
-    <style>
-      table, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
-        padding: 5px;
-      }
-      th {
-        background-color: #e6e6e6;
-      }
-    </style>
-  </head>
   <body>
     <h1>Sickle Cell Detection Report</h1>
     <table>
