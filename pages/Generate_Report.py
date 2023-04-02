@@ -17,17 +17,13 @@ helper.local_js(settings.JS)
 # Define Streamlit app title
 # st.set_page_config(page_title="Sickle Cell Detection Report", page_icon=":microscope:")
 st.header("Sickle Cell Detection Report")
-# Define email credentials
-gmail_user = 'pujan_sth@yahoo.com'
-# gmail_password = '[Insert Password]'
 
 # Define HTML template for report
 template = """
 <html>
-  <head>
   <body>
     <h1>Sickle Cell Detection Report</h1>
-    <table>
+    <table class="report">
       <tr>
         <th>Patient Information:</th>
         <td></td>
@@ -89,15 +85,26 @@ send_email="""
   </body>
 </html>
 """
-first_name = st.text_input("First name")
-last_name = st.text_input("Last name")
-age = st.number_input("Age", min_value=0, max_value=120)
-sex = st.selectbox("Sex", ["Male", "Female", "Other"])
-address = st.text_input("Address")
-date_of_test = st.date_input("Date of Test")
+col1, col2 = st.columns(2)
+
+with col1:
+  first_name = st.text_input("First name")
+  age = st.number_input("Age", min_value=0, max_value=120)
+  address = st.text_input("Address")
+
+
+    
+
+with col2:
+  last_name = st.text_input("Last name")
+  sex = st.selectbox("Sex", ["Male", "Female", "Other"])
+  date_of_test = st.date_input("Date of Test")
+
 report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
 html = template.format(first_name, last_name, age, sex, address, date_of_test)
-st.write(html)
+st.markdown("""
+    {html}
+""")
 # Define Streamlit app
 def app():
     # Define form inputs
