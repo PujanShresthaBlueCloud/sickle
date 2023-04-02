@@ -7,6 +7,7 @@ from email.mime.application import MIMEApplication
 import re
 import helper
 import settings
+import time
 
 # Using custom css
 helper.local_css(settings.CSS)
@@ -103,7 +104,7 @@ def app():
         pdfkit.from_string(html, report)
         st.markdown(html, unsafe_allow_html=True)
         email_flag=True 
-
+        time.sleep(0.1)
         # Define download button
         with open(report, 'rb') as f:
             st.download_button(
