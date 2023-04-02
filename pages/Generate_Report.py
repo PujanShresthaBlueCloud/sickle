@@ -122,26 +122,26 @@ def send_email():
 
     if st.button("Send Report by Email"):
         # Define email message
-        message = MIMEMultipart()
-        message['From'] = gmail_user
-        message['To'] = email
-        message['Subject'] = subject
+        # message = MIMEMultipart()
+        # message['From'] = gmail_user
+        # message['To'] = email
+        # message['Subject'] = subject
         # message['body'] = html
 
 
         # Add some text to the message body
-        body = "This is an example email."
-        message.attach(MIMEText(body, "plain"))
+        # body = "This is an example email."
+        # message.attach(MIMEText(body, "plain"))
 
-        # Attach a PDF file to the message
-        with open("report.pdf", "rb") as file:
-            attachment = MIMEApplication(file.read(), _subtype="pdf")
-            attachment.add_header(
-                "Content-Disposition",
-                "attachment",
-                filename="report.pdf"
-            )
-            message.attach(attachment)
+        # # Attach a PDF file to the message
+        # with open("report.pdf", "rb") as file:
+        #     attachment = MIMEApplication(file.read(), _subtype="pdf")
+        #     attachment.add_header(
+        #         "Content-Disposition",
+        #         "attachment",
+        #         filename="report.pdf"
+        #     )
+        #     message.attach(attachment)
 
         # Send the message
         try:
@@ -156,12 +156,12 @@ def send_email():
             #     server.login(smtp_username, smtp_password)
             #     server.sendmail(gmail_user, email, message.as_string())
             # st.success("Email sent successfully!")
-
+            message="example of scd "
             connection = s.SMTP('smtp.gmail.com', 587)
             connection.starttls()
             connection.login(smtp_username, smtp_password)
             connection.sendmail(smtp_username, email, message)
-            connection.quite()
+            connection.quit()
             st.success("Email sent successfully!")
 
         except Exception as e:
