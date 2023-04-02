@@ -39,10 +39,6 @@ template = """
         <td>{}</td>
       </tr>
       <tr>
-        <td>Email:</td>
-        <td>{}</td>
-      </tr>
-      <tr>
         <td>Age:</td>
         <td>{}</td>
       </tr>
