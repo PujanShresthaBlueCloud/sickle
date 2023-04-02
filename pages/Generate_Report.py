@@ -51,18 +51,22 @@ template = """
       <tr>
         <td>Email:</td>
         <td style="text-align: left;">{}</td>
-        <td colspan="3"></td>
+        <td colspan="2"></td>
       </tr>
       <tr style="text-align: left;">
-        <th>Test Results:</th>
-        <td colspan="3"></td>
+        <th colspan="4"></th>
+      </tr>
+      <tr style="text-align: left;">
+        <th colspan="4">Test Results:</th>
+      </tr>
+      <tr style="text-align: left;">
+        <th colspan="4"></th>
       </tr>
       <tr style="text-align: left;">
         <td colspan="4">The results of your recent laboratory tests indicate that you have sickle cell disease. Sickle cell disease is a genetic blood disorder that affects the shape of red blood cells. In people with sickle cell disease, the red blood cells are shaped like crescents or sickles instead of round discs.</td>
       </tr>
       <tr style="text-align: left;">
-        <th>Management and Treatment:</th>
-        <td colspan="3"></td>
+        <th colspan="4">Management and Treatment:</th>
       </tr>
       <tr style="text-align: left;">
         <td colspan="4">There is currently no cure for sickle cell disease, but there are treatments that can help manage symptoms and prevent complications. Treatment options include pain management, antibiotics to prevent infections, blood transfusions, and bone marrow transplants in severe cases.</td>
@@ -146,5 +150,9 @@ def send_email():
 
         except Exception as e:
             st.error(f"Error sending email: {e}")
+
 app()
-send_email() 
+if(email):
+  send_email()
+else:
+  st.write("Please enter patient email address to send email")
