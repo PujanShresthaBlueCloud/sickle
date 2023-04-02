@@ -104,14 +104,15 @@ def app():
         # Generate report HTML using input data
         html = template.format(first_name, last_name, age, sex, date_of_test)
         # Convert HTML to PDF
-        pdfkit.from_string(html, 'report.pdf')
+        report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
+        pdfkit.from_string(html, report)
 
         # Define download button
-        with open('report.pdf', 'rb') as f:
+        with open(report, 'rb') as f:
             st.download_button(
                 label="Download Report",
                 data=f.read(),
-                file_name="report.pdf",
+                file_name=report,
                 mime="application/pdf"
             )
 
