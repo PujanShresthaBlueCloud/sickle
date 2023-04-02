@@ -13,7 +13,7 @@ helper.local_css(settings.CSS)
 helper.local_js(settings.JS)
 
 # Define Streamlit app title
-st.set_page_config(page_title="Sickle Cell Detection Report", page_icon=":microscope:")
+# st.set_page_config(page_title="Sickle Cell Detection Report", page_icon=":microscope:")
 
 # Define email credentials
 gmail_user = 'pujan_sth@yahoo.com'
