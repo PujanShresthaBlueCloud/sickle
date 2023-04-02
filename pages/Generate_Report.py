@@ -80,6 +80,8 @@ with col2:
   date_of_test = st.date_input("Date of Test")
 
 report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
+st.write(first_name)
+st.write(last_name)
 html = template.format(first_name, last_name, age, sex, address, date_of_test)
 
 # Define Streamlit app
