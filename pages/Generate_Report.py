@@ -156,4 +156,5 @@ if(html != ''):
   st.markdown(html, unsafe_allow_html=True) 
   if st.button("Generate Report"):
     pdfkit.from_string(html, report)
-  app(report)
+    app(report)
+  send_email()
