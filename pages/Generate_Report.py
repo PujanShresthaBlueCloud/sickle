@@ -4,7 +4,7 @@ import smtplib as s
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication
-
+import re
 import helper
 import settings
 
@@ -81,7 +81,10 @@ with col1:
   first_name = st.text_input("First name")
   age = st.number_input("Age", min_value=0, max_value=120)
   address = st.text_input("Address")
+  email_regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
   email = st.text_input("Email")
+  if not re.match(email_regex, email):
+      st.error("Please enter a valid email address")
 
 with col2:
   last_name = st.text_input("Last name")
@@ -151,7 +154,7 @@ def send_email():
         except Exception as e:
             st.error(f"Error sending email: {e}")
 
-if(email and st.button("Generate Report")):
+if(email):
   send_email()
 else:
   st.write("Please enter patient email address to send report via email")
