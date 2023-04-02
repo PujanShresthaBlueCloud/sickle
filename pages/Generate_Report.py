@@ -31,40 +31,40 @@ template = """
       <tr>
         <th>Patient Information:</th>
         <td></td>
+        <td></td>
+        <td></td>
       </tr>
       <tr>
         <td>First name:</td>
         <td>{}</td>
-      </tr>
-      <tr>
         <td>Last name:</td>
         <td>{}</td>
       </tr>
       <tr>
         <td>Age:</td>
         <td>{}</td>
-      </tr>
-      <tr>
         <td>Sex:</td>
         <td>{}</td>
       </tr>
       <tr>
+        <td>Address:</td>
+        <td>{}</td>
         <td>Date of Test:</td>
         <td>{}</td>
       </tr>
       <tr>
         <th>Test Results:</th>
-        <td></td>
+        <td colspan="3"></td>
       </tr>
       <tr>
-        <td colspan="2">The results of your recent laboratory tests indicate that you have sickle cell disease. Sickle cell disease is a genetic blood disorder that affects the shape of red blood cells. In people with sickle cell disease, the red blood cells are shaped like crescents or sickles instead of round discs.</td>
+        <td colspan="4">The results of your recent laboratory tests indicate that you have sickle cell disease. Sickle cell disease is a genetic blood disorder that affects the shape of red blood cells. In people with sickle cell disease, the red blood cells are shaped like crescents or sickles instead of round discs.</td>
       </tr>
       <tr>
         <th>Management and Treatment:</th>
-        <td></td>
+        <td colspan="3"></td>
       </tr>
       <tr>
-        <td colspan="2">There is currently no cure for sickle cell disease, but there are treatments that can help manage symptoms and prevent complications. Treatment options include pain management, antibiotics to prevent infections, blood transfusions, and bone marrow transplants in severe cases.</td>
+        <td colspan="4">There is currently no cure for sickle cell disease, but there are treatments that can help manage symptoms and prevent complications. Treatment options include pain management, antibiotics to prevent infections, blood transfusions, and bone marrow transplants in severe cases.</td>
       </tr>
     </table>
   </body>
@@ -93,10 +93,11 @@ first_name = st.text_input("First name")
 last_name = st.text_input("Last name")
 age = st.number_input("Age", min_value=0, max_value=120)
 sex = st.selectbox("Sex", ["Male", "Female", "Other"])
+address = st.text_input("Address")
 date_of_test = st.date_input("Date of Test")
 report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
-html = template.format(first_name, last_name, age, sex, date_of_test)
-
+html = template.format(first_name, last_name, age, sex, address, date_of_test)
+st.write(html)
 # Define Streamlit app
 def app():
     # Define form inputs
@@ -132,7 +133,7 @@ def send_email():
         message = MIMEMultipart()
         # message['From'] = gmail_user
         # message['To'] = email
-        # message['Subject'] = subject
+        message['Subject'] = subject
         # message['body'] = html
 
 
