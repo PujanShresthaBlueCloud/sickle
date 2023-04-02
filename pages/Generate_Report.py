@@ -100,12 +100,12 @@ def app(report):
 
       # Define download button
       with open(report, 'rb') as f:
-          st.download_button(
+          # st.download_button(
               label="Download Report",
               data=f.read(),
               file_name=report,
               mime="application/pdf"
-          )
+          # )
 
 def send_email():
 # Define email button
