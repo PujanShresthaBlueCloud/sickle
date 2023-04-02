@@ -95,6 +95,7 @@ age = st.number_input("Age", min_value=0, max_value=120)
 sex = st.selectbox("Sex", ["Male", "Female", "Other"])
 date_of_test = st.date_input("Date of Test")
 report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
+html = template.format(first_name, last_name, age, sex, date_of_test)
 
 # Define Streamlit app
 def app():
@@ -108,9 +109,8 @@ def app():
     # Define submit button
     if st.button("Generate Report"):
         # Generate report HTML using input data
-        html = template.format(first_name, last_name, age, sex, date_of_test)
         # Convert HTML to PDF
-        report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
+        # report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
         pdfkit.from_string(html, report)
 
         # Define download button
@@ -139,7 +139,7 @@ def send_email():
         # Add some text to the message body
         body = f"Hi {first_name}, please find your report in attachment."
         message.attach(MIMEText(body, "plain"))
-
+        pdfkit.from_string(html, report)
         # Attach a PDF file to the message
         with open(report, "rb") as file:
             attachment = MIMEApplication(file.read(), _subtype="pdf")
