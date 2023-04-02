@@ -99,11 +99,11 @@ report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
 # Define Streamlit app
 def app():
     # Define form inputs
-    first_name = st.text_input("First name")
-    last_name = st.text_input("Last name")
-    age = st.number_input("Age", min_value=0, max_value=120)
-    sex = st.selectbox("Sex", ["Male", "Female", "Other"])
-    date_of_test = st.date_input("Date of Test")
+    # first_name = st.text_input("First name")
+    # last_name = st.text_input("Last name")
+    # age = st.number_input("Age", min_value=0, max_value=120)
+    # sex = st.selectbox("Sex", ["Male", "Female", "Other"])
+    # date_of_test = st.date_input("Date of Test")
     
     # Define submit button
     if st.button("Generate Report"):
