@@ -24,42 +24,42 @@ template = """
   <body>
     <h1>Sickle Cell Detection Report</h1>
     <table class="report">
-      <tr>
+      <tr style="text-align: left;">
         <th>Patient Information:</th>
         <td></td>
         <td></td>
         <td></td>
       </tr>
-      <tr>
+      <tr style="text-align: left;">
         <td>First name:</td>
         <td>{}</td>
         <td>Last name:</td>
         <td>{}</td>
       </tr>
-      <tr>
+      <tr style="text-align: left;">
         <td>Age:</td>
         <td>{}</td>
         <td>Sex:</td>
         <td>{}</td>
       </tr>
-      <tr>
+      <tr style="text-align: left;">
         <td>Address:</td>
         <td>{}</td>
         <td>Date of Test:</td>
         <td>{}</td>
       </tr>
-      <tr>
+      <tr style="text-align: left;">
         <th>Test Results:</th>
         <td colspan="3"></td>
       </tr>
-      <tr>
+      <tr style="text-align: left;">
         <td colspan="4">The results of your recent laboratory tests indicate that you have sickle cell disease. Sickle cell disease is a genetic blood disorder that affects the shape of red blood cells. In people with sickle cell disease, the red blood cells are shaped like crescents or sickles instead of round discs.</td>
       </tr>
-      <tr>
+      <tr style="text-align: left;">
         <th>Management and Treatment:</th>
         <td colspan="3"></td>
       </tr>
-      <tr>
+      <tr style="text-align: left;">
         <td colspan="4">There is currently no cure for sickle cell disease, but there are treatments that can help manage symptoms and prevent complications. Treatment options include pain management, antibiotics to prevent infections, blood transfusions, and bone marrow transplants in severe cases.</td>
       </tr>
     </table>
@@ -91,9 +91,6 @@ with col1:
   first_name = st.text_input("First name")
   age = st.number_input("Age", min_value=0, max_value=120)
   address = st.text_input("Address")
-
-
-    
 
 with col2:
   last_name = st.text_input("Last name")
