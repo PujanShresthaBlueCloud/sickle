@@ -109,13 +109,15 @@ def app():
             )
 
 
-email_regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
-
-with st.form(key='my_form'):
-  email = st.text_input("Email")
-  submit_button = st.form_submit_button(label='Submit')
-
 def send_email():
+  email_regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+  with st.form(key='my_form'):
+    email = st.text_input("Email")
+    submit_button = st.form_submit_button(label='Submit')
+  if submit_button:
+    if not re.match(email_regex, email):
+      st.error("Please enter a valid email address")
+  else:
   # Define email button
     if st.button("Send Report by Email"):
         # Define email message
@@ -153,8 +155,7 @@ def send_email():
 
 app()
 if submit_button:
-  if not re.match(email_regex, email):
-      st.error("Please enter a valid email address")
+
   else:
     send_email()
 
