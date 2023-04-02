@@ -97,63 +97,67 @@ def app():
     # sex = st.selectbox("Sex", ["Male", "Female", "Other"])
     # date_of_test = st.date_input("Date of Test")
     # Define submit button
-    # Generate report HTML using input data
-    # Convert HTML to PDF
-    # report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
-    pdfkit.from_string(html, report)
-    st.markdown(html, unsafe_allow_html=True)
-    # Define download button
-    with open(report, 'rb') as f:
-        st.download_button(
-            label="Download Report",
-            data=f.read(),
-            file_name=report,
-            mime="application/pdf"
-        )
+    if st.button("Generate Report"):
+      # Generate report HTML using input data
+      # Convert HTML to PDF
+      # report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
+      pdfkit.from_string(html, report)
+      st.markdown(html, unsafe_allow_html=True)
+
+      # Define download button
+      with open(report, 'rb') as f:
+          st.download_button(
+              label="Download Report",
+              data=f.read(),
+              file_name=report,
+              mime="application/pdf"
+          )
 
 def send_email():
 # Define email button
   if st.button("Send Report by Email"):
     email_regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
-    email = st.text_input("Email")
-    if not re.match(email_regex, email):
-      st.error("Please enter a valid email address")
-    else:
-      # Define email message
-      message = MIMEMultipart()
-      message['To'] = email
-      message['Subject'] = 'Sickle cell detection report'
+    with st.form(key='my_form'):
+      email = st.text_input("Email")
+      submit_button = st.form_submit_button(label='Send')
+    if submit_button:
+      if not re.match(email_regex, email):
+        st.error("Please enter a valid email address")
+      else:
+        # Define email message
+        message = MIMEMultipart()
+        message['To'] = email
+        message['Subject'] = 'Sickle cell detection report'
 
-      # Add some text to the message body
-      body = f"Hi {first_name}, please find your report in attachment."
-      message.attach(MIMEText(body, "plain"))
-      pdfkit.from_string(html, report)
-      # Attach a PDF file to the message
-      with open(report, "rb") as file:
-          attachment = MIMEApplication(file.read(), _subtype="pdf")
-          attachment.add_header(
-              "Content-Disposition",
-              "attachment",
-              filename=report
-          )
-          message.attach(attachment)
+        # Add some text to the message body
+        body = f"Hi {first_name}, please find your report in attachment."
+        message.attach(MIMEText(body, "plain"))
+        pdfkit.from_string(html, report)
+        # Attach a PDF file to the message
+        with open(report, "rb") as file:
+            attachment = MIMEApplication(file.read(), _subtype="pdf")
+            attachment.add_header(
+                "Content-Disposition",
+                "attachment",
+                filename=report
+            )
+            message.attach(attachment)
 
-      # Send the message
-      try:
-          smtp_username = "pujansth16@gmail.com"
-          smtp_password = "bmngcpaoruhencsd"
-          connection = s.SMTP('smtp.gmail.com', 587)
-          connection.starttls()
-          connection.login(smtp_username, smtp_password)
-          connection.sendmail(smtp_username, email, message.as_string())
-          connection.quit()
-          st.success("Email sent successfully!")
+        # Send the message
+        try:
+            smtp_username = "pujansth16@gmail.com"
+            smtp_password = "bmngcpaoruhencsd"
+            connection = s.SMTP('smtp.gmail.com', 587)
+            connection.starttls()
+            connection.login(smtp_username, smtp_password)
+            connection.sendmail(smtp_username, email, message.as_string())
+            connection.quit()
+            st.success("Email sent successfully!")
 
-      except Exception as e:
-          st.error(f"Error sending email: {e}")
+        except Exception as e:
+            st.error(f"Error sending email: {e}")
+
 
 if(html != ''):
    app()
-   send_email()
-
-   
+   send_email()   
