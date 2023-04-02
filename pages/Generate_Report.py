@@ -99,7 +99,6 @@ def app():
         # report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
         pdfkit.from_string(html, report)
         st.markdown(html, unsafe_allow_html=True)
-        generate_report.append("True")
         # Define download button
         with open(report, 'rb') as f:
             st.download_button(
@@ -155,6 +154,6 @@ def send_email():
             st.error(f"Error sending email: {e}")
 
 app()
-
-send_email()
+if(report):
+  send_email()
 
