@@ -73,12 +73,30 @@ template = """
 </html>
 """
 
+send_email="""
+<html>
+  <head>
+  <body>
+    <h1>Sickle Cell Detection Report</h1>
+    <table>
+      <tr>
+        <th>Email</th>
+        <td>{}</td>
+      </tr>
+      <tr>
+        <td>Subject</td>
+        <td>{}</td>
+      </tr>
+    </table>
+  </body>
+</html>
+"""
+
 # Define Streamlit app
 def app():
     # Define form inputs
     first_name = st.text_input("First name")
     last_name = st.text_input("Last name")
-    email = st.text_input("Email")
     age = st.number_input("Age", min_value=0, max_value=120)
     sex = st.selectbox("Sex", ["Male", "Female", "Other"])
     date_of_test = st.date_input("Date of Test")
@@ -101,6 +119,8 @@ def app():
 
         # Define email button
         subject = st.input_text("Subject")
+        email = st.text_input("Email")
+
         if st.button("Send Report by Email"):
             # Define email message
             message = MIMEMultipart()
