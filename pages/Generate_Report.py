@@ -89,6 +89,12 @@ send_email="""
   </body>
 </html>
 """
+first_name = st.text_input("First name")
+last_name = st.text_input("Last name")
+age = st.number_input("Age", min_value=0, max_value=120)
+sex = st.selectbox("Sex", ["Male", "Female", "Other"])
+date_of_test = st.date_input("Date of Test")
+report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
 
 # Define Streamlit app
 def app():
@@ -123,7 +129,7 @@ def send_email():
 
     if st.button("Send Report by Email"):
         # Define email message
-        # message = MIMEMultipart()
+        message = MIMEMultipart()
         # message['From'] = gmail_user
         # message['To'] = email
         # message['Subject'] = subject
@@ -131,18 +137,18 @@ def send_email():
 
 
         # Add some text to the message body
-        # body = "This is an example email."
-        # message.attach(MIMEText(body, "plain"))
+        body = f"Hi {first_name}, please find your report in attachment."
+        message.attach(MIMEText(body, "plain"))
 
-        # # Attach a PDF file to the message
-        # with open("report.pdf", "rb") as file:
-        #     attachment = MIMEApplication(file.read(), _subtype="pdf")
-        #     attachment.add_header(
-        #         "Content-Disposition",
-        #         "attachment",
-        #         filename="report.pdf"
-        #     )
-        #     message.attach(attachment)
+        # Attach a PDF file to the message
+        with open(report, "rb") as file:
+            attachment = MIMEApplication(file.read(), _subtype="pdf")
+            attachment.add_header(
+                "Content-Disposition",
+                "attachment",
+                filename=report
+            )
+            message.attach(attachment)
 
         # Send the message
         try:
@@ -157,7 +163,6 @@ def send_email():
             #     server.login(smtp_username, smtp_password)
             #     server.sendmail(gmail_user, email, message.as_string())
             # st.success("Email sent successfully!")
-            message="example of scd "
             connection = s.SMTP('smtp.gmail.com', 587)
             connection.starttls()
             connection.login(smtp_username, smtp_password)
