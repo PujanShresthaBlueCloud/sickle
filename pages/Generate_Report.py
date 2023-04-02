@@ -83,7 +83,6 @@ report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
 html = template.format(first_name, last_name, age, sex, address, date_of_test)
 
 # Define Streamlit app
-generate_report=[]
 def app():
     # Define form inputs
     # first_name = st.text_input("First name")
@@ -152,8 +151,7 @@ def send_email():
 
         except Exception as e:
             st.error(f"Error sending email: {e}")
-
-app()
 if(html):
-  send_email()
-
+   st.write("html true")
+else:
+   st.write("html false")
