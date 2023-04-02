@@ -82,7 +82,10 @@ with col2:
 report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
 st.write(first_name)
 st.write(last_name)
-html = template.format(first_name, last_name, age, sex, address, date_of_test)
+if(first_name != '' and last_name != ''):
+  html = template.format(first_name, last_name, age, sex, address, date_of_test)
+else:
+   html=''
 
 # Define Streamlit app
 def app():
@@ -153,7 +156,7 @@ def send_email():
 
         except Exception as e:
             st.error(f"Error sending email: {e}")
-if(html):
+if(html != ''):
    st.write("html true")
 else:
    st.write("html false")
