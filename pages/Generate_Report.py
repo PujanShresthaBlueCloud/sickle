@@ -166,7 +166,7 @@ def send_email():
             connection = s.SMTP('smtp.gmail.com', 587)
             connection.starttls()
             connection.login(smtp_username, smtp_password)
-            connection.sendmail(smtp_username, email, message)
+            connection.sendmail(smtp_username, email, message.as_string())
             connection.quit()
             st.success("Email sent successfully!")
 
