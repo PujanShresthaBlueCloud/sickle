@@ -31,9 +31,9 @@ template = """
         <td></td>
       </tr>
       <tr style="text-align: left;">
-        <td>First name:</td>
+        <td width="20%">First name:</td>
         <td style="text-align: left;">{}</td>
-        <td>Last name:</td>
+        <td width="20%">Last name:</td>
         <td style="text-align: left;">{}</td>
       </tr>
       <tr style="text-align: left;">
