@@ -134,12 +134,12 @@ def send_email():
         message.attach(MIMEText(body, "plain"))
 
         # Attach a PDF file to the message
-        with open("example.pdf", "rb") as file:
+        with open("report.pdf", "rb") as file:
             attachment = MIMEApplication(file.read(), _subtype="pdf")
             attachment.add_header(
                 "Content-Disposition",
                 "attachment",
-                filename="example.pdf"
+                filename="report.pdf"
             )
             message.attach(attachment)
 
