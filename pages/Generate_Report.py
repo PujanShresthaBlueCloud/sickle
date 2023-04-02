@@ -154,6 +154,6 @@ def send_email():
             st.error(f"Error sending email: {e}")
 
 app()
-if(report):
+if(html):
   send_email()
 
