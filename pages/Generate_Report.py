@@ -126,7 +126,7 @@ def send_email():
         message['From'] = gmail_user
         message['To'] = email
         message['Subject'] = subject
-        message['body'] = html
+        # message['body'] = html
 
 
         # Add some text to the message body
