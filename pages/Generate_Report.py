@@ -31,7 +31,15 @@ template = """
         <td></td>
       </tr>
       <tr>
-        <td>Name:</td>
+        <td>First name:</td>
+        <td>{}</td>
+      </tr>
+      <tr>
+        <td>Last name:</td>
+        <td>{}</td>
+      </tr>
+      <tr>
+        <td>Email:</td>
         <td>{}</td>
       </tr>
       <tr>
@@ -68,7 +76,9 @@ template = """
 # Define Streamlit app
 def app():
     # Define form inputs
-    name = st.text_input("Name")
+    first_name = st.text_input("First name")
+    last_name = st.text_input("Last name")
+    email = st.text_input("Email")
     age = st.number_input("Age", min_value=0, max_value=120)
     sex = st.selectbox("Sex", ["Male", "Female", "Other"])
     date_of_test = st.date_input("Date of Test")
@@ -76,8 +86,7 @@ def app():
     # Define submit button
     if st.button("Generate Report"):
         # Generate report HTML using input data
-        html = template.format(name, age, sex, date_of_test)
-        st.write(html)
+        html = template.format(first_name, last_name, email, age, sex, date_of_test)
         # Convert HTML to PDF
         pdfkit.from_string(html, 'report.pdf')
 
@@ -91,10 +100,12 @@ def app():
             )
 
         # Define email button
+        subject = st.input_text("Subject")
         if st.button("Send Report by Email"):
             # Define email message
             message = MIMEMultipart()
             message['From'] = gmail_user
-            message['To'] = st.text_input("Patient Email Address")
-            message['Subject'] = st.text_input("Subject")
+            message['To'] = email
+            message['Subject'] = subject
+            message['body'] = html
 app()
