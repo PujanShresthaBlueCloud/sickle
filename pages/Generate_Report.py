@@ -102,9 +102,7 @@ with col2:
 
 report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
 html = template.format(first_name, last_name, age, sex, address, date_of_test)
-st.markdown("""
-    {html}
-""")
+st.markdown(template, unsafe_allow_html=True)
 # Define Streamlit app
 def app():
     # Define form inputs
