@@ -103,15 +103,18 @@ def app():
       # report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
       pdfkit.from_string(html, report)
       st.markdown(html, unsafe_allow_html=True)
+      download_pdf()
+      send_email()
 
-      # Define download button
-      with open(report, 'rb') as f:
-          st.download_button(
-              label="Download Report",
-              data=f.read(),
-              file_name=report,
-              mime="application/pdf"
-          )
+def download_pdf():
+  # Define download button
+  with open(report, 'rb') as f:
+      st.download_button(
+          label="Download Report",
+          data=f.read(),
+          file_name=report,
+          mime="application/pdf"
+      )
 
 def send_email():
 # Define email button
@@ -160,4 +163,3 @@ def send_email():
 
 if(html != ''):
    app()
-   send_email()   
