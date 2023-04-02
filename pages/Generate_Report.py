@@ -86,7 +86,7 @@ if(first_name != '' and last_name != ''):
   html = template.format(first_name, last_name, age, sex, address, date_of_test)
 else:
    html=''
-
+email_flag = False
 # Define Streamlit app
 def app():
     # Define form inputs
@@ -95,7 +95,7 @@ def app():
     # age = st.number_input("Age", min_value=0, max_value=120)
     # sex = st.selectbox("Sex", ["Male", "Female", "Other"])
     # date_of_test = st.date_input("Date of Test")
-    
+    email_flag=True
     # Define submit button
     if st.button("Generate Report"):
         # Generate report HTML using input data
@@ -157,6 +157,8 @@ def send_email():
         except Exception as e:
             st.error(f"Error sending email: {e}")
 if(html != ''):
-   st.write("html true")
+   app()
 else:
    st.write("html false")
+if(email_flag == True):
+   st.write("email flag true")
