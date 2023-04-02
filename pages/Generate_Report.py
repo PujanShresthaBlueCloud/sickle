@@ -4,6 +4,7 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import helper
+import settings
 
 # Using custom css
 helper.local_css(settings.CSS)
