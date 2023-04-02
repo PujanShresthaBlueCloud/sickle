@@ -110,7 +110,6 @@ def app():
             file_name=report,
             mime="application/pdf"
         )
-    time.sleep(5)
 
 def send_email():
 # Define email button
