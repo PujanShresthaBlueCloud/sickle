@@ -25,10 +25,7 @@ template = """
     <h1>Sickle Cell Detection Report</h1>
     <table class="report">
       <tr style="text-align: left;">
-        <th>Patient Information:</th>
-        <td></td>
-        <td></td>
-        <td></td>
+        <th colspan="4">Patient Information:</th>
       </tr>
       <tr style="text-align: left;">
         <td width="20%">First name:</td>
@@ -93,6 +90,9 @@ with col2:
 
 report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
 html = template.format(first_name, last_name, age, sex, address, email, date_of_test)
+
+generate_report = st.button("Generate Report")
+
 # Define Streamlit app
 def app():
     # Define form inputs
@@ -103,7 +103,7 @@ def app():
     # date_of_test = st.date_input("Date of Test")
     
     # Define submit button
-    if st.button("Generate Report"):
+    if(generate_report):
         # Generate report HTML using input data
         # Convert HTML to PDF
         # report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
@@ -154,7 +154,7 @@ def send_email():
         except Exception as e:
             st.error(f"Error sending email: {e}")
 
-if(email):
+if(email and generate_report):
   send_email()
 else:
   st.write("Please enter patient email address to send report via email")
