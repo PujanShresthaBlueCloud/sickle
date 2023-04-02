@@ -32,21 +32,26 @@ template = """
       </tr>
       <tr style="text-align: left;">
         <td>First name:</td>
-        <td>{}</td>
+        <td style="text-align: left;">{}</td>
         <td>Last name:</td>
-        <td>{}</td>
+        <td style="text-align: left;">{}</td>
       </tr>
       <tr style="text-align: left;">
         <td>Age:</td>
-        <td>{}</td>
+        <td style="text-align: left;">{}</td>
         <td>Sex:</td>
-        <td>{}</td>
+        <td style="text-align: left;">{}</td>
       </tr>
       <tr style="text-align: left;">
         <td>Address:</td>
-        <td>{}</td>
+        <td style="text-align: left;">{}</td>
         <td>Date of Test:</td>
-        <td>{}</td>
+        <td style="text-align: left;">{}</td>
+      </tr>
+      <tr>
+        <td>Email:</td>
+        <td style="text-align: left;">{}</td>
+        <td colspan="3"></td>
       </tr>
       <tr style="text-align: left;">
         <th>Test Results:</th>
@@ -66,31 +71,13 @@ template = """
   </body>
 </html>
 """
-
-send_email="""
-<html>
-  <head>
-  <body>
-    <h1>Sickle Cell Detection Report</h1>
-    <table>
-      <tr>
-        <th>Email</th>
-        <td>{}</td>
-      </tr>
-      <tr>
-        <td>Subject</td>
-        <td>{}</td>
-      </tr>
-    </table>
-  </body>
-</html>
-"""
 col1, col2 = st.columns(2)
 
 with col1:
   first_name = st.text_input("First name")
   age = st.number_input("Age", min_value=0, max_value=120)
   address = st.text_input("Address")
+  email = st.text_input("Email")
 
 with col2:
   last_name = st.text_input("Last name")
@@ -98,7 +85,7 @@ with col2:
   date_of_test = st.date_input("Date of Test")
 
 report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
-html = template.format(first_name, last_name, age, sex, address, date_of_test)
+html = template.format(first_name, last_name, age, sex, address, email, date_of_test)
 # Define Streamlit app
 def app():
     # Define form inputs
@@ -123,21 +110,16 @@ def app():
                 file_name=report,
                 mime="application/pdf"
             )
-        send_email()        
 
 def send_email():
   # Define email button
-    subject = st.text_input("Subject")
     email = st.text_input("Email")
 
     if st.button("Send Report by Email"):
         # Define email message
         message = MIMEMultipart()
-        # message['From'] = gmail_user
         # message['To'] = email
-        message['Subject'] = subject
-        # message['body'] = html
-
+        message['Subject'] = 'Sickle cell detection report'
 
         # Add some text to the message body
         body = f"Hi {first_name}, please find your report in attachment."
@@ -155,17 +137,8 @@ def send_email():
 
         # Send the message
         try:
-            # smtp_server = "smtp.gmail.com"
-            # smtp_port = 587
-            # # smtp_username = st.secrets["pujan_sth@yahoo.com"]
             smtp_username = "pujansth16@gmail.com"
-            # # smtp_password = st.secrets["C0smicVibe\m/"]
             smtp_password = "bmngcpaoruhencsd"
-            # with smtplib.SMTP(smtp_server, smtp_port) as server:
-            #     server.starttls()
-            #     server.login(smtp_username, smtp_password)
-            #     server.sendmail(gmail_user, email, message.as_string())
-            # st.success("Email sent successfully!")
             connection = s.SMTP('smtp.gmail.com', 587)
             connection.starttls()
             connection.login(smtp_username, smtp_password)
@@ -176,3 +149,4 @@ def send_email():
         except Exception as e:
             st.error(f"Error sending email: {e}")
 app()
+send_email() 
