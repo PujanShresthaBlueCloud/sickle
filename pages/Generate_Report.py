@@ -104,6 +104,7 @@ def app():
       pdfkit.from_string(html, report)
       st.markdown(html, unsafe_allow_html=True)
       download_pdf()
+      time.sleep(5)
       send_email()
 
 def download_pdf():
