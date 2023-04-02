@@ -114,8 +114,8 @@ def app():
             )
 
         # Define email button
-        subject = st.input_text("Subject")
-        email = st.input_text("Email")
+        subject = st.text_input("Subject")
+        email = st.text_input("Email")
 
         if st.button("Send Report by Email"):
             # Define email message
