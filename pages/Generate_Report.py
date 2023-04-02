@@ -113,8 +113,6 @@ def app():
 
 def send_email():
   # Define email button
-    email = st.text_input("Email")
-
     if st.button("Send Report by Email"):
         # Define email message
         message = MIMEMultipart()
