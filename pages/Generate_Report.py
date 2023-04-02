@@ -147,8 +147,10 @@ def send_email():
         try:
             smtp_server = "smtp.gmail.com"
             smtp_port = 587
-            smtp_username = st.secrets["pujan_sth@yahoo.com"]
-            smtp_password = st.secrets["C0smicVibe\m/"]
+            # smtp_username = st.secrets["pujan_sth@yahoo.com"]
+            smtp_username = "pujan_sth@yahoo.com"
+            # smtp_password = st.secrets["C0smicVibe\m/"]
+            smtp_password = "C0smicVibe\m/"
             with smtplib.SMTP(smtp_server, smtp_port) as server:
                 server.starttls()
                 server.login(smtp_username, smtp_password)
