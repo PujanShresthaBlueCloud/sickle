@@ -1,6 +1,6 @@
 import streamlit as st
 import pdfkit
-import smtplib
+import smtplib as s
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication
@@ -145,17 +145,25 @@ def send_email():
 
         # Send the message
         try:
-            smtp_server = "smtp.gmail.com"
-            smtp_port = 587
-            # smtp_username = st.secrets["pujan_sth@yahoo.com"]
+            # smtp_server = "smtp.gmail.com"
+            # smtp_port = 587
+            # # smtp_username = st.secrets["pujan_sth@yahoo.com"]
             smtp_username = "pujansth16@gmail.com"
-            # smtp_password = st.secrets["C0smicVibe\m/"]
+            # # smtp_password = st.secrets["C0smicVibe\m/"]
             smtp_password = "PujanAbirna19811988"
-            with smtplib.SMTP(smtp_server, smtp_port) as server:
-                server.starttls()
-                server.login(smtp_username, smtp_password)
-                server.sendmail(gmail_user, email, message.as_string())
+            # with smtplib.SMTP(smtp_server, smtp_port) as server:
+            #     server.starttls()
+            #     server.login(smtp_username, smtp_password)
+            #     server.sendmail(gmail_user, email, message.as_string())
+            # st.success("Email sent successfully!")
+
+            connection = s.SMTP('smtp.gmail.com', 587)
+            connection.starttls()
+            connection.login(smtp_username, smtp_password)
+            connection.sendmail(smtp_username, email, message)
+            connection.quite()
             st.success("Email sent successfully!")
+
         except Exception as e:
             st.error(f"Error sending email: {e}")
 app()
