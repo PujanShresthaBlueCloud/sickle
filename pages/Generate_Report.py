@@ -81,15 +81,14 @@ with col2:
   date_of_test = st.date_input("Date of Test")
 
 report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
-st.write(first_name)
-st.write(last_name)
+
 if(first_name != '' and last_name != ''):
   html = template.format(first_name, last_name, age, sex, address, date_of_test)
 else:
    html=''
 
 # Define Streamlit app
-def app(report):
+def app():
     # Define form inputs
     # first_name = st.text_input("First name")
     # last_name = st.text_input("Last name")
@@ -97,15 +96,21 @@ def app(report):
     # sex = st.selectbox("Sex", ["Male", "Female", "Other"])
     # date_of_test = st.date_input("Date of Test")
     # Define submit button
-
+    if st.button("Generate Report"):
+      # Generate report HTML using input data
+      # Convert HTML to PDF
+      # report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
+      pdfkit.from_string(html, report)
+      st.markdown(html, unsafe_allow_html=True)
+      st.session_state.generate_report = 1     # Attribute API
       # Define download button
       with open(report, 'rb') as f:
-          # st.download_button(
+          st.download_button(
               label="Download Report",
               data=f.read(),
               file_name=report,
               mime="application/pdf"
-          # )
+          )
 
 def send_email():
 # Define email button
@@ -153,8 +158,8 @@ def send_email():
 
 
 if(html != ''):
-  st.markdown(html, unsafe_allow_html=True) 
-  if st.button("Generate Report"):
-    pdfkit.from_string(html, report)
-    app(report)
+   app()
+if st.session_state.generate_report == 1:
+  st.write("inside function email")
+  st.session_state.generate_report=0
   send_email()
