@@ -130,6 +130,7 @@ def email_form():
 
 def send_email():
 # Define email button
+  st.write("in send email")
   if st.button("Send Report by Email"):
     email = st.text_input("Email")
     # Define email message
