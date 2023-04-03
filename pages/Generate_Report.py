@@ -131,7 +131,7 @@ def email_form():
 def send_email():
 # Define email button
   st.write("in send email")
-  email = email_form()
+  email = st.text_input("Email")
   st.write(email)
   return
   if email is not None:
