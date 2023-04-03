@@ -87,6 +87,9 @@ if(first_name != '' and last_name != ''):
 else:
    html=''
 
+st.session_state.generate_report=0
+
+
 # Define Streamlit app
 def app():
     # Define form inputs
