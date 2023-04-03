@@ -167,8 +167,9 @@ def send_email():
 
 
 if(html != ''):
-   app()
-if st.session_state.generate_report == 1:
-  st.write("inside function email")
-  st.session_state.generate_report=0
+  app()
   send_email()
+
+# if st.session_state.generate_report == 1:
+#   st.write("inside function email")
+#   st.session_state.generate_report=0
