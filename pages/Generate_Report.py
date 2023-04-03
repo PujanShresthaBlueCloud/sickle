@@ -132,6 +132,8 @@ def send_email():
 # Define email button
   st.write("in send email")
   email = email_form()
+  st.write(email)
+  return
   if email is not None:
     if st.button("Send Report by Email"):
       st.write("in st button --")
