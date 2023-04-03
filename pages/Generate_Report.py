@@ -115,21 +115,23 @@ def app():
               mime="application/pdf"
           )
 
-def email_from():
-    email_regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
-    with st.form(key='my_form'):
-      email = st.text_input("Email")
-      submit_button = st.form_submit_button(label='Send')
-    if submit_button:
-      if not re.match(email_regex, email):
-        st.error("Please enter a valid email address")
-    else:
-       return email
+def email_form():
+  st.write("insit email form")
+  email_regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+  with st.form(key='my_form'):
+    st.write("insit st form")
+    email = st.text_input("Email")
+    submit_button = st.form_submit_button(label='Send')
+  if submit_button:
+    if not re.match(email_regex, email):
+      st.error("Please enter a valid email address")
+  else:
+      return email
 
 def send_email():
 # Define email button
   if st.button("Send Report by Email"):
-    email = email_from()
+    email = email_form()
     # Define email message
     message = MIMEMultipart()
     message['To'] = email
