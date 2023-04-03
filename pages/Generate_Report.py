@@ -131,7 +131,7 @@ def email_form():
 def send_email():
 # Define email button
   if st.button("Send Report by Email"):
-    email = email_form()
+    email = st.text_input("Email")
     # Define email message
     message = MIMEMultipart()
     message['To'] = email
