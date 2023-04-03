@@ -129,12 +129,12 @@ def email_form():
       return email
 
 def send_email():
+    email = 'pujan_sth@yahoo.com'
 # Define email button
     if st.button("Send Report by Email"):
       st.write("in st button --")
       # Define email message
       message = MIMEMultipart()
-      message['To'] = 'pujan_sth@yahoo.com'
       message['Subject'] = 'Sickle cell detection report'
 
       # Add some text to the message body
