@@ -145,7 +145,6 @@ if(first_name != '' and last_name != '' and address !=''):
     html = template.format(first_name, last_name, age, sex, address, date_of_test)
     st.markdown(html, unsafe_allow_html=True)
     app()
-    email_check = 
     if (email !=''):
       send_email()
     else:
