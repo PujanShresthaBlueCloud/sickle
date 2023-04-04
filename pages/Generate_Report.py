@@ -129,7 +129,7 @@ def email_form():
       return email
 
 def send_email():
-    if st.button("Send Report by Email")
+    if st.button("Send Report by Email"):
       email_regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
       email = st.text_input("Email", placeholder="Enter email address")
       # if not re.match(email_regex, email):
