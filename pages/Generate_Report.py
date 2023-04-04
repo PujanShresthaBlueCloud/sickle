@@ -129,7 +129,9 @@ def email_form():
       return email
 
 def send_email():
-    email = 'pujan_sth@yahoo.com'
+    email = email_form()
+    st.write(email)
+    return
 # Define email button
     if st.button("Send Report by Email"):
       st.write("in st button --")
@@ -168,8 +170,12 @@ def send_email():
 
 if(html != ''):
   app()
-  send_email()
 
-# if st.session_state.generate_report == 1:
-#   st.write("inside function email")
-#   st.session_state.generate_report=0
+if st.session_state.generate_report == 1:
+  st.write("inside function email")
+  send_email()
+  st.session_state.generate_report=0
+else:
+   st.write("Please generate report first to send email")
+
+
