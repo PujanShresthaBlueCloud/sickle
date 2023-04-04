@@ -161,9 +161,9 @@ if(first_name != '' and last_name != '' and address !=''):
     html = template.format(first_name, last_name, age, sex, address, date_of_test)
     st.markdown(html, unsafe_allow_html=True)
     app()
-    email_address = st.text_input("Email", placeholder="Enter patient email address")
-    if email_address:
-        if is_valid_email(email_address):
+    email = st.text_input("Email", placeholder="Enter patient email address")
+    if email:
+        if is_valid_email(email):
           send_email()
         else:
             st.error("Invalid email address!")
