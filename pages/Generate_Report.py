@@ -7,7 +7,8 @@ from email.mime.application import MIMEApplication
 import re
 import helper
 import settings
-import time
+import email.utils
+
 
 # Using custom css
 helper.local_css(settings.CSS)
@@ -160,7 +161,7 @@ if(first_name != '' and last_name != '' and address !=''):
     html = template.format(first_name, last_name, age, sex, address, date_of_test)
     st.markdown(html, unsafe_allow_html=True)
     app()
-    email_address = st.text_input("Email")
+    email_address = st.text_input("Email", placeholder="Enter patient email address")
     if email_address:
         if is_valid_email(email_address):
           send_email()
