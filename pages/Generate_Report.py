@@ -102,10 +102,10 @@ def app():
             mime="application/pdf"
         )
 
-def is_valid_email(email):
+def is_valid_email(email_address):
     # Parse the email address using Python's built-in email.utils.parseaddr function
     # This returns a tuple containing the display name (if any) and the address
-    name, addr = email.utils.parseaddr(email)
+    name, addr = email.utils.parseaddr(email_address)
 
     # Check that the address is not empty and contains an @ symbol
     if not addr or '@' not in addr:
@@ -119,7 +119,7 @@ def is_valid_email(email):
 
     return True
 
-def send_email():
+def send_email(email_address):
     # Define email button
     if st.button("Send Report by Email"):
       # Define email message
@@ -147,7 +147,7 @@ def send_email():
           connection = s.SMTP('smtp.gmail.com', 587)
           connection.starttls()
           connection.login(smtp_username, smtp_password)
-          connection.sendmail(smtp_username, email, message.as_string())
+          connection.sendmail(smtp_username, email_address, message.as_string())
           connection.quit()
           st.success("Email sent successfully!")
 
@@ -161,10 +161,10 @@ if(first_name != '' and last_name != '' and address !=''):
     html = template.format(first_name, last_name, age, sex, address, date_of_test)
     st.markdown(html, unsafe_allow_html=True)
     app()
-    email = st.text_input("Email", placeholder="Enter patient email address")
-    if email:
-        if is_valid_email(email):
-          send_email()
+    email_address = st.text_input("Email", placeholder="Enter patient email address")
+    if email_address:
+        if is_valid_email(email_address):
+          send_email(email_address)
         else:
             st.error("Invalid email address!")
 
