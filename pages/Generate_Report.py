@@ -82,22 +82,13 @@ with col2:
 
 report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
 
-st.session_state.generate_report=0
+# st.session_state.generate_report=0
 
 
 # Define Streamlit app
 def app():
-    # Define form inputs
-    # first_name = st.text_input("First name")
-    # last_name = st.text_input("Last name")
-    # age = st.number_input("Age", min_value=0, max_value=120)
-    # sex = st.selectbox("Sex", ["Male", "Female", "Other"])
-    # date_of_test = st.date_input("Date of Test")
     # Define submit button
     # if st.button("Generate Report"):
-    # Generate report HTML using input data
-    # Convert HTML to PDF
-    # report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
     pdfkit.from_string(html, report)
     # st.markdown(html, unsafe_allow_html=True)
     st.session_state.generate_report = 1     # Attribute API
@@ -110,25 +101,13 @@ def app():
             mime="application/pdf"
         )
 
-def email_form():
-  st.write("insit email form")
-  email_regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
-  with st.form(key='my_form'):
-    st.write("insit st form")
-    email = st.text_input("Email")
-    submit_button = st.form_submit_button(label='Send')
-  if submit_button:
-    if not re.match(email_regex, email):
-      st.error("Please enter a valid email address")
-    else:
-      return email
 
 def send_email():
-    email = st.text_input("Email", placeholder="Enter email address")
-
+    email = st.text_input("Email")
     # Define email button
     if st.button("Send Report by Email"):
-      st.write("email :", email)
+      st.write(email)
+      '''
       # Define email message
       message = MIMEMultipart()
       message['Subject'] = 'Sickle cell detection report'
@@ -160,6 +139,7 @@ def send_email():
 
       except Exception as e:
           st.error(f"Error sending email: {e}")
+      '''
 
 
 if(first_name != '' and last_name != '' and address !=''):
@@ -175,11 +155,5 @@ else:
 # if(html != ''):
 #   app()
 #   send_email()
-
-
-if st.session_state.generate_report == 1:
-  st.write("inside function email")
-  # send_email()
-  st.session_state.generate_report=0
 
 
