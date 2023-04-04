@@ -82,13 +82,6 @@ with col2:
 
 report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
 
-if(first_name != '' and last_name != '' and address !=''):
-  html = template.format(first_name, last_name, age, sex, address, date_of_test)
-  st.markdown(html, unsafe_allow_html=True)
-
-else:
-   html=''
-
 st.session_state.generate_report=0
 
 
@@ -169,14 +162,24 @@ def send_email():
           st.error(f"Error sending email: {e}")
 
 
-if(html != ''):
-  app()
-  send_email()
+if(first_name != '' and last_name != '' and address !=''):
+  generate_report = st.button("Generate report")
+  if generate_report:
+    html = template.format(first_name, last_name, age, sex, address, date_of_test)
+    st.markdown(html, unsafe_allow_html=True)
+    app()
+    send_email()
+else:
+   html=''
+
+# if(html != ''):
+#   app()
+#   send_email()
 
 
 if st.session_state.generate_report == 1:
   st.write("inside function email")
-  send_email()
+  # send_email()
   st.session_state.generate_report=0
 
 
