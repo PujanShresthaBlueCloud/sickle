@@ -129,12 +129,13 @@ def email_form():
       return email
 
 def send_email():
-    email = email_form()
-    st.write(email)
-    return
+    email_regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+    email = st.text_inut("Email")
+    if not re.match(email_regex, email):
+      st.error("Please enter a valid email address")
 # Define email button
     if st.button("Send Report by Email"):
-      st.write("in st button --")
+      st.write("email :", email)
       # Define email message
       message = MIMEMultipart()
       message['Subject'] = 'Sickle cell detection report'
