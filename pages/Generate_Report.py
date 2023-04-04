@@ -82,8 +82,10 @@ with col2:
 
 report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
 
-if(first_name != '' and last_name != ''):
+if(first_name != '' and last_name != '' and address !=''):
   html = template.format(first_name, last_name, age, sex, address, date_of_test)
+  st.markdown(html, unsafe_allow_html=True)
+
 else:
    html=''
 
@@ -108,7 +110,7 @@ def app():
       st.session_state.generate_report = 1     # Attribute API
       # Define download button
       with open(report, 'rb') as f:
-          st.download_button(
+        download=  st.download_button(
               label="Download Report",
               data=f.read(),
               file_name=report,
@@ -169,6 +171,8 @@ def send_email():
 
 if(html != ''):
   app()
+  send_email()
+
 
 if st.session_state.generate_report == 1:
   st.write("inside function email")
