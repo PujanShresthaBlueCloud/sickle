@@ -17,14 +17,13 @@ helper.local_css(settings.CSS)
 helper.local_js(settings.JS)
 
 # Define Streamlit app title
-# st.set_page_config(page_title="Sickle Cell Detection Report", page_icon=":microscope:")
-st.header("Sickle Cell Detection Report")
+st.header("Generate Report")
 
 # Define HTML template for report
 template = """
 <html>
   <body>
-    <h1>Sickle Cell Detection Report</h1>
+    <h3>Sickle Cell Detection Report</h3>
     <table class="report">
       <tr style="text-align: left;">
         <th colspan="4">Patient Information:</th>
@@ -81,15 +80,10 @@ with col2:
   sex = st.selectbox("Sex", ["Male", "Female", "Other"])
   date_of_test = st.date_input("Date of Test")
 
+# Defining pdf filename
 report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
 
-# st.session_state.generate_report=0
-
-
-# Define Streamlit app
 def app():
-    # Define submit button
-    # if st.button("Generate Report"):
     pdfkit.from_string(html, report)
     # st.markdown(html, unsafe_allow_html=True)
     st.session_state.generate_report = 1     # Attribute API
@@ -156,8 +150,6 @@ def send_email(email_address):
 
 
 if(first_name != '' and last_name != '' and address !=''):
-  # generate_report = st.button("Generate report")
-  # if generate_report:
     html = template.format(first_name, last_name, age, sex, address, date_of_test)
     st.markdown(html, unsafe_allow_html=True)
     app()
@@ -167,17 +159,7 @@ if(first_name != '' and last_name != '' and address !=''):
           send_email(email_address)
         else:
             st.error("Invalid email address!")
-
-
-    # if (email !=''):
-    #   send_email()
-    # else:
-    #    st.write("Enter email to send report")
 else:
    html=''
-
-# if(html != ''):
-#   app()
-#   send_email()
 
 
