@@ -101,21 +101,21 @@ def app():
     # sex = st.selectbox("Sex", ["Male", "Female", "Other"])
     # date_of_test = st.date_input("Date of Test")
     # Define submit button
-    if st.button("Generate Report"):
-      # Generate report HTML using input data
-      # Convert HTML to PDF
-      # report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
-      pdfkit.from_string(html, report)
-      st.markdown(html, unsafe_allow_html=True)
-      st.session_state.generate_report = 1     # Attribute API
-      # Define download button
-      with open(report, 'rb') as f:
-        download=  st.download_button(
-              label="Download Report",
-              data=f.read(),
-              file_name=report,
-              mime="application/pdf"
-          )
+    # if st.button("Generate Report"):
+    # Generate report HTML using input data
+    # Convert HTML to PDF
+    # report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
+    pdfkit.from_string(html, report)
+    # st.markdown(html, unsafe_allow_html=True)
+    st.session_state.generate_report = 1     # Attribute API
+    # Define download button
+    with open(report, 'rb') as f:
+      st.download_button(
+            label="Download Report",
+            data=f.read(),
+            file_name=report,
+            mime="application/pdf"
+        )
 
 def email_form():
   st.write("insit email form")
