@@ -130,7 +130,7 @@ def email_form():
 
 def send_email():
     email_regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
-    email = st.text_inut("Email")
+    email = st.text_input("Email")
     if not re.match(email_regex, email):
       st.error("Please enter a valid email address")
 # Define email button
