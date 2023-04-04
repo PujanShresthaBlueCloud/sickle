@@ -102,10 +102,10 @@ def app():
             mime="application/pdf"
         )
 
-def is_valid_email(email_address):
+def is_valid_email(email):
     # Parse the email address using Python's built-in email.utils.parseaddr function
     # This returns a tuple containing the display name (if any) and the address
-    name, addr = email.utils.parseaddr(email_address)
+    name, addr = email.utils.parseaddr(email)
 
     # Check that the address is not empty and contains an @ symbol
     if not addr or '@' not in addr:
