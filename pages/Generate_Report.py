@@ -74,6 +74,7 @@ with col1:
   first_name = st.text_input("First name")
   age = st.number_input("Age", min_value=0, max_value=120)
   address = st.text_input("Address")
+  email = st.text_input("Email")
 
 with col2:
   last_name = st.text_input("Last name")
@@ -103,11 +104,8 @@ def app():
 
 
 def send_email():
-    email = st.text_input("Email")
     # Define email button
     if st.button("Send Report by Email"):
-      st.write(email)
-      '''
       # Define email message
       message = MIMEMultipart()
       message['Subject'] = 'Sickle cell detection report'
@@ -139,7 +137,6 @@ def send_email():
 
       except Exception as e:
           st.error(f"Error sending email: {e}")
-      '''
 
 
 if(first_name != '' and last_name != '' and address !=''):
