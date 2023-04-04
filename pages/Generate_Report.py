@@ -74,7 +74,6 @@ with col1:
   first_name = st.text_input("First name")
   age = st.number_input("Age", min_value=0, max_value=120)
   address = st.text_input("Address")
-  email = st.text_input("Email")
 
 with col2:
   last_name = st.text_input("Last name")
@@ -102,6 +101,22 @@ def app():
             mime="application/pdf"
         )
 
+def is_valid_email(email_address):
+    # Parse the email address using Python's built-in email.utils.parseaddr function
+    # This returns a tuple containing the display name (if any) and the address
+    name, addr = email.utils.parseaddr(email_address)
+
+    # Check that the address is not empty and contains an @ symbol
+    if not addr or '@' not in addr:
+        return False
+
+    # Check that the domain part of the address is valid
+    parts = addr.split('@')
+    domain = parts[1]
+    if not re.match(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', addr):
+        return False
+
+    return True
 
 def send_email():
     # Define email button
@@ -145,10 +160,18 @@ if(first_name != '' and last_name != '' and address !=''):
     html = template.format(first_name, last_name, age, sex, address, date_of_test)
     st.markdown(html, unsafe_allow_html=True)
     app()
-    if (email !=''):
-      send_email()
-    else:
-       st.write("Enter email to send report")
+    email_address = st.text_input("Email")
+    if email_address:
+        if is_valid_email(email_address):
+          send_email()
+        else:
+            st.error("Invalid email address!")
+
+
+    # if (email !=''):
+    #   send_email()
+    # else:
+    #    st.write("Enter email to send report")
 else:
    html=''
 
