@@ -146,16 +146,6 @@ if source_radio == settings.IMAGE:
                 # Using custom js
                 helper.local_js(settings.JS)
 
-                # Clearing session id
-                session_id = st.session_state._get_session_id()
-                st.experimental_rerun()
-                st.caching.clear_cache()
-                # st.session_state.clear()
-                st.stop()
-
-                # Getting report
-                # detected_data_frame = st.session_state['detected_data_frame'] if st.session_state['detected_data_frame'] is not None else st.write("Generate object detection result first")
-                # detected_result = detected_data_frame.to_html(index=False)
                 # Define Streamlit app title
                 st.header("Generate Report")
 
