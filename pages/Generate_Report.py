@@ -16,8 +16,8 @@ helper.local_css(settings.CSS)
 # Using custom js
 helper.local_js(settings.JS)
 # Getting report
-detected_data_frame = st.session_state['detected_data_frame']
-
+detected_data_frame = st.session_state['detected_data_frame'] if st.session_state['detected_data_frame'] is not None else st.write("Generate object detection result first")
+detected_result = detected_data_frame.to_html(index=False)
 # Define Streamlit app title
 st.header("Generate Report")
 
@@ -53,7 +53,7 @@ template = """
       </tr>
       <tr style="text-align: left;">
         <th>Test Results:</th>
-        <td colspan="3">{detected_data_frame}</td>
+        <td colspan="3">{detected_result}</td>
       </tr>
       <tr style="text-align: left;">
         <th colspan="4"></th>
