@@ -15,6 +15,8 @@ helper.local_css(settings.CSS)
 
 # Using custom js
 helper.local_js(settings.JS)
+# Getting report
+detected_data_frame = st.session_state['detected_data_frame']
 
 # Define Streamlit app title
 st.header("Generate Report")
@@ -50,7 +52,8 @@ template = """
         <th colspan="4"></th>
       </tr>
       <tr style="text-align: left;">
-        <th colspan="4">Test Results:</th>
+        <th>Test Results:</th>
+        <td colspan="3">{detected_data_frame}</td>
       </tr>
       <tr style="text-align: left;">
         <th colspan="4"></th>
