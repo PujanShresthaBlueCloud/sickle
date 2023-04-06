@@ -230,12 +230,12 @@ if source_radio == settings.IMAGE:
                     st.session_state.generate_report = 1     # Attribute API
                     # Define download button
                     with open(report, 'rb') as f:
-                    st.download_button(
-                            label="Download Report",
-                            data=f.read(),
-                            file_name=report,
-                            mime="application/pdf"
-                        )
+                        st.download_button(
+                                label="Download Report",
+                                data=f.read(),
+                                file_name=report,
+                                mime="application/pdf"
+                            )
 
                 def is_valid_email(email_address):
                     # Parse the email address using Python's built-in email.utils.parseaddr function
@@ -257,37 +257,37 @@ if source_radio == settings.IMAGE:
                 def send_email(email_address):
                     # Define email button
                     if st.button("Send Report by Email"):
-                    # Define email message
-                    message = MIMEMultipart()
-                    message['Subject'] = 'Sickle cell detection report'
+                        # Define email message
+                        message = MIMEMultipart()
+                        message['Subject'] = 'Sickle cell detection report'
 
-                    # Add some text to the message body
-                    body = f"Hi {first_name}, please find your report in attachment."
-                    message.attach(MIMEText(body, "plain"))
-                    pdfkit.from_string(html, report)
-                    # Attach a PDF file to the message
-                    with open(report, "rb") as file:
-                        attachment = MIMEApplication(file.read(), _subtype="pdf")
-                        attachment.add_header(
-                            "Content-Disposition",
-                            "attachment",
-                            filename=report
-                        )
-                        message.attach(attachment)
+                        # Add some text to the message body
+                        body = f"Hi {first_name}, please find your report in attachment."
+                        message.attach(MIMEText(body, "plain"))
+                        pdfkit.from_string(html, report)
+                        # Attach a PDF file to the message
+                        with open(report, "rb") as file:
+                            attachment = MIMEApplication(file.read(), _subtype="pdf")
+                            attachment.add_header(
+                                "Content-Disposition",
+                                "attachment",
+                                filename=report
+                            )
+                            message.attach(attachment)
 
-                    # Send the message
-                    try:
-                        smtp_username = "pujansth16@gmail.com"
-                        smtp_password = "bmngcpaoruhencsd"
-                        connection = s.SMTP('smtp.gmail.com', 587)
-                        connection.starttls()
-                        connection.login(smtp_username, smtp_password)
-                        connection.sendmail(smtp_username, email_address, message.as_string())
-                        connection.quit()
-                        st.success("Email sent successfully!")
+                        # Send the message
+                        try:
+                            smtp_username = "pujansth16@gmail.com"
+                            smtp_password = "bmngcpaoruhencsd"
+                            connection = s.SMTP('smtp.gmail.com', 587)
+                            connection.starttls()
+                            connection.login(smtp_username, smtp_password)
+                            connection.sendmail(smtp_username, email_address, message.as_string())
+                            connection.quit()
+                            st.success("Email sent successfully!")
 
-                    except Exception as e:
-                        st.error(f"Error sending email: {e}")
+                        except Exception as e:
+                            st.error(f"Error sending email: {e}")
 
 
                 if(first_name != '' and last_name != '' and address !=''):
@@ -297,7 +297,7 @@ if source_radio == settings.IMAGE:
                     email_address = st.text_input("Email", placeholder="Enter patient email address")
                     if email_address:
                         if is_valid_email(email_address):
-                        send_email(email_address)
+                            send_email(email_address)
                         else:
                             st.error("Invalid email address!")
                 else:
