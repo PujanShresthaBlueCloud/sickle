@@ -111,9 +111,8 @@ if source_radio == settings.IMAGE:
                  ]
             detected_data_frame=pd.DataFrame(detected_cal, columns=['class','count','percent'], index=None)
             st.dataframe(detected_data_frame, use_container_width=True)
-            detected_result = detected_data_frame.to_html(index=False)
-            # st.session_state['detected_data_frame'] = detected_data_frame
-
+            # detected_result = detected_data_frame.to_html(index=False)
+            detected_result = detected_data_frame
             st.write(detected_result)
             with st.expander("Total number of class detected"):
                 st.bar_chart(data=detected_data_frame, x='class', y='count')
