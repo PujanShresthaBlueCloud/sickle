@@ -113,6 +113,8 @@ if source_radio == settings.IMAGE:
             st.dataframe(detected_data_frame, use_container_width=True)
             detected_result = detected_data_frame.to_html(index=False)
             # st.session_state['detected_data_frame'] = detected_data_frame
+
+            st.write(detected_result)
             with st.expander("Total number of class detected"):
                 st.bar_chart(data=detected_data_frame, x='class', y='count')
                 sizes = detected_data_frame['percent'].squeeze()
@@ -181,14 +183,13 @@ if source_radio == settings.IMAGE:
                         <th colspan="4"></th>
                     </tr>
                     <tr style="text-align: left;">
-                        <th>Test Results:</th>
-                        <td colspan="3">{detected_result}</td>
+                        <th colspan="4">Test Results:</th>
                     </tr>
                     <tr style="text-align: left;">
                         <th colspan="4"></th>
                     </tr>
                     <tr style="text-align: left;">
-                        <td colspan="4">The results of your recent laboratory tests indicate that you have sickle cell disease. Sickle cell disease is a genetic blood disorder that affects the shape of red blood cells. In people with sickle cell disease, the red blood cells are shaped like crescents or sickles instead of round discs.</td>
+                        <td colspan="4">{detected_result}</td>
                     </tr>
                     <tr style="text-align: left;">
                         <th colspan="4">Management and Treatment:</th>
