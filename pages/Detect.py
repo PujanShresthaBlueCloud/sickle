@@ -188,7 +188,7 @@ if source_radio == settings.IMAGE:
                         <th colspan="4"></th>
                     </tr>
                     <tr style="text-align: left;">
-                        <td colspan="4">{detected_result}</td>
+                        <td colspan="4" id="detected_result">{detected_result}</td>
                     </tr>
                     <tr style="text-align: left;">
                         <th colspan="4">Management and Treatment:</th>
@@ -280,19 +280,19 @@ if source_radio == settings.IMAGE:
                         except Exception as e:
                             st.error(f"Error sending email: {e}")
 
-
-                if(first_name != '' and last_name != '' and address !=''):
-                    html = template.format(first_name, last_name, age, sex, address, date_of_test, )
-                    st.markdown(html, unsafe_allow_html=True)
-                    app()
-                    email_address = st.text_input("Email", placeholder="Enter patient email address")
-                    if email_address:
-                        if is_valid_email(email_address):
-                            send_email(email_address)
-                        else:
-                            st.error("Invalid email address!")
-                else:
-                    html=''
+                app()
+                # if(first_name != '' and last_name != '' and address !=''):
+                #     html = template.format(first_name, last_name, age, sex, address, date_of_test, )
+                #     st.markdown(html, unsafe_allow_html=True)
+                #     app()
+                #     email_address = st.text_input("Email", placeholder="Enter patient email address")
+                #     if email_address:
+                #         if is_valid_email(email_address):
+                #             send_email(email_address)
+                #         else:
+                #             st.error("Invalid email address!")
+                # else:
+                #     html=''
 
 
 
