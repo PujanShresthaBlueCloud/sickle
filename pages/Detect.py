@@ -202,21 +202,22 @@ if source_radio == settings.IMAGE:
                 """
                 col1, col2 = st.columns(2)
 
-                with col1:
-                    first_name = st.text_input("First name")
-                    age = st.number_input("Age", min_value=0, max_value=120)
-                    address = st.text_input("Address")
+                # with col1:
+                #     first_name = st.text_input("First name")
+                #     age = st.number_input("Age", min_value=0, max_value=120)
+                #     address = st.text_input("Address")
 
-                with col2:
-                    last_name = st.text_input("Last name")
-                    sex = st.selectbox("Sex", ["Male", "Female", "Other"])
-                    date_of_test = st.date_input("Date of Test")
+                # with col2:
+                #     last_name = st.text_input("Last name")
+                #     sex = st.selectbox("Sex", ["Male", "Female", "Other"])
+                #     date_of_test = st.date_input("Date of Test")
 
                 # Defining pdf filename
-                report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
+                # report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
+                report = 'report.pdf'
 
                 def app():
-                    html = template.format(first_name, last_name, age, sex, address, date_of_test, )
+                    html = template
 
                     pdfkit.from_string(html, report)
                     # st.markdown(html, unsafe_allow_html=True)
@@ -230,74 +231,7 @@ if source_radio == settings.IMAGE:
                                 mime="application/pdf"
                             )
 
-                def is_valid_email(email_address):
-                    # Parse the email address using Python's built-in email.utils.parseaddr function
-                    # This returns a tuple containing the display name (if any) and the address
-                    name, addr = email.utils.parseaddr(email_address)
-
-                    # Check that the address is not empty and contains an @ symbol
-                    if not addr or '@' not in addr:
-                        return False
-
-                    # Check that the domain part of the address is valid
-                    parts = addr.split('@')
-                    domain = parts[1]
-                    if not re.match(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', addr):
-                        return False
-
-                    return True
-
-                def send_email(email_address):
-                    # Define email button
-                    if st.button("Send Report by Email"):
-                        # Define email message
-                        message = MIMEMultipart()
-                        message['Subject'] = 'Sickle cell detection report'
-
-                        # Add some text to the message body
-                        body = f"Hi {first_name}, please find your report in attachment."
-                        message.attach(MIMEText(body, "plain"))
-                        pdfkit.from_string(html, report)
-                        # Attach a PDF file to the message
-                        with open(report, "rb") as file:
-                            attachment = MIMEApplication(file.read(), _subtype="pdf")
-                            attachment.add_header(
-                                "Content-Disposition",
-                                "attachment",
-                                filename=report
-                            )
-                            message.attach(attachment)
-
-                        # Send the message
-                        try:
-                            smtp_username = "pujansth16@gmail.com"
-                            smtp_password = "bmngcpaoruhencsd"
-                            connection = s.SMTP('smtp.gmail.com', 587)
-                            connection.starttls()
-                            connection.login(smtp_username, smtp_password)
-                            connection.sendmail(smtp_username, email_address, message.as_string())
-                            connection.quit()
-                            st.success("Email sent successfully!")
-
-                        except Exception as e:
-                            st.error(f"Error sending email: {e}")
-
                 app()
-                # if(first_name != '' and last_name != '' and address !=''):
-                #     html = template.format(first_name, last_name, age, sex, address, date_of_test, )
-                #     st.markdown(html, unsafe_allow_html=True)
-                #     app()
-                #     email_address = st.text_input("Email", placeholder="Enter patient email address")
-                #     if email_address:
-                #         if is_valid_email(email_address):
-                #             send_email(email_address)
-                #         else:
-                #             st.error("Invalid email address!")
-                # else:
-                #     html=''
-
-
-
 
                 #  -------------------------------------------------- Generating report
 
