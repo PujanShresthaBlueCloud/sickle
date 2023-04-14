@@ -217,10 +217,11 @@ if source_radio == settings.IMAGE:
                 report = 'report.pdf'
 
                 def app():
-                    html = template
+                    html = template.format()
 
-                    pdfkit.from_string(html, report)
-                    # st.markdown(html, unsafe_allow_html=True)
+                    ht = st.markdown(html, unsafe_allow_html=True)
+                    pdfkit.from_string(ht, report)
+
                     st.session_state.generate_report = 1     # Attribute API
                     # Define download button
                     with open(report, 'rb') as f:
