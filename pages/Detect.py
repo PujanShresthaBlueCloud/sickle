@@ -216,6 +216,8 @@ if source_radio == settings.IMAGE:
                 report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
 
                 def app():
+                    html = template.format(first_name, last_name, age, sex, address, date_of_test, )
+
                     pdfkit.from_string(html, report)
                     # st.markdown(html, unsafe_allow_html=True)
                     st.session_state.generate_report = 1     # Attribute API
