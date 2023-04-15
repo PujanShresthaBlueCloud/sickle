@@ -230,7 +230,7 @@ if source_radio == settings.IMAGE:
 
 
                 # app()
-                if(first_name != '' and last_name != '' and address !=''):
+                # if(first_name != '' and last_name != '' and address !=''):
                     html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_result)
                     st.markdown(html, unsafe_allow_html=True)
                     app()
@@ -240,8 +240,8 @@ if source_radio == settings.IMAGE:
                     #         send_email(email_address)
                     #     else:
                     #         st.error("Invalid email address!")
-                else:
-                    html=''
+                # else:
+                    # html=''
 
 
 
