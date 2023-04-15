@@ -162,21 +162,21 @@ if source_radio == settings.IMAGE:
                     </tr>
                     <tr style="text-align: left;">
                         <td width="20%">First name:</td>
-                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;">{}</td>
                         <td width="20%">Last name:</td>
-                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;">{}</td>
                     </tr>
                     <tr style="text-align: left;">
                         <td>Age:</td>
-                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;">{}</td>
                         <td>Sex:</td>
-                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;">{}</td>
                     </tr>
                     <tr style="text-align: left;">
                         <td>Address:</td>
-                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;">{}</td>
                         <td>Date of Test:</td>
-                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;">{}</td>
                     </tr>
                     <tr style="text-align: left;">
                         <th colspan="4"></th>
@@ -188,14 +188,7 @@ if source_radio == settings.IMAGE:
                         <th colspan="4"></th>
                     </tr>
                     <tr style="text-align: left;">
-                        <td id="detected_result">Result:</td>
-                        <td colspan="3" id="detected_result">{}</td>
-                    </tr>
-                    <tr style="text-align: left;">
-                        <th colspan="4">Management and Treatment:</th>
-                    </tr>
-                    <tr style="text-align: left;">
-                        <td colspan="4">There is currently no cure for sickle cell disease, but there are treatments that can help manage symptoms and prevent complications. Treatment options include pain management, antibiotics to prevent infections, blood transfusions, and bone marrow transplants in severe cases.</td>
+                        <td colspan="4">{}</td>
                     </tr>
                     </table>
                 </body>
@@ -203,15 +196,15 @@ if source_radio == settings.IMAGE:
                 """
                 col1, col2 = st.columns(2)
 
-                # with col1:
-                #     first_name = st.text_input("First name")
-                #     age = st.number_input("Age", min_value=0, max_value=120)
-                #     address = st.text_input("Address")
+                with col1:
+                    first_name = st.text_input("First name")
+                    age = st.number_input("Age", min_value=0, max_value=120)
+                    address = st.text_input("Address")
 
-                # with col2:
-                #     last_name = st.text_input("Last name")
-                #     sex = st.selectbox("Sex", ["Male", "Female", "Other"])
-                #     date_of_test = st.date_input("Date of Test")
+                with col2:
+                    last_name = st.text_input("Last name")
+                    sex = st.selectbox("Sex", ["Male", "Female", "Other"])
+                    date_of_test = st.date_input("Date of Test")
 
                 # Defining pdf filename
                 # report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
@@ -219,7 +212,7 @@ if source_radio == settings.IMAGE:
                 report = 'report.pdf'
 
                 def app():
-                    html = template.format(detected_result )
+                    # html = template.format(detected_result )
                     
 
                     # pdfkit.from_string(html, report)
@@ -236,19 +229,19 @@ if source_radio == settings.IMAGE:
                             )
 
 
-                app()
-                # if(first_name != '' and last_name != '' and address !=''):
-                #     html = template.format(first_name, last_name, age, sex, address, date_of_test, )
-                #     st.markdown(html, unsafe_allow_html=True)
-                #     app()
-                #     email_address = st.text_input("Email", placeholder="Enter patient email address")
-                #     if email_address:
-                #         if is_valid_email(email_address):
-                #             send_email(email_address)
-                #         else:
-                #             st.error("Invalid email address!")
-                # else:
-                #     html=''
+                # app()
+                if(first_name != '' and last_name != '' and address !=''):
+                    html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_result)
+                    st.markdown(html, unsafe_allow_html=True)
+                    app()
+                    # email_address = st.text_input("Email", placeholder="Enter patient email address")
+                    # if email_address:
+                    #     if is_valid_email(email_address):
+                    #         send_email(email_address)
+                    #     else:
+                    #         st.error("Invalid email address!")
+                else:
+                    html=''
 
 
 
