@@ -59,3 +59,21 @@ def send_email(email_address):
 
         except Exception as e:
             st.error(f"Error sending email: {e}")
+
+
+def is_valid_email(email_address):
+    # Parse the email address using Python's built-in email.utils.parseaddr function
+    # This returns a tuple containing the display name (if any) and the address
+    name, addr = email.utils.parseaddr(email_address)
+
+    # Check that the address is not empty and contains an @ symbol
+    if not addr or '@' not in addr:
+        return False
+
+    # Check that the domain part of the address is valid
+    parts = addr.split('@')
+    domain = parts[1]
+    if not re.match(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', addr):
+        return False
+
+    return True

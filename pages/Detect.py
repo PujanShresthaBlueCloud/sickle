@@ -217,11 +217,12 @@ if source_radio == settings.IMAGE:
                 report = 'report.pdf'
 
                 def app():
-                    html = template.format()
+                    # html = template.format(first_name, last_name, age, sex, address, date_of_test, )
+                    
 
-                    ht = st.markdown(html, unsafe_allow_html=True)
-                    pdfkit.from_string(ht, report)
-
+                    # pdfkit.from_string(html, report)
+                    pdfkit.from_string(template, report)
+                    # st.markdown(html, unsafe_allow_html=True)
                     st.session_state.generate_report = 1     # Attribute API
                     # Define download button
                     with open(report, 'rb') as f:
@@ -232,7 +233,23 @@ if source_radio == settings.IMAGE:
                                 mime="application/pdf"
                             )
 
+
                 app()
+                # if(first_name != '' and last_name != '' and address !=''):
+                #     html = template.format(first_name, last_name, age, sex, address, date_of_test, )
+                #     st.markdown(html, unsafe_allow_html=True)
+                #     app()
+                #     email_address = st.text_input("Email", placeholder="Enter patient email address")
+                #     if email_address:
+                #         if is_valid_email(email_address):
+                #             send_email(email_address)
+                #         else:
+                #             st.error("Invalid email address!")
+                # else:
+                #     html=''
+
+
+
 
                 #  -------------------------------------------------- Generating report
 
