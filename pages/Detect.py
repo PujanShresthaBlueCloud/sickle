@@ -188,7 +188,8 @@ if source_radio == settings.IMAGE:
                         <th colspan="4"></th>
                     </tr>
                     <tr style="text-align: left;">
-                        <td colspan="4" id="detected_result">{detected_result}</td>
+                        <td id="detected_result">Result:</td>
+                        <td colspan="3" id="detected_result">{}</td>
                     </tr>
                     <tr style="text-align: left;">
                         <th colspan="4">Management and Treatment:</th>
@@ -202,26 +203,27 @@ if source_radio == settings.IMAGE:
                 """
                 col1, col2 = st.columns(2)
 
-                # with col1:
-                #     first_name = st.text_input("First name")
-                #     age = st.number_input("Age", min_value=0, max_value=120)
-                #     address = st.text_input("Address")
+                with col1:
+                    first_name = st.text_input("First name")
+                    age = st.number_input("Age", min_value=0, max_value=120)
+                    address = st.text_input("Address")
 
-                # with col2:
-                #     last_name = st.text_input("Last name")
-                #     sex = st.selectbox("Sex", ["Male", "Female", "Other"])
-                #     date_of_test = st.date_input("Date of Test")
+                with col2:
+                    last_name = st.text_input("Last name")
+                    sex = st.selectbox("Sex", ["Male", "Female", "Other"])
+                    date_of_test = st.date_input("Date of Test")
 
                 # Defining pdf filename
                 # report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
+
                 report = 'report.pdf'
 
                 def app():
-                    # html = template.format(first_name, last_name, age, sex, address, date_of_test, )
+                    html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_result )
                     
 
                     # pdfkit.from_string(html, report)
-                    pdfkit.from_string(template, report)
+                    pdfkit.from_string(html, report)
                     # st.markdown(html, unsafe_allow_html=True)
                     st.session_state.generate_report = 1     # Attribute API
                     # Define download button
