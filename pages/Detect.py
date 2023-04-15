@@ -162,21 +162,21 @@ if source_radio == settings.IMAGE:
                     </tr>
                     <tr style="text-align: left;">
                         <td width="20%">First name:</td>
-                        <td style="text-align: left;">{}</td>
+                        <td style="text-align: left;"></td>
                         <td width="20%">Last name:</td>
-                        <td style="text-align: left;">{}</td>
+                        <td style="text-align: left;"></td>
                     </tr>
                     <tr style="text-align: left;">
                         <td>Age:</td>
-                        <td style="text-align: left;">{}</td>
+                        <td style="text-align: left;"></td>
                         <td>Sex:</td>
-                        <td style="text-align: left;">{}</td>
+                        <td style="text-align: left;"></td>
                     </tr>
                     <tr style="text-align: left;">
                         <td>Address:</td>
-                        <td style="text-align: left;">{}</td>
+                        <td style="text-align: left;"></td>
                         <td>Date of Test:</td>
-                        <td style="text-align: left;">{}</td>
+                        <td style="text-align: left;"></td>
                     </tr>
                     <tr style="text-align: left;">
                         <th colspan="4"></th>
