@@ -241,7 +241,7 @@ if source_radio == settings.IMAGE:
                     # Every form must have a submit button.
                     # submitted = st.form_submit_button("Submit")
                     st.form_submit_button(
-                        labels="Submit",
+                        label="Submit",
                         on_click=app,
                         kwargs=dict(first_name=first_name, last_name=last_name, age=age, sex=sex, date_of_test=date_of_test, address=address, detected_result=detected_result)
                     )
