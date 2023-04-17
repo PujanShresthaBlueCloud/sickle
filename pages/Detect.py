@@ -229,7 +229,7 @@ if source_radio == settings.IMAGE:
                                 mime="application/pdf"
                             )
 
-                with st.form("my_form", clear_on_summit=True):
+                with st.form("my_form"):
                     st.write("Inside the form")
                     first_name = st.text_input("First name")
                     last_name = st.text_input("Last name")
