@@ -208,18 +208,18 @@ if source_radio == settings.IMAGE:
                     # Every form must have a submit button.
                     submitted = st.form_submit_button("Submit")
                     if submitted:
+                        # st.write("slider", slider_val, "checkbox", checkbox_val)
                         html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_result)
                         st.markdown(html, unsafe_allow_html=True)
-                        # st.write("slider", slider_val, "checkbox", checkbox_val)
-                        report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
-                        pdfkit.from_string(html, report)
-                        with open(report, 'rb') as f:
-                            st.download_button(
-                                    label="Download Report",
-                                    data=f.read(),
-                                    file_name=report,
-                                    mime="application/pdf"
-                                )
+                        # report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
+                        # pdfkit.from_string(html, report)
+                        # with open(report, 'rb') as f:
+                        #     st.download_button(
+                        #             label="Download Report",
+                        #             data=f.read(),
+                        #             file_name=report,
+                        #             mime="application/pdf"
+                        #         )
 
                 st.write("Outside the form")
 
