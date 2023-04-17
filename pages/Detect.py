@@ -259,7 +259,6 @@ if source_radio == settings.IMAGE:
                         #             mime="application/pdf"
                         #         )
 
-                st.write("Outside the form")
                 # app()
                 # if(first_name != '' and last_name != '' and address !=''):
                     # html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_result)
