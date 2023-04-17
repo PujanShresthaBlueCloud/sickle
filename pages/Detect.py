@@ -194,46 +194,79 @@ if source_radio == settings.IMAGE:
                 </body>
                 </html>
                 """
-                col1, col2 = st.columns(2)
 
-                with col1:
+
+                with st.form("my_form"):
+                    st.write("Inside the form")
                     first_name = st.text_input("First name")
                     age = st.number_input("Age", min_value=0, max_value=120)
-                    address = st.text_input("Address")
-
-                with col2:
                     last_name = st.text_input("Last name")
                     sex = st.selectbox("Sex", ["Male", "Female", "Other"])
                     date_of_test = st.date_input("Date of Test")
+                    address = st.text_input("Address")
+
+                    # Every form must have a submit button.
+                    submitted = st.form_submit_button("Submit")
+                    if submitted:
+                        html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_result)
+                        st.markdown(html, unsafe_allow_html=True)
+                        # st.write("slider", slider_val, "checkbox", checkbox_val)
+                        report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
+                        pdfkit.from_string(html, report)
+                        with open(report, 'rb') as f:
+                            st.download_button(
+                                    label="Download Report",
+                                    data=f.read(),
+                                    file_name=report,
+                                    mime="application/pdf"
+                                )
+
+                st.write("Outside the form")
+
+
+
+
+
+                # col1, col2 = st.columns(2)
+
+                # with col1:
+                #     first_name = st.text_input("First name")
+                #     age = st.number_input("Age", min_value=0, max_value=120)
+                #     address = st.text_input("Address")
+
+                # with col2:
+                #     last_name = st.text_input("Last name")
+                #     sex = st.selectbox("Sex", ["Male", "Female", "Other"])
+                #     date_of_test = st.date_input("Date of Test")
 
                 # Defining pdf filename
                 # report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
 
-                report = 'report.pdf'
+                # report = 'report.pdf'
 
-                def app():
-                    # html = template.format(detected_result )
+                # def app():
+                #     # html = template.format(detected_result )
                     
 
-                    # pdfkit.from_string(html, report)
-                    pdfkit.from_string(html, report)
-                    # st.markdown(html, unsafe_allow_html=True)
-                    st.session_state.generate_report = 1     # Attribute API
-                    # Define download button
-                    with open(report, 'rb') as f:
-                        st.download_button(
-                                label="Download Report",
-                                data=f.read(),
-                                file_name=report,
-                                mime="application/pdf"
-                            )
+                #     # pdfkit.from_string(html, report)
+                #     pdfkit.from_string(html, report)
+                #     # st.markdown(html, unsafe_allow_html=True)
+                #     # st.session_state.generate_report = 1     # Attribute API
+                #     # Define download button
+                #     with open(report, 'rb') as f:
+                #         st.download_button(
+                #                 label="Download Report",
+                #                 data=f.read(),
+                #                 file_name=report,
+                #                 mime="application/pdf"
+                #             )
 
 
                 # app()
                 # if(first_name != '' and last_name != '' and address !=''):
-                    html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_result)
-                    st.markdown(html, unsafe_allow_html=True)
-                    app()
+                    # html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_result)
+                    # st.markdown(html, unsafe_allow_html=True)
+                    # app()
                     # email_address = st.text_input("Email", placeholder="Enter patient email address")
                     # if email_address:
                     #     if is_valid_email(email_address):
