@@ -194,39 +194,6 @@ if source_radio == settings.IMAGE:
                 </body>
                 </html>
                 """
-
-
-                with st.form("my_form"):
-                    st.write("Inside the form")
-                    first_name = st.text_input("First name")
-                    last_name = st.text_input("Last name")
-                    age = st.number_input("Age", min_value=0, max_value=120)
-                    sex = st.selectbox("Sex", ["Male", "Female", "Other"])
-                    date_of_test = st.date_input("Date of Test")
-                    address = st.text_input("Address")
-
-                    # Every form must have a submit button.
-                    submitted = st.form_submit_button("Submit")
-                    if submitted:
-                        st.write("First name", first_name, "Last name", last_name)
-                        # html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_result)
-                        # st.markdown(html, unsafe_allow_html=True)
-                        # report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
-                        # pdfkit.from_string(html, report)
-                        # with open(report, 'rb') as f:
-                        #     st.download_button(
-                        #             label="Download Report",
-                        #             data=f.read(),
-                        #             file_name=report,
-                        #             mime="application/pdf"
-                        #         )
-
-                st.write("Outside the form")
-
-
-
-
-
                 # col1, col2 = st.columns(2)
 
                 # with col1:
@@ -242,26 +209,57 @@ if source_radio == settings.IMAGE:
                 # Defining pdf filename
                 # report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
 
-                # report = 'report.pdf'
+                report = 'report.pdf'
 
-                # def app():
-                #     # html = template.format(detected_result )
+                def app(first_name, last_name, age, sex, address, date_of_test,detected_result):
+                    st.write(first_name)
+                    html = template.format(first_name, last_name, age, sex, address, date_of_test,detected_result)
                     
 
-                #     # pdfkit.from_string(html, report)
-                #     pdfkit.from_string(html, report)
-                #     # st.markdown(html, unsafe_allow_html=True)
-                #     # st.session_state.generate_report = 1     # Attribute API
-                #     # Define download button
-                #     with open(report, 'rb') as f:
-                #         st.download_button(
-                #                 label="Download Report",
-                #                 data=f.read(),
-                #                 file_name=report,
-                #                 mime="application/pdf"
-                #             )
+                    # pdfkit.from_string(html, report)
+                    pdfkit.from_string(html, report)
+                    # st.markdown(html, unsafe_allow_html=True)
+                    # st.session_state.generate_report = 1     # Attribute API
+                    # Define download button
+                    with open(report, 'rb') as f:
+                        st.download_button(
+                                label="Download Report",
+                                data=f.read(),
+                                file_name=report,
+                                mime="application/pdf"
+                            )
 
+                with st.form("my_form", clear_on_summit=True):
+                    st.write("Inside the form")
+                    first_name = st.text_input("First name")
+                    last_name = st.text_input("Last name")
+                    age = st.number_input("Age", min_value=0, max_value=120)
+                    sex = st.selectbox("Sex", ["Male", "Female", "Other"])
+                    date_of_test = st.date_input("Date of Test")
+                    address = st.text_input("Address")
 
+                    # Every form must have a submit button.
+                    # submitted = st.form_submit_button("Submit")
+                    if st.form_submit_button(
+                        labels="Submit",
+                        on_click=app,
+                        kwargs=dict(first_name=first_name, last_name=last_name, age=age, sex=sex, date_of_test=date_of_test, address=address, detected_result=detected_result)
+                    ):
+                    # if submitted:
+                        # st.write("First name", first_name, "Last name", last_name)
+                        # html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_result)
+                        # st.markdown(html, unsafe_allow_html=True)
+                        # report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
+                        # pdfkit.from_string(html, report)
+                        # with open(report, 'rb') as f:
+                        #     st.download_button(
+                        #             label="Download Report",
+                        #             data=f.read(),
+                        #             file_name=report,
+                        #             mime="application/pdf"
+                        #         )
+
+                st.write("Outside the form")
                 # app()
                 # if(first_name != '' and last_name != '' and address !=''):
                     # html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_result)
