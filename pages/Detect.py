@@ -240,11 +240,11 @@ if source_radio == settings.IMAGE:
 
                     # Every form must have a submit button.
                     # submitted = st.form_submit_button("Submit")
-                    if st.form_submit_button(
+                    st.form_submit_button(
                         labels="Submit",
                         on_click=app,
                         kwargs=dict(first_name=first_name, last_name=last_name, age=age, sex=sex, date_of_test=date_of_test, address=address, detected_result=detected_result)
-                    ):
+                    )
                     # if submitted:
                         # st.write("First name", first_name, "Last name", last_name)
                         # html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_result)
@@ -278,5 +278,5 @@ if source_radio == settings.IMAGE:
 
                 #  -------------------------------------------------- Generating report
 
-        # else:
-        #     st.write('') # we can put it blank
+        else:
+            st.write('') # we can put it blank
