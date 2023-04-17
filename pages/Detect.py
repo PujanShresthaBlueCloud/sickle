@@ -278,5 +278,5 @@ if source_radio == settings.IMAGE:
 
                 #  -------------------------------------------------- Generating report
 
-        else:
-            st.write('') # we can put it blank
+        # else:
+        #     st.write('') # we can put it blank
