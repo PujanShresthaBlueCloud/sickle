@@ -199,8 +199,8 @@ if source_radio == settings.IMAGE:
                 with st.form("my_form"):
                     st.write("Inside the form")
                     first_name = st.text_input("First name")
-                    age = st.number_input("Age", min_value=0, max_value=120)
                     last_name = st.text_input("Last name")
+                    age = st.number_input("Age", min_value=0, max_value=120)
                     sex = st.selectbox("Sex", ["Male", "Female", "Other"])
                     date_of_test = st.date_input("Date of Test")
                     address = st.text_input("Address")
@@ -208,9 +208,9 @@ if source_radio == settings.IMAGE:
                     # Every form must have a submit button.
                     submitted = st.form_submit_button("Submit")
                     if submitted:
-                        # st.write("slider", slider_val, "checkbox", checkbox_val)
-                        html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_result)
-                        st.markdown(html, unsafe_allow_html=True)
+                        st.write("First name", first_name, "Last name", last_name)
+                        # html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_result)
+                        # st.markdown(html, unsafe_allow_html=True)
                         # report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
                         # pdfkit.from_string(html, report)
                         # with open(report, 'rb') as f:
