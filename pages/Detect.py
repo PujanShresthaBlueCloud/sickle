@@ -228,14 +228,14 @@ if source_radio == settings.IMAGE:
                     address = st.text_input("Address")
 
                     # Every form must have a submit button.
-                    # submitted = st.form_submit_button(label="Submit")
-                    st.form_submit_button(
-                        label="Submit",
-                        on_click=app,
-                        kwargs=dict(first_name=first_name, last_name=last_name, age=age, sex=sex, date_of_test=date_of_test, address=address, detected_result=detected_result)
-                    )
-                # if submitted:
-                    # st.write("First name", first_name, "Last name", last_name)
+                    submitted = st.form_submit_button(label="Submit")
+                    # st.form_submit_button(
+                    #     label="Submit",
+                    #     on_click=app,
+                    #     kwargs=dict(first_name=first_name, last_name=last_name, age=age, sex=sex, date_of_test=date_of_test, address=address, detected_result=detected_result)
+                    # )
+                if submitted:
+                    st.write("First name", first_name, "Last name", last_name)
                     # html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_result)
                     # st.markdown(html, unsafe_allow_html=True)
                     # report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
