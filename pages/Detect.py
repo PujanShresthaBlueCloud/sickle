@@ -9,6 +9,13 @@ from ultralytics import YOLO
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import pdfkit
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.mime.application import MIMEApplication
+import re
+import email.utils
+
 
 # Using custom css
 helper.local_css(settings.CSS)
@@ -128,26 +135,7 @@ if source_radio == settings.IMAGE:
                 st.pyplot(fig1)
 
             with st.expander("Generate report"):
-            #     # Generating report --------------------------------------------------
-
-            #     import streamlit as st
-                import pdfkit
-            #     import smtplib as s
-                from email.mime.text import MIMEText
-                from email.mime.multipart import MIMEMultipart
-                from email.mime.application import MIMEApplication
-                import re
-            #     import helper
-            #     import settings
-                import email.utils
-
-            #     # st.set_page_config(keep_session_state=True)
-            #     # Using custom css
-            #     helper.local_css(settings.CSS)
-
-            #     # Using custom js
-            #     helper.local_js(settings.JS)
-
+            # Generating report --------------------------------------------------
                 # Define Streamlit app title
                 st.header("Generate Report")
 
@@ -213,6 +201,7 @@ if source_radio == settings.IMAGE:
 
                 def app(first_name, last_name, age, sex, address, date_of_test,detected_result):
                     st.write(first_name)
+                    return
                     html = template.format(first_name, last_name, age, sex, address, date_of_test,detected_result)
                     
 
@@ -239,14 +228,14 @@ if source_radio == settings.IMAGE:
                     address = st.text_input("Address")
 
                     # Every form must have a submit button.
-                    submitted = st.form_submit_button(label="Submit")
-                    # submitted = st.form_submit_button(
-                    #     label="Submit",
-                    #     on_click=app,
-                    #     kwargs=dict(first_name=first_name, last_name=last_name, age=age, sex=sex, date_of_test=date_of_test, address=address, detected_result=detected_result)
-                    # )
-                if submitted:
-                    st.write("First name", first_name, "Last name", last_name)
+                    # submitted = st.form_submit_button(label="Submit")
+                    st.form_submit_button(
+                        label="Submit",
+                        on_click=app,
+                        kwargs=dict(first_name=first_name, last_name=last_name, age=age, sex=sex, date_of_test=date_of_test, address=address, detected_result=detected_result)
+                    )
+                # if submitted:
+                    # st.write("First name", first_name, "Last name", last_name)
                     # html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_result)
                     # st.markdown(html, unsafe_allow_html=True)
                     # report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
