@@ -247,6 +247,8 @@ if source_radio == settings.IMAGE:
                     #             file_name=report,
                     #             mime="application/pdf"
                     #         )
+                st.write("First name", first_name, "Last name", last_name)
+                
 
                 # app()
                 # if(first_name != '' and last_name != '' and address !=''):
