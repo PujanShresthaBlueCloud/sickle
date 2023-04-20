@@ -39,6 +39,7 @@ with container:
             The motivation for creating such a diagnosis tool for SCD is to address the unmet needs of millions of people who suffer from this debilitating condition and to reduce the burden of SCD on individuals, families and health systems. By developing a diagnosis tool that can provide timely and accurate information on SCD status and risk factors, we aim to enable early intervention and optimal management of SCD patients. Ultimately, we hope that our diagnosis tool will contribute to improving the health outcomes and well-being of people with SCD and their communities.
             """)
 
-    st.header("The solution")
-    st.text("Applying Computer Vision For Red Blood Cell Classification")
-    st.text("To Diagnose Sickle Cell Disease")
+    st.header("Aim")
+    st.markdown("""
+            The aim of this project is to develop and evaluate a YOLO model for the diagnosis of sickle cell disease using peripheral blood smear images. Sickle cell disease is a genetic disorder that affects the shape and function of red blood cells, causing various complications such as anemia, infections, pain crises, and organ damage. Current methods for diagnosing sickle cell disease are invasive, time-consuming, and require specialized equipment and trained personnel. A YOLO model is a deep learning technique that can detect and classify objects in images with high accuracy and speed. By using a YOLO model, we hope to achieve a fast, accurate, and non-invasive diagnosis of sickle cell disease that can be deployed in low-resource settings.
+            """)
