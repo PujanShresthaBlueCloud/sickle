@@ -124,12 +124,6 @@ if source_radio == settings.IMAGE:
 
             with st.expander("Class detected in percentage"):
                 labels = detected_data_frame['class'].squeeze()
-                explode = (0.1, 0.1, 0.1, 0.1,0.1 )
-                fig1, ax1 = plt.subplots()
-                ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
-                        shadow=True, startangle=90)
-                ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-                # st.pyplot(fig1)
                 pie_data = px.pie(detected_data_frame, values=sizes, names=labels)
                 st.write(pie_data)
 
