@@ -77,3 +77,18 @@ def is_valid_email(email_address):
         return False
 
     return True
+
+def generate_report(first_name, last_name):
+    name = st.write("First name", first_name, "Last name", last_name)
+    return name
+    # pdfkit.from_string(html, report)
+    # # st.markdown(html, unsafe_allow_html=True)
+    # # st.session_state.generate_report = 1     # Attribute API
+    # # Define download button
+    # with open(report, 'rb') as f:
+    #   st.download_button(
+    #         label="Download Report",
+    #         data=f.read(),
+    #         file_name=report,
+    #         mime="application/pdf"
+    #     )

@@ -9,12 +9,7 @@ from ultralytics import YOLO
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import pdfkit
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
-from email.mime.application import MIMEApplication
-import re
-import email.utils
+
 
 
 # Using custom css
@@ -34,7 +29,7 @@ except Exception as ex:
     print(ex)
     st.write(f"Unable to load model. Check the specified path: {model_path}")
 
-st.subheader("Detection tunning")
+st.subheader("Detection tuning")
 conf = float(st.slider("Select detection tuning level",25, 100, 40)) / 100
 source_img = None
 st.subheader("Upload image to detect")
@@ -133,141 +128,6 @@ if source_radio == settings.IMAGE:
                         shadow=True, startangle=90)
                 ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
                 st.pyplot(fig1)
-
-            with st.expander("Generate report"):
-            # Generating report --------------------------------------------------
-                # Define Streamlit app title
-                st.header("Generate Report")
-
-                # Define HTML template for report
-                template = """
-                <html>
-                <body>
-                    <h3>Sickle Cell Detection Report</h3>
-                    <table class="report">
-                    <tr style="text-align: left;">
-                        <th colspan="4">Patient Information:</th>
-                    </tr>
-                    <tr style="text-align: left;">
-                        <td width="20%">First name:</td>
-                        <td style="text-align: left;">{}</td>
-                        <td width="20%">Last name:</td>
-                        <td style="text-align: left;">{}</td>
-                    </tr>
-                    <tr style="text-align: left;">
-                        <td>Age:</td>
-                        <td style="text-align: left;">{}</td>
-                        <td>Sex:</td>
-                        <td style="text-align: left;">{}</td>
-                    </tr>
-                    <tr style="text-align: left;">
-                        <td>Address:</td>
-                        <td style="text-align: left;">{}</td>
-                        <td>Date of Test:</td>
-                        <td style="text-align: left;">{}</td>
-                    </tr>
-                    <tr style="text-align: left;">
-                        <th colspan="4"></th>
-                    </tr>
-                    <tr style="text-align: left;">
-                        <th colspan="4">Test Results:</th>
-                    </tr>
-                    <tr style="text-align: left;">
-                        <th colspan="4"></th>
-                    </tr>
-                    <tr style="text-align: left;">
-                        <td colspan="4">{}</td>
-                    </tr>
-                    </table>
-                </body>
-                </html>
-                """
-                # col1, col2 = st.columns(2)
-
-                # with col1:
-                #     first_name = st.text_input("First name")
-                #     age = st.number_input("Age", min_value=0, max_value=120)
-                #     address = st.text_input("Address")
-
-                # with col2:
-                #     last_name = st.text_input("Last name")
-                #     sex = st.selectbox("Sex", ["Male", "Female", "Other"])
-                #     date_of_test = st.date_input("Date of Test")
-
-                # Defining pdf filename
-                # report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
-
-                report = 'report.pdf'
-
-                def app(first_name, last_name, age, sex, address, date_of_test,detected_result):
-                    st.write(first_name)
-                    return
-                    html = template.format(first_name, last_name, age, sex, address, date_of_test,detected_result)
-                    
-
-                    # pdfkit.from_string(html, report)
-                    pdfkit.from_string(html, report)
-                    # st.markdown(html, unsafe_allow_html=True)
-                    # st.session_state.generate_report = 1     # Attribute API
-                    # Define download button
-                    with open(report, 'rb') as f:
-                        st.download_button(
-                                label="Download Report",
-                                data=f.read(),
-                                file_name=report,
-                                mime="application/pdf"
-                            )
-
-                with st.form(key="report_form"):
-                    st.write("Inside the form")
-                    first_name = st.text_input("First name")
-                    last_name = st.text_input("Last name")
-                    age = st.number_input("Age", min_value=0, max_value=120)
-                    sex = st.selectbox("Sex", ["Male", "Female", "Other"])
-                    date_of_test = st.date_input("Date of Test")
-                    address = st.text_input("Address")
-
-                    # Every form must have a submit button.
-                    submitted = st.form_submit_button(label="Submit")
-                    # st.form_submit_button(
-                    #     label="Submit",
-                    #     on_click=app,
-                    #     kwargs=dict(first_name=first_name, last_name=last_name, age=age, sex=sex, date_of_test=date_of_test, address=address, detected_result=detected_result)
-                    # )
-                if submitted:
-                    st.write("First name", first_name, "Last name", last_name)
-                    # html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_result)
-                    # st.markdown(html, unsafe_allow_html=True)
-                    # report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
-                    # pdfkit.from_string(html, report)
-                    # with open(report, 'rb') as f:
-                    #     st.download_button(
-                    #             label="Download Report",
-                    #             data=f.read(),
-                    #             file_name=report,
-                    #             mime="application/pdf"
-                    #         )
-                st.write("First name", first_name, "Last name", last_name)
-                
-
-                # app()
-                # if(first_name != '' and last_name != '' and address !=''):
-                    # html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_result)
-                    # st.markdown(html, unsafe_allow_html=True)
-                    # app()
-                    # email_address = st.text_input("Email", placeholder="Enter patient email address")
-                    # if email_address:
-                    #     if is_valid_email(email_address):
-                    #         send_email(email_address)
-                    #     else:
-                    #         st.error("Invalid email address!")
-                # else:
-                    # html=''
-
-
-
-
-                #  -------------------------------------------------- Generating report
 
         else:
             st.write('') # we can put it blank
