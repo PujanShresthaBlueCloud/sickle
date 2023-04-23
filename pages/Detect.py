@@ -141,7 +141,8 @@ if source_radio == settings.IMAGE:
             with st.expander("Generate report"):
                 generate_report = st.button("Generate report")
                 if(generate_report):
-                    helper.load_template(settings.GT)
+                    helper.load_generate_report(settings.GR)
+
 
         else:
             st.write('') # we can put it blank
