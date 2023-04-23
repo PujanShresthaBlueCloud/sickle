@@ -161,7 +161,7 @@ if(detected_data_frame is not None):
 
 
   if(first_name != '' and last_name != '' and address !=''):
-      html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_result, pie)
+      html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_result)
       st.markdown(html, unsafe_allow_html=True)
       app()
       email_address = st.text_input("Email", placeholder="Enter patient email address")
