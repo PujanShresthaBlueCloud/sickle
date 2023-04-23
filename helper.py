@@ -107,3 +107,4 @@ def pie_chart(detected_data_frame):
     labels = detected_data_frame['class'].squeeze()
     pie_data = px.pie(detected_data_frame, values=sizes, names=labels)
     st.write(pie_data)
+    return pie_data
