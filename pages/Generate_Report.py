@@ -60,10 +60,7 @@ if(detected_data_frame is not None):
           <th colspan="4">Test Results:</th>
         </tr>
         <tr style="text-align: left;">
-          <th colspan="4"></th>
-        </tr>
-        <tr style="text-align: left;">
-          <td colspan="4">{}</td>
+          <td colspan="3">{}</td>
         </tr>
         <tr style="text-align: left;">
           <th colspan="4">Management and Treatment:</th>
