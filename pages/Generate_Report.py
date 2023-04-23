@@ -26,6 +26,7 @@ if(detected_data_frame is not None):
   # Define Streamlit app title
   st.header("Generate Report")
   detected_result = detected_data_frame.to_html(index=False)
+  bar = helper.bar_chart(detected_data_frame)
   # Define HTML template for report
   template = """
   <html>
@@ -143,8 +144,8 @@ if(detected_data_frame is not None):
 
         # Send the message
         try:
-            smtp_username = "pujansth16@gmail.com"
-            smtp_password = "bmngcpaoruhencsd"
+            smtp_username = ""
+            smtp_password = ""
             connection = s.SMTP('smtp.gmail.com', 587)
             connection.starttls()
             connection.login(smtp_username, smtp_password)
@@ -157,7 +158,7 @@ if(detected_data_frame is not None):
 
 
   if(first_name != '' and last_name != '' and address !=''):
-      html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_result, helper.bar_chart(detected_data_frame))
+      html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_result, bar)
       st.markdown(html, unsafe_allow_html=True)
       app()
       email_address = st.text_input("Email", placeholder="Enter patient email address")
