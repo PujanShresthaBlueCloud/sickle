@@ -129,7 +129,7 @@ if source_radio == settings.IMAGE:
             with st.expander("Class detected in percentage"):
                 helper.pie_chart(detected_data_frame)
             
-            st.subheader("Please go to Generate Report page to generate report..")
+            # st.subheader("Please go to Generate Report page to generate report..")
 
 
         else:
