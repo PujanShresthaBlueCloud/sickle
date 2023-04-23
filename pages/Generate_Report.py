@@ -26,7 +26,9 @@ if(detected_data_frame is not None):
   # Define Streamlit app title
   st.header("Generate Report")
   detected_result = detected_data_frame.to_html(index=False)
-  bar = helper.bar_chart(detected_data_frame).to_html()
+  # bar = helper.bar_chart(detected_data_frame).to_html()
+  bar = st.bar_chart(data=detected_data_frame, x='class', y='count')
+  bar_html = st.pyplot(bar).to_html()
 
   # Define HTML template for report
   template = """
@@ -71,7 +73,7 @@ if(detected_data_frame is not None):
           <th colspan="4">Graphs:</th>
         </tr>
         <tr style="text-align: left;">
-          <td colspan="4">{bar}</td>
+          <td colspan="4">{bar_html}</td>
         </tr>
       </table>
     </body>
