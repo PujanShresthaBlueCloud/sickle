@@ -24,7 +24,7 @@ if(detected_data_frame is not None):
   # Define Streamlit app title
   st.header("Generate Report")
   # st.write(detected_data_frame)
-  detected_result = detected_data_frame.to_html(index=False)
+  # detected_result = detected_data_frame.to_html(index=False)
 
   # Define HTML template for report
   template = """
@@ -154,7 +154,7 @@ if(detected_data_frame is not None):
 
 
   if(first_name != '' and last_name != '' and address !=''):
-      html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_result)
+      html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_data_frame.to_html(index=False))
       st.markdown(html, unsafe_allow_html=True)
       app()
       email_address = st.text_input("Email", placeholder="Enter patient email address")
