@@ -128,7 +128,19 @@ if source_radio == settings.IMAGE:
                 st.write(pie_data)
             
             with st.expander("Generate report"):
-                helper.load_template(settings.GR)
+                col1, col2 = st.columns(2)
+
+                with col1:
+                    first_name = st.text_input("First name")
+                    age = st.number_input("Age", min_value=0, max_value=120)
+                    address = st.text_input("Address")
+
+                with col2:
+                    last_name = st.text_input("Last name")
+                    sex = st.selectbox("Sex", ["Male", "Female", "Other"])
+                    date_of_test = st.date_input("Date of Test")
+                                
+                helper.load_template(settings.GR, first_name, last_name, age, sex, address, date_of_test)
 
         else:
             st.write('') # we can put it blank
