@@ -133,7 +133,7 @@ if source_radio == settings.IMAGE:
             with st.expander("Generate report"):
                 generate_report = st.button("Generate report")
                 if(generate_report):
-                    url = f'https://pujanshresthabluecloud-sickle-about-o5l7sg.streamlit.app/Generate_Report/?variable={detected_cal}'
+                    url = f'https://pujanshresthabluecloud-sickle-about-o5l7sg.streamlit.app/Generate_Report/?variable={total_detection}'
                     html_str = f'<meta http-equiv="refresh" content="0;URL=\'{url}\'" />'
                     html(html_str)
 

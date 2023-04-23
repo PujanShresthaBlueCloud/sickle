@@ -13,9 +13,9 @@ import email.utils
 query_params = st.experimental_get_query_params()
 
 # Get the value of the "my_var" parameter, or use a default value if it's not present
-detected_result = query_params.get("detected_result", ["default_value"])[0]
+variable = query_params.get("variable", ["default_value"])[0]
 
-st.write(detected_result)
+st.write(variable)
 # st.set_page_config(keep_session_state=True)
 # Using custom css
 helper.local_css(settings.CSS)
