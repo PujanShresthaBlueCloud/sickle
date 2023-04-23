@@ -73,7 +73,7 @@ if(detected_data_frame is not None):
           <th colspan="4">Graphs:</th>
         </tr>
         <tr style="text-align: left;">
-          <td colspan="4">{bar_html}</td>
+          <td colspan="4">{}</td>
         </tr>
       </table>
     </body>
@@ -161,7 +161,7 @@ if(detected_data_frame is not None):
 
 
   if(first_name != '' and last_name != '' and address !=''):
-      html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_result)
+      html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_result, bar_html)
       st.markdown(html, unsafe_allow_html=True)
       app()
       email_address = st.text_input("Email", placeholder="Enter patient email address")
