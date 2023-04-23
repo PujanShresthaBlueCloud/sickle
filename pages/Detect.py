@@ -125,15 +125,11 @@ if source_radio == settings.IMAGE:
             # st.write(detected_result)
             with st.expander("Total number of class detected"):
                 helper.bar_chart(detected_data_frame)
-                # st.bar_chart(data=detected_data_frame, x='class', y='count')
 
             with st.expander("Class detected in percentage"):
                 helper.pie_chart(detected_data_frame)
-                # sizes = detected_data_frame['percent'].squeeze()
-                # labels = detected_data_frame['class'].squeeze()
-                # pie_data = px.pie(detected_data_frame, values=sizes, names=labels)
-                # st.write(pie_data)
             
+            st.subheader("Please go to Generate Report page to generate report..")
 
 
         else:

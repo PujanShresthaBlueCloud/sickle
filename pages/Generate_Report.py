@@ -66,10 +66,10 @@ if(detected_data_frame is not None):
           <td colspan="4">{}</td>
         </tr>
         <tr style="text-align: left;">
-          <th colspan="4">Management and Treatment:</th>
+          <th colspan="4">Graphs:</th>
         </tr>
         <tr style="text-align: left;">
-          <td colspan="4">There is currently no cure for sickle cell disease, but there are treatments that can help manage symptoms and prevent complications. Treatment options include pain management, antibiotics to prevent infections, blood transfusions, and bone marrow transplants in severe cases.</td>
+          <td colspan="4">{}</td>
         </tr>
       </table>
     </body>
@@ -157,7 +157,7 @@ if(detected_data_frame is not None):
 
 
   if(first_name != '' and last_name != '' and address !=''):
-      html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_result)
+      html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_result, helper.bar_chart(detected_data_frame))
       st.markdown(html, unsafe_allow_html=True)
       app()
       email_address = st.text_input("Email", placeholder="Enter patient email address")
