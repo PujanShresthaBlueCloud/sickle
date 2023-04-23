@@ -62,7 +62,7 @@ template = """
         <th colspan="4"></th>
       </tr>
       <tr style="text-align: left;">
-        <td colspan="4">The results of your recent laboratory tests indicate that you have sickle cell disease. Sickle cell disease is a genetic blood disorder that affects the shape of red blood cells. In people with sickle cell disease, the red blood cells are shaped like crescents or sickles instead of round discs.</td>
+        <td colspan="4">{}</td>
       </tr>
       <tr style="text-align: left;">
         <th colspan="4">Management and Treatment:</th>
@@ -156,7 +156,7 @@ def send_email(email_address):
 
 
 if(first_name != '' and last_name != '' and address !=''):
-    html = template.format(first_name, last_name, age, sex, address, date_of_test, )
+    html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_data_frame)
     st.markdown(html, unsafe_allow_html=True)
     app()
     email_address = st.text_input("Email", placeholder="Enter patient email address")

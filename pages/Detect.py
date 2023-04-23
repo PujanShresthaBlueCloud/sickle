@@ -14,6 +14,7 @@ import plotly.graph_objects as go
 
 import streamlit.components.v1 as html
 
+st.session_state["detected_data_frame"] = ''
 
 
 
@@ -119,7 +120,7 @@ if source_radio == settings.IMAGE:
             detected_data_frame=pd.DataFrame(detected_cal, columns=['class','count','percent'], index=None)
             st.dataframe(detected_data_frame, use_container_width=True)
             detected_result = detected_data_frame.to_html(index=False)
-            
+
             st.session_state["detected_data_frame"] = detected_data_frame
 
             # detected_result = detected_data_frame
