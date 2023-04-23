@@ -29,7 +29,7 @@ def local_js(file_name):
 def load_template(file_name, first_name, last_name, age, sex, address, date_of_test):
     with open(file_name) as f:
         # template = st.markdown(f"<html>{f.read()}</html", unsafe_allow_html=True)
-        html = st.markdown(f"<html>{f.read()}</html", unsafe_allow_html=True).format(first_name, last_name, age, sex, address, date_of_test)
+        html = (f"<html>{f.read()}</html").format(first_name, last_name, age, sex, address, date_of_test)
         # html = template.format(first_name, last_name, age, sex, address, date_of_test)
         st.markdown(html, unsafe_allow_html=True)
         report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
