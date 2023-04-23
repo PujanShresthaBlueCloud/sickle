@@ -28,7 +28,8 @@ def local_js(file_name):
 # Load report template
 def load_template(file_name):
     with open(file_name) as f:
-        st.markdown(f"<html>{f.read()}</html", unsafe_allow_html=True)
+        html = f.format()
+        st.markdown(html, unsafe_allow_html=True)
 
 def send_email(email_address):
     # Define email button
