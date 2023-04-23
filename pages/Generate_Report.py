@@ -26,12 +26,12 @@ if 'pie_chart.png' not in st.session_state:
 detected_data_frame = st.session_state['detected_data_frame'] if st.session_state['detected_data_frame'] is not None else st.write("Please go to Detect page to detect object first....")
 pie = st.session_state['image'] if st.session_state['image'] is not None else st.write("Please go to Detect page")
 
-if(detected_data_frame is not None and pie is not None):
+if(detected_data_frame is not None):
   # Define Streamlit app title
   st.header("Generate Report")
   detected_result = detected_data_frame.to_html(index=False)
   # bar = helper.bar_chart(detected_data_frame).to_html()
-  # bar = st.bar_chart(data=detected_data_frame, x='class', y='count')
+  bar = st.bar_chart(data=detected_data_frame, x='class', y='count')
   # bar_html = st.pyplot(bar).to_html()
 
   # Define HTML template for report
@@ -77,7 +77,7 @@ if(detected_data_frame is not None and pie is not None):
           <th colspan="4">Graphs:</th>
         </tr>
         <tr style="text-align: left;">
-          <td colspan="4">{}</td>
+          <td colspan="4"><img src="{bar.to_image(format='png')}"></td>
         </tr>
       </table>
     </body>
@@ -165,7 +165,7 @@ if(detected_data_frame is not None and pie is not None):
 
 
   if(first_name != '' and last_name != '' and address !=''):
-      html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_result, pie)
+      html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_result)
       st.markdown(html, unsafe_allow_html=True)
       app()
       email_address = st.text_input("Email", placeholder="Enter patient email address")
