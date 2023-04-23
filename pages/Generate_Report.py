@@ -20,8 +20,9 @@ helper.local_js(settings.JS)
 # Getting report
 detected_data_frame = st.session_state['detected_data_frame'] if st.session_state['detected_data_frame'] is not None else st.write("Generate object detection result first")
 # detected_result = detected_data_frame.to_html(index=False)
+st.write(detected_data_frame)
 
-if(detected_data_frame.all()):
+if(detected_data_frame is not None):
   # Define Streamlit app title
   st.header("Generate Report")
   st.write(detected_data_frame)
