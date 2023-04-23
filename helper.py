@@ -35,17 +35,18 @@ def load_template(file_name, first_name, last_name, age, sex, address, date_of_t
         return html
 
 def app(html, report):
-    pdfkit.from_string(html, report)
-    # st.markdown(html, unsafe_allow_html=True)
-    st.session_state.generate_report = 1     # Attribute API
-    # Define download button
-    with open(report, 'rb') as f:
-      st.download_button(
-            label="Download Report",
-            data=f.read(),
-            file_name=report,
-            mime="application/pdf"
-        )
+    st.write("inside app")
+    # pdfkit.from_string(html, report)
+    # # st.markdown(html, unsafe_allow_html=True)
+    # st.session_state.generate_report = 1     # Attribute API
+    # # Define download button
+    # with open(report, 'rb') as f:
+    #   st.download_button(
+    #         label="Download Report",
+    #         data=f.read(),
+    #         file_name=report,
+    #         mime="application/pdf"
+    #     )
 
 def send_email(email_address):
     # Define email button
