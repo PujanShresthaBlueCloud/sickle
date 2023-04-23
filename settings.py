@@ -38,5 +38,8 @@ CSS = MODEL_DIR/ 'css/style.css'
 # javascipt file
 JS = MODEL_DIR/ 'js/main.js'
 
+# generate template
+GT = MODEL_DIR/ 'template/index.py'
+
 # generate report
-GR = MODEL_DIR/ 'template/index.py'
+GR = MODEL_DIR/ 'pages/Generate_Report.py'
