@@ -125,13 +125,15 @@ if source_radio == settings.IMAGE:
             # detected_result = detected_data_frame
             # st.write(detected_result)
             with st.expander("Total number of class detected"):
-                st.bar_chart(data=detected_data_frame, x='class', y='count')
-                sizes = detected_data_frame['percent'].squeeze()
+                helper.bar_chart(detected_data_frame)
+                # st.bar_chart(data=detected_data_frame, x='class', y='count')
 
             with st.expander("Class detected in percentage"):
-                labels = detected_data_frame['class'].squeeze()
-                pie_data = px.pie(detected_data_frame, values=sizes, names=labels)
-                st.write(pie_data)
+                helper.pie_chart(detected_data_frame)
+                # sizes = detected_data_frame['percent'].squeeze()
+                # labels = detected_data_frame['class'].squeeze()
+                # pie_data = px.pie(detected_data_frame, values=sizes, names=labels)
+                # st.write(pie_data)
             
 
 

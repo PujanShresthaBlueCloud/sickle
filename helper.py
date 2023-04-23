@@ -43,19 +43,7 @@ def load_generate_report(filename,data):
     return data
 
 
-def app(html, report):
-    st.write("inside app")
-    # pdfkit.from_string(html, report)
-    # # st.markdown(html, unsafe_allow_html=True)
-    # st.session_state.generate_report = 1     # Attribute API
-    # # Define download button
-    # with open(report, 'rb') as f:
-    #   st.download_button(
-    #         label="Download Report",
-    #         data=f.read(),
-    #         file_name=report,
-    #         mime="application/pdf"
-    #     )
+
 
 def send_email(email_address):
     # Define email button
@@ -110,17 +98,11 @@ def is_valid_email(email_address):
 
     return True
 
-def generate_report(first_name, last_name):
-    name = st.write("First name", first_name, "Last name", last_name)
-    return name
-    # pdfkit.from_string(html, report)
-    # # st.markdown(html, unsafe_allow_html=True)
-    # # st.session_state.generate_report = 1     # Attribute API
-    # # Define download button
-    # with open(report, 'rb') as f:
-    #   st.download_button(
-    #         label="Download Report",
-    #         data=f.read(),
-    #         file_name=report,
-    #         mime="application/pdf"
-    #     )
+def bar_chart(detected_data_frame):
+    st.bar_chart(data=detected_data_frame, x='class', y='count')
+
+def pie_chart(detected_data_frame):
+    sizes = detected_data_frame['percent'].squeeze()
+    labels = detected_data_frame['class'].squeeze()
+    pie_data = px.pie(detected_data_frame, values=sizes, names=labels)
+    st.write(pie_data)
