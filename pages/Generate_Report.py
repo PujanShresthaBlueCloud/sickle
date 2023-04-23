@@ -13,7 +13,7 @@ import email.utils
 # Using custom css
 helper.local_css(settings.CSS)
 
-# # Using custom js
+# Using custom js
 helper.local_js(settings.JS)
 
 
@@ -23,7 +23,8 @@ detected_data_frame = st.session_state['detected_data_frame'] if st.session_stat
 if(detected_data_frame is not None):
   # Define Streamlit app title
   st.header("Generate Report")
-  st.write(detected_data_frame)
+  # st.write(detected_data_frame)
+  detected_result = detected_data_frame.to_html(index=False)
 
   # Define HTML template for report
   template = """
@@ -62,7 +63,7 @@ if(detected_data_frame is not None):
           <th colspan="4"></th>
         </tr>
         <tr style="text-align: left;">
-          <td colspan="4">{}</td>
+          <td colspan="1">{}</td>
         </tr>
         <tr style="text-align: left;">
           <th colspan="4">Management and Treatment:</th>
@@ -156,7 +157,7 @@ if(detected_data_frame is not None):
 
 
   if(first_name != '' and last_name != '' and address !=''):
-      html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_data_frame)
+      html = template.format(first_name, last_name, age, sex, address, date_of_test, detected_result)
       st.markdown(html, unsafe_allow_html=True)
       app()
       email_address = st.text_input("Email", placeholder="Enter patient email address")
