@@ -8,7 +8,8 @@ from email.mime.application import MIMEApplication
 import re
 import email.utils
 from ultralytics import YOLO
-
+import plotly.express as px
+import plotly.graph_objects as go
 
 def load_model(model_path):
     model = YOLO(model_path)
