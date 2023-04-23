@@ -1,3 +1,13 @@
+import streamlit as st
+import pdfkit
+import smtplib as s
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.mime.application import MIMEApplication
+import re
+import helper
+import settings
+import email.utils
 template = """
 <html>
   <body>
@@ -46,3 +56,37 @@ template = """
   </body>
 </html>
 """
+col1, col2 = st.columns(2)
+
+with col1:
+  first_name = st.text_input("First name")
+  age = st.number_input("Age", min_value=0, max_value=120)
+  address = st.text_input("Address")
+
+with col2:
+  last_name = st.text_input("Last name")
+  sex = st.selectbox("Sex", ["Male", "Female", "Other"])
+  date_of_test = st.date_input("Date of Test")
+
+# Defining pdf filename
+report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
+
+def app():
+    pdfkit.from_string(html, report)
+    # st.markdown(html, unsafe_allow_html=True)
+    st.session_state.generate_report = 1     # Attribute API
+    # Define download button
+    with open(report, 'rb') as f:
+      st.download_button(
+            label="Download Report",
+            data=f.read(),
+            file_name=report,
+            mime="application/pdf"
+        )
+
+if(first_name != '' and last_name != '' and address !=''):
+    html = template.format(first_name, last_name, age, sex, address, date_of_test, )
+    st.markdown(html, unsafe_allow_html=True)
+    app()
+else:
+   html=''

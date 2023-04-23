@@ -139,7 +139,9 @@ if source_radio == settings.IMAGE:
                 st.write(pie_data)
             
             with st.expander("Generate report"):
-                helper.load_generate_report(settings.GR, data="hello")
+                generate_report = st.button("Generate report")
+                if(generate_report):
+                    helper.load_template(settings.GT)
 
         else:
             st.write('') # we can put it blank
