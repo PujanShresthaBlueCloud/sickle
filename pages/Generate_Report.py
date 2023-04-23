@@ -13,14 +13,12 @@ import email.utils
 # Using custom css
 helper.local_css(settings.CSS)
 
-# Using custom js
+# # Using custom js
 helper.local_js(settings.JS)
 
 
 # Getting report
 detected_data_frame = st.session_state['detected_data_frame'] if st.session_state['detected_data_frame'] is not None else st.write("Generate object detection result first")
-# detected_result = detected_data_frame.to_html(index=False)
-st.write(detected_data_frame)
 
 if(detected_data_frame is not None):
   # Define Streamlit app title
@@ -171,5 +169,3 @@ if(detected_data_frame is not None):
     html=''
 else:
   st.write("Detect object first")
-
-
