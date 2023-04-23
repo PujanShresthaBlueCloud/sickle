@@ -8,10 +8,10 @@ import re
 import helper
 import settings
 import email.utils
-from streamlit.url_util import parse_query_string
+from streamlit import _legacy_util
 
 # Get the current URL query string
-query_params = st.experimental_get_query_params()
+query_params = _legacy_util.get_query_params()
 
 # Get the value of the "my_var" parameter, or use a default value if it's not present
 detected_result = query_params.get("detected_result", ["default_value"])[0]
