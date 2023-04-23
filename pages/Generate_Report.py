@@ -9,13 +9,11 @@ import helper
 import settings
 import email.utils
 
-# Get the current URL query string
-query_params = st.experimental_get_query_params()
 
-# Get the value of the "my_var" parameter, or use a default value if it's not present
-variable = query_params.get("variable", ["default_value"])[0]
+# Display the DataFrame on the current page
+if "data" in st.session_state:
+    st.write(st.session_state["data"])
 
-st.write(variable)
 # st.set_page_config(keep_session_state=True)
 # Using custom css
 helper.local_css(settings.CSS)
