@@ -24,7 +24,7 @@ detected_data_frame = st.session_state['detected_data_frame'] if st.session_stat
 if(detected_data_frame):
   # Define Streamlit app title
   st.header("Generate Report")
-  st.write(detected_result)
+  st.write(detected_data_frame)
 
   # Define HTML template for report
   template = """
