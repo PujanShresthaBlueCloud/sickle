@@ -139,8 +139,9 @@ if source_radio == settings.IMAGE:
                     last_name = st.text_input("Last name")
                     sex = st.selectbox("Sex", ["Male", "Female", "Other"])
                     date_of_test = st.date_input("Date of Test")
-                                
-                helper.load_template(settings.GR, first_name, last_name, age, sex, address, date_of_test)
+                
+                if(first_name):
+                    helper.load_template(settings.GR, first_name, last_name, age, sex, address, date_of_test)
 
         else:
             st.write('') # we can put it blank
