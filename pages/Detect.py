@@ -11,7 +11,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
-
 import streamlit.components.v1 as html
 
 st.session_state["detected_data_frame"] = None

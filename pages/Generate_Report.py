@@ -16,6 +16,8 @@ helper.local_css(settings.CSS)
 # Using custom js
 helper.local_js(settings.JS)
 
+if 'detected_data_frame' not in st.session_state:
+    st.session_state['detected_data_frame'] = None
 
 # Getting report
 detected_data_frame = st.session_state['detected_data_frame'] if st.session_state['detected_data_frame'] is not None else st.write("Please go to Detect page to detect object first....")
