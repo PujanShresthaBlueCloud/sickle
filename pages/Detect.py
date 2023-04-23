@@ -119,6 +119,9 @@ if source_radio == settings.IMAGE:
             detected_data_frame=pd.DataFrame(detected_cal, columns=['class','count','percent'], index=None)
             st.dataframe(detected_data_frame, use_container_width=True)
             detected_result = detected_data_frame.to_html(index=False)
+            
+            st.session_state["detected_data_frame"] = detected_data_frame
+
             # detected_result = detected_data_frame
             # st.write(detected_result)
             with st.expander("Total number of class detected"):
@@ -130,11 +133,6 @@ if source_radio == settings.IMAGE:
                 pie_data = px.pie(detected_data_frame, values=sizes, names=labels)
                 st.write(pie_data)
             
-            with st.expander("Generate report"):
-                generate_report = st.button("Generate report")
-                if(generate_report):
-                    st.session_state["data"] = detected_result
-                    st.experimental_rerun()
 
 
         else:
