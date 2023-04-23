@@ -127,6 +127,7 @@ if source_radio == settings.IMAGE:
                 helper.bar_chart(detected_data_frame)
 
             with st.expander("Class detected in percentage"):
+                helper.pie_chart(detected_data_frame)
                 fig = helper.pie_chart(detected_data_frame)
                 fig.write_image('pie_chart.png')
                 st.session_state['image'] = 'pie_chart.png'
