@@ -12,16 +12,8 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
 
+import streamlit.components.v1 as html
 
-import pdfkit
-import smtplib as s
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
-from email.mime.application import MIMEApplication
-import re
-import helper
-import settings
-import email.utils
 
 
 
@@ -141,7 +133,9 @@ if source_radio == settings.IMAGE:
             with st.expander("Generate report"):
                 generate_report = st.button("Generate report")
                 if(generate_report):
-                    helper.load_generate_report(settings.GR)
+                    url = f'https://pujanshresthabluecloud-sickle-about-o5l7sg.streamlit.app/Generate_Report/?variable={detected_result}'
+                    html_str = f'<meta http-equiv="refresh" content="0;URL=\'{url}\'" />'
+                    html(html_str)
 
 
         else:
