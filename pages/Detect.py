@@ -141,7 +141,9 @@ if source_radio == settings.IMAGE:
                     date_of_test = st.date_input("Date of Test")
                 
                 if(first_name):
-                    helper.load_template(settings.GR, first_name, last_name, age, sex, address, date_of_test)
+                    html = helper.load_template(settings.GR, first_name, last_name, age, sex, address, date_of_test)
+                    report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
+                    helper.app(html, report)
 
         else:
             st.write('') # we can put it blank

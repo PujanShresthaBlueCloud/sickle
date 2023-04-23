@@ -32,9 +32,7 @@ def load_template(file_name, first_name, last_name, age, sex, address, date_of_t
         html = {f.read()}.format(first_name, last_name, age, sex, address, date_of_test)
         # html = template.format(first_name, last_name, age, sex, address, date_of_test)
         st.markdown(html, unsafe_allow_html=True)
-        report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
-        app(html, report)
-
+        return html
 
 def app(html, report):
     pdfkit.from_string(html, report)
