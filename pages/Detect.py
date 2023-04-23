@@ -139,10 +139,12 @@ if source_radio == settings.IMAGE:
                     last_name = st.text_input("Last name")
                     sex = st.selectbox("Sex", ["Male", "Female", "Other"])
                     date_of_test = st.date_input("Date of Test")
+
+                st.write(first_name)
                 
-                if(first_name):
-                    html = helper.load_template(settings.GR, first_name, last_name, age, sex, address, date_of_test)
-                    report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
+                # if(first_name):
+                #     html = helper.load_template(settings.GR, first_name, last_name, age, sex, address, date_of_test)
+                #     report=f'{first_name}_{last_name}_{date_of_test}_report.pdf'
                     # helper.app(html, report)
 
         else:
