@@ -99,15 +99,15 @@ if source_radio == settings.IMAGE:
         if detect_objects:
             total_detection = len(Normal) + len(Sickle) + len(Target) + len(Crystal) + len(others)
             normal_count = len(Normal) if(len(Normal)) else 0
-            normal_percent = "%.2f"  ((normal_count/total_detection)*100) if(len(Normal)) else 0
+            normal_percent = "%.2f" % ((normal_count/total_detection)*100) if(len(Normal)) else 0
             sickle_count = len(Sickle) if(len(Sickle)) else 0
-            sickle_percent = "%.2f"  ((sickle_count/total_detection)*100) if(len(Sickle)) else 0
+            sickle_percent = "%.2f" % ((sickle_count/total_detection)*100) if(len(Sickle)) else 0
             target_count = len(Target) if(len(Target)) else 0
-            target_percent = "%.2f"  ((target_count/total_detection)*100) if(len(Target)) else 0
+            target_percent = "%.2f" % ((target_count/total_detection)*100) if(len(Target)) else 0
             crystal_count = len(Crystal) if(len(Crystal)) else 0
-            crystal_percent = "%.2f"  ((crystal_count/total_detection)*100) if(len(Crystal)) else 0
+            crystal_percent = "%.2f" % ((crystal_count/total_detection)*100) if(len(Crystal)) else 0
             others_count = len(others) if(len(others)) else 0
-            others_percent = "%.2f"  ((others_count/total_detection)*100) if(len(others)) else 0
+            others_percent = "%.2f" % ((others_count/total_detection)*100) if(len(others)) else 0
             st.write("Total detected ", total_detection, ", at confidence ", "%.2f" %(conf * 100)," %")
             detected_cal = [
                     {'class':'Normal', 'count': normal_count, 'percent' : normal_percent}, 
@@ -133,7 +133,7 @@ if source_radio == settings.IMAGE:
             with st.expander("Generate report"):
                 generate_report = st.button("Generate report")
                 if(generate_report):
-                    url = f'https://pujanshresthabluecloud-sickle-about-o5l7sg.streamlit.app/Generate_Report/?variable={detected_result}'
+                    url = f'https://pujanshresthabluecloud-sickle-about-o5l7sg.streamlit.app/Generate_Report/?variable={detected_cal}'
                     html_str = f'<meta http-equiv="refresh" content="0;URL=\'{url}\'" />'
                     html(html_str)
 
