@@ -39,4 +39,4 @@ CSS = MODEL_DIR/ 'css/style.css'
 JS = MODEL_DIR/ 'js/main.js'
 
 # generate report
-GR = MODEL_DIR/ 'template/index.html'
+GR = MODEL_DIR/ 'template/index.py'
