@@ -32,7 +32,7 @@ def load_template(file_name, first_name, last_name, age, sex, address, date_of_t
         html = {f.read()}.format(first_name, last_name, age, sex, address, date_of_test)
         # html = template.format(first_name, last_name, age, sex, address, date_of_test)
         st.markdown(html, unsafe_allow_html=True)
-        return html
+        # return html
 
 def app(html, report):
     st.write("inside app")
