@@ -9,11 +9,6 @@ import helper
 import settings
 import email.utils
 
-
-# Display the DataFrame on the current page
-if "data" in st.session_state:
-    st.write(st.session_state["data"])
-
 # st.set_page_config(keep_session_state=True)
 # Using custom css
 helper.local_css(settings.CSS)
@@ -23,8 +18,8 @@ helper.local_js(settings.JS)
 
 
 # Getting report
-# detected_data_frame = st.session_state['detected_data_frame'] if st.session_state['detected_data_frame'] is not None else st.write("Generate object detection result first")
-# detected_result = detected_data_frame.to_html(index=False)
+detected_data_frame = st.session_state['detected_data_frame'] if st.session_state['detected_data_frame'] is not None else st.write("Generate object detection result first")
+detected_result = detected_data_frame.to_html(index=False)
 
 
 # Define Streamlit app title
