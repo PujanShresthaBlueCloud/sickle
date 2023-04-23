@@ -73,7 +73,7 @@ if(detected_data_frame is not None):
           <th colspan="4">Graphs:</th>
         </tr>
         <tr style="text-align: left;">
-          <td colspan="4"><img src="{bar.to_image(format='png')}"></td>
+          <td colspan="4">f'<img src="data:image/png;base64,{bar.to_image(format="png", width=500, height=400).decode("utf-8")}" />'</td>
         </tr>
       </table>
     </body>
