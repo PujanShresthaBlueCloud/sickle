@@ -37,3 +37,6 @@ CSS = MODEL_DIR/ 'css/style.css'
 
 # javascipt file
 JS = MODEL_DIR/ 'js/main.js'
+
+# generate report
+GR = MODEL_DIR/ 'template/index.html'

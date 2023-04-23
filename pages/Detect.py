@@ -126,6 +126,9 @@ if source_radio == settings.IMAGE:
                 labels = detected_data_frame['class'].squeeze()
                 pie_data = px.pie(detected_data_frame, values=sizes, names=labels)
                 st.write(pie_data)
+            
+            with st.expander("Generate report"):
+                helper.load_template(settings.GR)
 
         else:
             st.write('') # we can put it blank

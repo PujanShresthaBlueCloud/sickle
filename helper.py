@@ -25,6 +25,11 @@ def local_js(file_name):
     with open(file_name) as f:
         components.html(f"<script>{f.read()}</script>", height=0, width=0)
 
+# Load report template
+def load_template(file_name):
+    with open(file_name) as f:
+        st.markdown(f"<html>{f.read()}</html", unsafe_allow_html=True)
+
 def send_email(email_address):
     # Define email button
     if st.button("Send Report by Email"):
