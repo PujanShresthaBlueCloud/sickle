@@ -136,7 +136,8 @@ if source_radio == settings.IMAGE:
                     # url = f'https://pujanshresthabluecloud-sickle-about-o5l7sg.streamlit.app/Generate_Report/?variable={total_detection}'
                     # html_str = f'<meta http-equiv="refresh" content="0;URL=\'{url}\'" />'
                     # html(html_str)
-                    st.redirect(f'https://pujanshresthabluecloud-sickle-about-o5l7sg.streamlit.app/Generate_Report/?variable={total_detection}')
+                    url = f'https://pujanshresthabluecloud-sickle-about-o5l7sg.streamlit.app/Generate_Report/?variable={total_detection}'
+                    st.redirect(url)
 
 
         else:
