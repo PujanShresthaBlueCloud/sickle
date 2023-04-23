@@ -27,11 +27,13 @@ def local_js(file_name):
 
 # Load report template
 def load_template(file_name, first_name, last_name, age, sex, address, date_of_test):
+    st.write(first_name)
     with open(file_name) as f:
         # template = st.markdown(f"<html>{f.read()}</html", unsafe_allow_html=True)
+        
         html = {f.read()}.format(first_name, last_name, age, sex, address, date_of_test)
         # html = template.format(first_name, last_name, age, sex, address, date_of_test)
-        st.markdown(html, unsafe_allow_html=True)
+        # st.markdown(html, unsafe_allow_html=True)
         # return html
 
 def app(html, report):
