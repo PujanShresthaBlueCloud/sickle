@@ -107,3 +107,30 @@ def pie_chart(detected_data_frame):
     labels = detected_data_frame['class'].squeeze()
     pie_data = px.pie(detected_data_frame, values=sizes, names=labels)
     st.write(pie_data)
+
+def Status (RBCpercent): # RBC is given as DataFrame
+  RBCpercent=RBCpercent[['Crystal', 'Normal', 'Others', 'Sickle', 'Target']]
+  Crystal,N,Other,S,Target=RBCpercent.values[0]
+  if Target*Crystal>0 and Crystal+Target>0.3 :
+    C=Target+Crystal
+  else:
+    C=0
+    N=N+Target+Crystal
+  NO =N+Other
+  HbDB=pd.DataFrame({"HbA":NO,"HbS":S,"HbC":C},index=["SCD statut"])
+  if N>0.9 or S+C< 0.03 : 
+   Stat="AA"
+  elif NO>=0.3 and S>0.03 and S>=C :
+   Stat="AS"
+  elif NO>=0.3 and C>0.03 : 
+   Stat="AC"
+  elif C>0.85 : 
+   Stat="CC"
+  elif S>0.85 : 
+   Stat="SS"
+  elif C>=0.4 and S>=0.4 : 
+   Stat="SC"
+  else :
+   Stat="Non determined"
+  HbDB["Statut"]=Stat
+  return HbDB
