@@ -117,18 +117,6 @@ if source_radio == settings.IMAGE:
                  ]
             detected_data_frame=pd.DataFrame(detected_cal, columns=['class','count','percent'], index=None)
             st.dataframe(detected_data_frame, use_container_width=True)
-            detected =[['Crystal', 'Normal', 'Others', 'Sickle', 'Target']]
-            
-            detected[[0]] = crystal_percent
-            detected[[1]] = normal_percent
-            detected[[2]] = others_percent
-            detected[[3]] = sickle_percent
-            detected[[4]] = target_percent
-
-            print(detected)
-            detected_disease = helper.Status(detected)
-            st.write(detected)
-
 
             detected_result = detected_data_frame.to_html(index=False)
 
